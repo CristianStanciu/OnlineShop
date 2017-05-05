@@ -4,52 +4,31 @@
 
 body {
   padding-bottom: 40px;
+  padding-right: 5px;
   color: #5a5a5a;
+  background-color: whitesmoke;
 }
-
-
-/* CUSTOMIZE THE NAVBAR
--------------------------------------------------- */
-
-/* Special class on .container surrounding .navbar, used for positioning it into place. */
-.navbar-wrapper {
-  position: absolute;
-  top: 0;
-  right: 0;
-  left: 0;
-  z-index: 20;
-}
-
-/* Flip around the padding for proper display in narrow viewports */
-.navbar-wrapper > .container {
-  padding-right: 0;
-  padding-left: 0;
-}
-.navbar-wrapper .navbar {
-  padding-right: 15px;
-  padding-left: 15px;
-}
-.navbar-wrapper .navbar .container {
-  width: auto;
-}
-
 
 /* CUSTOMIZE THE CAROUSEL
 -------------------------------------------------- */
 
 /* Carousel base class */
 .carousel {
-  height: 500px;
+  height: 700px;
   margin-bottom: 60px;
+  position: relative;
+  /*top:250px;*/
 }
 /* Since positioning the image, we need to help out the caption */
 .carousel-caption {
   z-index: 10;
+  top:230px;
+  bottom: auto;
 }
 
 /* Declare heights because of positioning of img element */
 .carousel .item {
-  height: 500px;
+  height: 700px;
   background-color: #777;
 }
 .carousel-inner > .item > img {
@@ -59,24 +38,6 @@ body {
   min-width: 100%;
   height: 500px;
 }
-
-
-/* MARKETING CONTENT
--------------------------------------------------- */
-
-/* Center align the text within the three columns below the carousel */
-.marketing .col-lg-4 {
-  margin-bottom: 20px;
-  text-align: center;
-}
-.marketing h2 {
-  font-weight: normal;
-}
-.marketing .col-lg-4 p {
-  margin-right: 10px;
-  margin-left: 10px;
-}
-
 
 /* Featurettes
 ------------------------- */
@@ -97,7 +58,7 @@ body {
 -------------------------------------------------- */
 
 @media (min-width: 768px) {
-  /* Navbar positioning foo */
+   Navbar positioning foo
   .navbar-wrapper {
     margin-top: 20px;
   }

@@ -1,19 +1,214 @@
-.table {
-    table-layout: fixed;
-    overflow: auto;
+body{
+    background-color: #080808;
+    color:whitesmoke;
+    text-transform: uppercase;
+    font-family: 'Inconsolata', monospace, Arial, "Times New Roman";
+    margin-bottom: 20px;
+    margin-right: 15px;
 }
 
-.table th {
-    text-align: center;
+#dropshadow{
+    -moz-box-shadow:10px 10px 5px #000000;
+    -webkit-box-shadow:10px 10px 5px #000000;
+    box-shadow:2px 2px 0.5px #999999;
+    border:solid 0px #000000;
+    -moz-border-radius-topleft: 0px;
+    -moz-border-radius-topright:0px;
+    -moz-border-radius-bottomleft:0px;
+    -moz-border-radius-bottomright:62px;
+    -webkit-border-top-left-radius:0px;
+    -webkit-border-top-right-radius:0px;
+    -webkit-border-bottom-left-radius:0px;
+    -webkit-border-bottom-right-radius:62px;
+    border-top-left-radius:0px;
+    border-top-right-radius:0px;
+    border-bottom-left-radius:0px;
+    border-bottom-right-radius:62px;
 }
 
-.table td {
+.free-shiping{
+    color: #9d9d9d;
+    position: absolute;
     text-align: center;
-    background-color: #8c8c8c;
+    top: 0;
+    width: 99%;
+    padding: 10px;
+    z-index: 40;
+}
+
+.free-shiping .container span {
+    color: #ff0000;
+    text-decoration: solid;
+}
+
+.free-shiping .container img {
+    width: 40px;
+    height: 15px;
+}
+
+.header-area {
+    background-color: #3c3c3c;
+    position: relative;
+    text-align: center;
+    top: 40px;
+    margin: 0;
+    border: thin whitesmoke;
+    height: 160px;
+    width: 100%;
+    z-index: 30;
+}
+
+.header-top {
+    background-color: #262626;
+    border-bottom: thin whitesmoke;
+    width: 100%;
+    color: whitesmoke;
+    z-index: 20;
+}
+
+.header-area .header-top .container{
+    padding-top: 20px;
+}
+
+.header-area .header-top .container .col-sm-3.col-xs-12{
+    margin-top: 5px;
+}
+
+#cart{
+    margin-left: 115px;
+}
+
+#cart img{
+    width: 20px;
+    height: 20px;
+    margin-right: 3px;
+}
+
+.main-header {   /*ala cu l-ectro si search*/
+    height: 95px;
+    width: 100%;
+    margin-bottom: 1px;
+    z-index: 20;
+}
+
+.main-header .container  {
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+}
+
+.main-header .container .row {
+    margin: auto;
+    width: 80%;
+    z-index: 20;
+}
+
+#divullogoului{
+    z-index: 30;
+    height: 100%;
+}
+
+#containerulsearchului{
+    height: 100%;
+    z-index: 30;
+    width: 50%;
+}
+
+#rowulsearchului{
+    margin: 0;
+    width: 50%;
+    position: absolute;
+    top: 50%;
+    left: 100%;
+    transform: translate(-100%, -50%);
+    z-index: 20;
+}
+
+#searchuldesus{
+    z-index: 30;
+    width: 50%;
+}
+
+#searchicon{
+    margin-top: 15px;
+}
+
+#logo{
+    float: left;
+    margin-left: 25px;
+}
+
+.navbar {
+    background-color: #444444;
+    width: 100%;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.navbar .container{
+    margin: auto;
+    width: 30%;
+}
+
+/*navbar drop lists*/
+.dropdown-toggle{
+    color: whitesmoke;
+}
+
+.search-form .form-group {
+    float: right !important;
+    transition: all 0.35s, border-radius 0s;
+    width: 32px;
+    height: 32px;
+    background-color: #fff;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
+    border-radius: 25px;
+    border: 1px solid #ccc;
+}
+
+.search-form .form-group input.form-control {
+    padding-right: 20px;
+    border: 0 none;
+    background: transparent;
+    box-shadow: none;
+    display:block;
+}
+
+.search-form .form-group input.form-control::-webkit-input-placeholder {
+    display: none;
+}
+
+.search-form .form-group input.form-control:-moz-placeholder {
+    /* Firefox 18- */
+    display: none;
+}
+
+.search-form .form-group input.form-control::-moz-placeholder {
+    /* Firefox 19+ */
+    display: none;
+}
+
+.search-form .form-group input.form-control:-ms-input-placeholder {
+    display: none;
+}
+
+.search-form .form-group:hover,
+.search-form .form-group.hover {
+    width: 100%;
+    border-radius: 4px 25px 25px 4px;
+}
+
+.search-form .form-group span.form-control-feedback {
+    position: absolute;
+    top: -1px;
+    right: -2px;
+    z-index: 2;
     display: block;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-
+    width: 34px;
+    height: 34px;
+    line-height: 34px;
+    text-align: center;
+    color: #3596e0;
+    left: initial;
+    font-size: 14px;
 }
-
