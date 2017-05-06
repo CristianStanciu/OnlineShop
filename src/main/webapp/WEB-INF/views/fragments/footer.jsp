@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: smc
@@ -93,10 +94,27 @@
             </p>
             <!-- Ends -->
 
+            <!-- Payment Gateway Links Starts -->
+            <ul class="pull-right list-inline">
+                <li>
+                    <img src="<c:url value="/resources/images/card/paypal.png "/>" alt="Card Image" />
+                </li>
+                <li>
+                    <img src="<c:url value="/resources/images/card/visa.png "/>" alt="Card Image" />
+                </li>
+                <li>
+                    <img src="<c:url value="/resources/images/card/mastercard.png "/>" alt="Card Image" />
+                </li>
+            </ul>
+            <!-- Payment Gateway Links Ends -->
+
         </div>
         <!-- Container Ends -->
     </div>
     <!-- Copyright Area Ends -->
+
+
+
 </footer>
 <!-- Footer Section Ends -->
 
@@ -106,6 +124,14 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script>window.jQuery || document.write('<script src="WEB-INF/resources/js/jquery-3.2.1.min.js"><\/script>')</script>
 <script src="resources/js/bootstrap.min.js"></script>
+<script src="resources/js/owl.carousel.min.js"></script>
+<script src="resources/js/jquery-1.11.1.min.js"></script>
+<script src="resources/js/jquery-migrate-1.2.1.min.js"></script>
+<script src="resources/js/bootstrap-hover-dropdown.min.js"></script>
+<script src="resources/js/jquery.magnific-popup.min.js"></script>
+<script src="resources/js/custom.js"></script>
+
+
 
 
 </body>

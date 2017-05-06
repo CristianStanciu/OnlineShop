@@ -16,72 +16,43 @@
 
     <title>L-ectro.com</title>
 
+
     <!-- Reset CSS -->
     <link rel="stylesheet" href="<c:url value="/resources/css/reset.css"/>" type="text/css">
-
-    <!-- Bootstrap core CSS -->
-    <link rel="stylesheet" href="<c:url value="/resources/css/bootstrap.min.css"/>" type="text/css">
-
-    <!-- Carousel CSS -->
-    <link rel="stylesheet" href="<c:url value="/resources/css/carousel.css"/>" type="text/css">
-
-    <!-- Main CSS -->
-    <link rel="stylesheet" href="<c:url value="/resources/css/main.css"/>" type="text/css">
 
     <!-- Google Web Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,300i,400,400i,700,700i" rel="stylesheet">
 
-</head>
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="<c:url value="/resources/css/bootstrap.min.css"/>" type="text/css">
 
-<body id="dropshadow">
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="<c:url value="/resources/css/main.css"/>" type="text/css">
+
+    <!-- Carousel CSS -->
+    <link rel="stylesheet" href="<c:url value="/resources/css/carousel.css"/>" type="text/css">
+
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="<c:url value="/resources/css/owl.carousel.css"/>" type="text/css">
+    <link rel="stylesheet" href="<c:url value="/resources/css/style.css"/>" type="text/css">
+    <link rel="stylesheet" href="<c:url value="/resources/css/responsive.css"/>" type="text/css">
+
+
+</head>
+<body>
 
 
 <!-- Top Bar Starts -->
 <div id="dropshadow" class="free-shiping">
     <!-- Nested Container Starts -->
     <div class="container">
+        <!-- Free shipping image -->
         <img src="<c:url value="/resources/images/freeShipping2.png"/>"/>
-        <span>Free Shipping</span> on order over $199. This offer is valid on all our store items.
+        <span>Free Shipping</span> on order over $100. This offer is valid on all our store items.
     </div>
     <!-- Nested Container Ends -->
 </div>
 <!-- Top Bar Ends -->
-
-
-<!-- NAVBAR
-================================================== -->
-
-
-<%--<div class="navbar-wrapper">--%>
-<%--<div class="container">--%>
-
-<%--<nav class="navbar navbar-inverse navbar-static-top">--%>
-<%--<div class="container">--%>
-<%--<div class="navbar-header">--%>
-<%--<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"--%>
-<%--aria-expanded="false" aria-controls="navbar">--%>
-<%--<span class="sr-only">Toggle navigation</span>--%>
-<%--<span class="icon-bar"></span>--%>
-<%--<span class="icon-bar"></span>--%>
-<%--<span class="icon-bar"></span>--%>
-<%--</button>--%>
-<%--<a class="navbar-brand" href="#">E-lectron</a>--%>
-<%--</div>--%>
-<%--<div id="navbar" class="navbar-collapse collapse">--%>
-<%--<ul class="nav navbar-nav">--%>
-<%--<li class="active"><a href="<c:url value="/"/>">Home</a></li>--%>
-<%--<li><a href="<c:url value="/productList"/>">Products</a></li>--%>
-<%--<li><a href="<c:url value="/"/>">Contact</a></li>--%>
-<%--</ul>--%>
-<%--<ul class="nav navbar-nav pull-right">--%>
-<%--<li><a href="<c:url value="/admin"/>">Admin</a></li>--%>
-<%--</ul>--%>
-<%--</div>--%>
-<%--</div>--%>
-<%--</nav>--%>
-
-<%--</div>--%>
-<%--</div>--%>
 
 
 <!-- Header Section Starts -->
@@ -96,8 +67,8 @@
                 <div class="col-sm-3 col-xs-12">
                     <div class="pull-left">
                         <div class="btn-group">
-                            <button class="btn btn-link dropdown-toggle" data-toggle="dropdown">
-                                <span class="glyphicon glyphicon-globe"></span>  Language
+                            <button class="btn btn-link dropdown-toggle text-uppercase" data-toggle="dropdown">
+                                <span class="glyphicon glyphicon-globe"></span> Language
                             </button>
                             <ul class="pull-left dropdown-menu">
                                 <li>
@@ -130,9 +101,9 @@
 
                 <!-- Cart Starts -->
                 <div class="col-sm-3 col-xs-12">
-                    <div id="cart" class="btn-group btn-block">
+                    <div id="cart" class="btn-group btn-block ">
                         <button type="button" data-toggle="dropdown"
-                                class="btn btn-link dropdown-toggle">
+                                class="btn btn-link dropdown-toggle text-uppercase">
                             <img src="<c:url value="/resources/images/shoppingCart0.png"/>"/>
                             <strong>Shopping Cart</strong>
                         </button>
@@ -226,55 +197,59 @@
     <%--MENIU CU NUMELE MAGAZINULUI ETC--%>
 
 
+
+
     <!-- Main Header Starts -->
-    <div id="dropshadow" class="main-header">
-        <!-- Nested Container Starts -->
-        <div class="container">
+    <div id="dropshadow" class="main-header" class="row around-xs">
             <!-- Nested Row Starts -->
-            <div class="row">
-                <!-- Logo Starts -->
-                <div id="divullogoului" class="col-md-6 col-sm-4 col-xs-12">
-                    <div id="logo">
-                        <a href="<c:url value="/"/>"><img src="<c:url value="/resources/images/l-ectro.png"/>"
-                                                          title="L-ectro" alt="L-ectro" width="180px" height="130px"
-                                                          class="img-responsive img-center"></a>
+                <%--<!-- Logo Start -->--%>
+                <div class="col-xs-2">
+                    <div class="box">
+                    <a href="<c:url value="/"/>"><img id="logo-img" src="<c:url value="/resources/images/l-ectro.png"/>"
+                                                       title="L-ectro" alt="L-ectro" class="img-responsive img-center"></a>
                     </div>
                 </div>
-                <!-- Logo Ends -->
+                <!-- Logo end -->
 
+                <!-- Motoo start -->
+                <div class="col-xs-2">
+                    <div id="motto" class="box">
+                        <h4><strong>L-ectro, best thing in town!</strong></h4>
+                    </div>
+                </div>
+                <!-- End -->
 
                 <!-- Search Starts -->
-                <div id="containerulsearchului" class="col-md-3 col-sm-4 col-xs-12" > <!-- class="container" -->
-                    <div id="rowulsearchului" > <!-- class="row" -->
-                        <div id="searchuldesus" class="col-md-3 col-md-offset-3">
+                <div class="col-xs-2">
+                    <div id="search" class="box">
+                        <div class="input-group">
                             <form id="searchicon" action="" class="search-form">
                                 <div class="form-group has-feedback">
                                     <label for="search" class="sr-only">Search</label>
                                     <input type="text" class="form-control" name="search"
-                                           id="search" placeholder="search">
+                                            placeholder="search">
                                     <span class="glyphicon glyphicon-search form-control-feedback"></span>
                                 </div>
                             </form>
                         </div>
                     </div>
                 </div>
-
                 <!-- Search Ends -->
-            </div>
-            <!-- Nested Row Ends -->
-        </div>
-        <!-- Nested Container Ends -->
+
     </div>
     <!-- Main Header Ends -->
 
 
     <!-- Main Menu Starts -->
-    <nav class="navbar" id="dropshadow" role="navigation">
+
+    <nav id="main-menu" class="navbar" role="navigation">
+
         <!-- Nested Container Starts -->
         <div class="container">
 
             <div class="collapse navbar-collapse navbar-cat-collapse">
                 <!-- starts the list -->
+
                 <ul class="nav navbar-nav">
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown"
