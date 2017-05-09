@@ -1,7 +1,7 @@
 package com.onlineshop;
 
 
-import com.onlineshop.model.*;
+import com.onlineshop.model.entity.*;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;

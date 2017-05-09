@@ -1,7 +1,7 @@
-package com.onlineshop.Dao;
-
-import com.onlineshop.model.Product;
-import com.onlineshop.model.ProductType;
+package com.onlineshop.controller.dao.impl;
+import com.onlineshop.controller.dao.ProductDao;
+import com.onlineshop.model.entity.Product;
+import com.onlineshop.model.entity.ProductType;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
@@ -14,6 +14,7 @@ import java.util.List;
 /**
  * Created by smc on 5/1/2017.
  */
+
 @Repository
 @Transactional
 public class ProductDaoImpl implements ProductDao {
@@ -28,22 +29,26 @@ public class ProductDaoImpl implements ProductDao {
     session.flush();
     }
 
+    public void editProduct(Product product) {
+        this.addProduct(product);
+    }
+
     public Product getProductById(int productId) {
         Session session = sessionFactory.getCurrentSession();
         return (Product) session.get(Product.class, productId);
     }
 
-    public List<Product> getAllProducts() {
+    public List<Product> getProductList() {
         Session session = sessionFactory.getCurrentSession();
         Query query = session.createQuery("from Product");
-        List<Product> products = query.list();
+        List<Product> productList = query.list();
         session.flush();
-        return  products;
+        return productList;
     }
 
-    public void deleteProduct(int productID) {
+    public void deleteProduct(Product product) {
         Session session = sessionFactory.getCurrentSession();
-        session.delete(getProductById(productID));
+        session.delete(product);
     }
 
     public List<ProductType> getAllProductTypes() {

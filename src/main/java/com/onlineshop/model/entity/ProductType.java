@@ -1,13 +1,17 @@
-package com.onlineshop.model;
+package com.onlineshop.model.entity;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 /**
  * Created by smc on 4/29/2017.
  */
+
 @Entity
 @Table(name = "PRODUCT_TYPE")
-public class ProductType {
+public class ProductType implements Serializable{
+
+    private static final long serialVersionUID = -7219441780913132491L;
 
     @Id
     @Column(name = "PRODUCT_TYPE", nullable = false)

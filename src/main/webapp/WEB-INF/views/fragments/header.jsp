@@ -16,12 +16,11 @@
 
     <title>L-ectro.com</title>
 
+    <%--angular--%>
+    <script src="<c:url value="/resources/js/angular.min.js" />"></script>
 
     <!-- Reset CSS -->
     <link rel="stylesheet" href="<c:url value="/resources/css/reset.css"/>" type="text/css">
-
-    <!-- Google Web Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,300i,400,400i,700,700i" rel="stylesheet">
 
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="<c:url value="/resources/css/bootstrap.min.css"/>" type="text/css">
@@ -34,7 +33,6 @@
 
     <!-- CSS Files -->
     <link rel="stylesheet" href="<c:url value="/resources/css/owl.carousel.css"/>" type="text/css">
-    <link rel="stylesheet" href="<c:url value="/resources/css/style.css"/>" type="text/css">
     <link rel="stylesheet" href="<c:url value="/resources/css/responsive.css"/>" type="text/css">
 
 
@@ -64,11 +62,11 @@
             <!-- Nested Row Starts -->
             <div class="row">
                 <!-- Languages Starts -->
-                <div class="col-sm-3 col-xs-12">
+                <div id="language-div" class="col-sm-3 col-xs-12">
                     <div class="pull-left">
                         <div class="btn-group">
                             <button class="btn btn-link dropdown-toggle text-uppercase" data-toggle="dropdown">
-                                <span class="glyphicon glyphicon-globe"></span> Language
+                                <span class="glyphicon glyphicon-globe"></span><span id="language">  Language</span>
                             </button>
                             <ul class="pull-left dropdown-menu">
                                 <li>
@@ -88,7 +86,7 @@
                 <div class="col-sm-6 col-xs-12">
                     <ul class="list-unstyled list-inline header-links text-center">
                         <li><a href="<c:url value="/"/>">Home</a></li>
-                        <li><a href="<c:url value="/productList"/>">Products</a></li>
+                        <li><a href="<c:url value="/product/productList"/>">Products</a></li>
                         <li><a href="<c:url value="/admin"/>">Admin</a></li>
                         <li><a href="#">Wish List(0)</a></li>
                         <li><a href="#">My Account</a></li>
@@ -297,7 +295,7 @@
                             <li><a tabindex="-1" href="login.html">Login</a></li>
                             <li><a tabindex="-1" href="compare.html">Compare Products</a></li>
                             <li><a tabindex="-1" href="typography.html">Typography</a></li>
-                            <li><a tabindex="-1" href="register.html">Register</a></li>
+                            <li><a tabindex="-1" href="<c:url value="/register" />">Register</a></li>
                             <li><a tabindex="-1" href="contact.html">Contact</a></li>
                             <li><a tabindex="-1" href="404.html">404</a></li>
                         </ul>

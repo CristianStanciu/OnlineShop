@@ -42,7 +42,7 @@
                         <td>${product.productDscr}</td>
                         <td>
                             <div title="Product details">
-                            <a href="<c:url value="/productList/viewProduct/${product.productId}"/>">
+                            <a href="<c:url value="/product/viewProduct/${product.productId}"/>">
                             <span class="glyphicon glyphicon-zoom-in"></span></a>
                             </div>
                         </td>

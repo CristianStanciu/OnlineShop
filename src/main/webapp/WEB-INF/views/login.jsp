@@ -39,7 +39,7 @@
                         </div>
                         <div class="form-group">
                             <div>
-                                <button class="btn btn-custom " name="submit" type="submit">
+                                <button class="btn btn-default" name="submit" type="submit">
                                     Submit
                                 </button>
                             </div>

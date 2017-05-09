@@ -1,36 +1,64 @@
-package com.onlineshop.model;
+package com.onlineshop.model.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.springframework.format.annotation.NumberFormat;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.persistence.*;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
+import java.io.Serializable;
+import java.util.List;
 
 /**
  * Created by smc on 4/29/2017.
  */
+
 @Entity
 @Table(name = "PRODUCT")
-public class Product {
+public class Product implements Serializable{
+
+    private static final long serialVersionUID = -3700508571423129640L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "PRODUCT_ID", nullable = false)
     private int productId;
-    @Column (name = "TYPE")
+
+    @Column (name = "TYPE", nullable = false)
     private String productType;
+
+    @Size(min = 2, max = 45, message = "Please enter the maker of the product")
     @Column(name = "MAKER", nullable = false)
     private String productMaker;
+
+    @Size(min = 1, max = 45, message = "Please enter the name")
     @Column(name = "NAME", nullable = false)
     private String productName;
+
+    @Pattern(regexp = "[a-zA-Z]{3,45}", message = "Please enter a valid color")
     @Column(name = "COLOR")
     private String productColor;
+
+    @Min(value = 1, message = "Please enter a valid size")// !!! MAI TREBUIE SA FAC VALIDARE PENTRU ALT TIP NUMERIC, DE EX DACA E DOUBLE ARUNCA EXCEPTIE ACUM
+    @NumberFormat(style = NumberFormat.Style.DEFAULT)
     @Column(name = "SIZE")
     private int productSize;
+
+    @Min(value = 1 , message = "Please enter a valid price")
     @Column(name = "PRICE", nullable = false)
     private double productPrice;
+
     @Column(name = "DESCRIPTION")
     private String productDscr;
+
     @Transient
     private MultipartFile productImage;
+
+    @OneToMany(mappedBy = "productId", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JsonIgnore
+    private List<CartItem> cartItemList;
 
     public Product() {
     }
@@ -117,6 +145,14 @@ public class Product {
         this.productImage = productImage;
     }
 
+    public List<CartItem> getCartItemList() {
+        return cartItemList;
+    }
+
+    public void setCartItemList(List<CartItem> cartItemList) {
+        this.cartItemList = cartItemList;
+    }
+
     @Override
     public String toString() {
         return "Product{" +
@@ -130,5 +166,13 @@ public class Product {
                 ", productDscr='" + productDscr + '\'' +
                 ", productImage=" + productImage +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object obj){
+        if (obj == null) return false;
+        if (!(obj instanceof Product))return false;
+        if (((Product) obj).getProductId() != this.getProductId()) return  false;
+        return true;
     }
 }

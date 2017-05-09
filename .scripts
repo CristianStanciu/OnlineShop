@@ -15,12 +15,14 @@ CUSTOMER:
 
 CREATE TABLE CUSTOMER (
     CUSTOMER_ID int PRIMARY KEY NOT NULL AUTO_INCREMENT,
-    PHONE_NO int,
     FIRST_NAME varchar(45),
     LAST_NAME varchar(45),
-    EMAIL varchar(45),
+    USER_NAME varchar(45),
     PASSWORD varchar(45),
-    ADDRESS varchar(45)
+    EMAIL varchar(45),
+    ADDRESS varchar(45),
+    BILLING_ADDRESS varchar(45)
+    PHONE_NO int
     );
 
 CREATE TABLE CUST_PAYMENT_METHOD (
@@ -81,12 +83,12 @@ CREATE TABLE CUST_ORDER (
 
   CREATE TABLE PRODUCT (
       PRODUCT_ID int PRIMARY KEY NOT NULL AUTO_INCREMENT,
-      TYPE varchar(45),
-      MAKER varchar(45),
-      NAME varchar(45),
+      TYPE varchar(45) NOT NULL,
+      MAKER varchar(45) NOT NULL,
+      NAME varchar(45) NOT NULL,
       COLOR varchar(45),
-      SIZE int,
-      PRICE double,
+      SIZE int NOT NULL,
+      PRICE double NOT NULL,
       DESCRIPTION varchar(45)
       );
 
@@ -126,6 +128,29 @@ CREATE TABLE SHIPMENT (
     FOREIGN KEY (ORDER_ID) REFERENCES CUST_ORDER(ORDER_ID),
     FOREIGN KEY (INVOICE_NO) REFERENCES INVOICE(INVOICE_NO)
     );
+
+
+create table user(
+    username varchar(45) not null primary key,
+    password varchar(45) not null,
+    enabled boolean not null,
+    CUSTOMER_ID int);
+
+
+
+create table authority (
+          AUTHORITY_ID int not null primary key auto_increment,
+          username varchar(45) not null,
+          authority varchar(45) not null,
+		  foreign key(username) references user(username));
+          create unique index ix_auth_username on authority (username,authority);
+
+
+INSERT INTO `onlineshop`.`users` (`username`, `password`, `enabled`) VALUES ('admin', 'password', '1');
+
+
+INSERT INTO `onlineshop`.`authorities` (`username`, `authority`) VALUES ( 'admin', 'ROLE_USER');
+
 
 INSERT INTO product_type (PRODUCT_TYPE)
 VALUES ('TV');

@@ -1,13 +1,17 @@
-package com.onlineshop.model;
+package com.onlineshop.model.entity;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 /**
  * Created by smc on 4/29/2017.
  */
+
 @Entity
 @Table(name = "CUST_PAYMENT_METHOD")
-public class CustomerPaymentMethod {
+public class CustomerPaymentMethod implements Serializable{
+
+    private static final long serialVersionUID = 164649947221152373L;
 
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)

@@ -17,35 +17,35 @@
             <p class="lead">Fill the details to update product</p>
         </div>
 
-        <form:form action="${pageContext.request.contextPath}/admin/productInventory/editProduct" method="post" modelAttribute="product" enctype="multipart/form-data">
+        <form:form action="${pageContext.request.contextPath}/admin/product/editProduct" method="post" modelAttribute="product" enctype="multipart/form-data">
         <form:hidden  path="productId" id="productID" value="${product.productId}" />
         <div class="form-group">
-            <label for="name"> Product type: </label>
+            <label for="name"> Product type: </label> <form:errors path="productType" cssStyle="color:#ec2f2f;"/>
             <form:select path="productType" items="${productTypes}" itemLabel="productType" itemValue="productType" cssClass="form-Control"/>
         </div>
         <div class="form-group">
-            <label for="name"> Maker: </label>
-            <form:input path="productMaker" id="maker" class="form-Control" value="${product.productMaker}" />
+            <label for="name"> Maker: </label> <form:errors path="productMaker" cssStyle="color:#ec2f2f;"/>
+            <form:input path="productMaker" id="maker" class="form-Control"/>
         </div>
         <div class="form-group">
-            <label for="name"> Name: </label>
-            <form:input path="productName" id="name" class="form-Control" value="${product.productName}" />
+            <label for="name"> Name: </label> <form:errors path="productName" cssStyle="color:#ec2f2f;"/>
+            <form:input path="productName" id="name" class="form-Control"/>
         </div>
         <div class="form-group">
-            <label for="color"> Color: </label>
-            <form:input path="productColor" id="color" class="form-Control" value="${product.productColor}" />
+            <label for="color"> Color: </label> <form:errors path="productColor" cssStyle="color:#ec2f2f;"/>
+            <form:input path="productColor" id="color" class="form-Control"/>
         </div>
         <div class="form-group">
-            <label for="size"> Size: </label>
-            <form:input path="productSize" id="size" class="form-Control" value="${product.productSize}" />
+            <label for="size"> Size: </label> <form:errors path="productSize" cssStyle="color:#ec2f2f;"/>
+            <form:input path="productSize" id="size" class="form-Control"/>
         </div>
         <div class="form-group">
-            <label for="price"> Price: </label>
-            <form:input path="productPrice" id="price" class="form-Control" value="${product.productPrice}" />
+            <label for="price"> Price: </label> <form:errors path="productPrice" cssStyle="color:#ec2f2f;"/>
+            <form:input path="productPrice" id="price" class="form-Control"/>
         </div>
         <div class="form-group">
             <label for="description"> Description: </label>
-            <form:textarea path="productDscr" id="description" class="form-Control" value="${product.productDscr}" />
+            <form:textarea path="productDscr" id="description" class="form-Control"/>
         </div>
         <div class="form-group">
             <label class="control-label" for="image"> Upload image: </label>

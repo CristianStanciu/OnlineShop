@@ -1,13 +1,17 @@
-package com.onlineshop.model;
+package com.onlineshop.model.entity;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 /**
  * Created by smc on 4/29/2017.
  */
+
 @Entity
 @Table(name = "ORDER_ITEM_STATUS_CODE")
-public class OrderItemStatusCode {
+public class OrderItemStatusCode implements Serializable{
+
+    private static final long serialVersionUID = 8008913006037552303L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

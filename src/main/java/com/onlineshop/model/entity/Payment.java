@@ -1,14 +1,18 @@
-package com.onlineshop.model;
+package com.onlineshop.model.entity;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
 
 /**
  * Created by smc on 4/29/2017.
  */
+
 @Entity
 @Table(name = "PAYMENT")
-public class Payment {
+public class Payment implements Serializable {
+
+    private static final long serialVersionUID = -7216017074610537777L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

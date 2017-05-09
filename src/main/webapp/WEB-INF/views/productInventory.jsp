@@ -42,21 +42,21 @@
                     <td>${product.productDscr}</td>
                     <td>
                         <div title="Product details">
-                        <a href="<c:url value="/productList/viewProduct/${product.productId}"/>">
+                        <a href="<c:url value="/product/viewProduct/${product.productId}"/>">
                             <span class="glyphicon glyphicon-zoom-in"></span>
                         </a>
                         </div>
                     </td>
                     <td>
                         <div title="Remove product">
-                        <a href="<c:url value="/admin/productInventory/deleteProduct/${product.productId}" /> ">
+                        <a href="<c:url value="/admin/product/deleteProduct/${product.productId}" /> ">
                         <span class="glyphicon glyphicon-remove-circle"></span>
                         </div>
                     </a>
                     </td>
                     <td>
                         <div title="Edit product">
-                        <a href="<c:url value="/admin/productInventory/editProduct/${product.productId}" /> ">
+                        <a href="<c:url value="/admin/product/editProduct/${product.productId}" /> ">
                             <span class="glyphicon glyphicon-pencil"></span>
                         </a>
                         </div>
@@ -67,7 +67,7 @@
         </table>
 
 
-        <a href="<spring:url value="/admin/productInventory/addProduct"/>" class="btn btn-primary"> ADD PRODUCT <a/>
+        <a href="<spring:url value="/admin/product/addProduct"/>" class="btn btn-default"> ADD PRODUCT <a/>
 
             <jsp:include page="fragments/footer.jsp"/>
 
