@@ -7,11 +7,7 @@ import com.onlineshop.model.entity.Cart;
 
 public interface CartDao {
 
-    Cart create(Cart cart);
+    Cart getCartById(String cartId);
 
-    Cart get(String cartId);
-
-    void updateCart(String cartId , Cart cart);
-
-    void delete(String cartId);
+    void updateCart(Cart cart);
 }

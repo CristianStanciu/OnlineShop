@@ -15,6 +15,7 @@ public class BillingAddress implements Serializable{
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "BILLING_ADDRESS_ID")
     private int billingAddressId;
 
     private String streetName;

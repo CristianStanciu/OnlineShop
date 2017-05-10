@@ -10,15 +10,16 @@ import java.util.List;
 
 public interface CustomerService {
 
-    List<Customer> getCustomers();
-
-    Customer getCustomerById(int customerId);
-
     void addCustomer(Customer product);
 
     void editCustomer(Customer product);
 
     void deleteCustomer(Customer product);
 
+    Customer getCustomerById(int customerId);
+
+    Customer getCustomerByUsername(String customerUsername);
+
+    List<Customer> getAllCustomers();
 
 }

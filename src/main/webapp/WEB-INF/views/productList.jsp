@@ -32,7 +32,7 @@
                 </thead>
                 <c:forEach items="${products}" var="product">
                     <tr>
-                        <td><img src="<c:url value="/resources/images/${product.productId}.png"/>" alt="Product Photo" style="width:300px"></td>
+                        <td><img src="<c:url value="/resources/images/${product.product}.png"/>" alt="Product Photo" style="width:300px"></td>
                         <td>${product.productType}</td>
                         <td>${product.productMaker}</td>
                         <td>${product.productName}</td>
@@ -42,7 +42,7 @@
                         <td>${product.productDscr}</td>
                         <td>
                             <div title="Product details">
-                            <a href="<c:url value="/product/viewProduct/${product.productId}"/>">
+                            <a href="<c:url value="/product/viewProduct/${product.product}"/>">
                             <span class="glyphicon glyphicon-zoom-in"></span></a>
                             </div>
                         </td>

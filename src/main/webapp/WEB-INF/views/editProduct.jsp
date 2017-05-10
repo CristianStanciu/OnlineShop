@@ -18,7 +18,7 @@
         </div>
 
         <form:form action="${pageContext.request.contextPath}/admin/product/editProduct" method="post" modelAttribute="product" enctype="multipart/form-data">
-        <form:hidden  path="productId" id="productID" value="${product.productId}" />
+        <form:hidden  path="product" id="productID" value="${product.product}" />
         <div class="form-group">
             <label for="name"> Product type: </label> <form:errors path="productType" cssStyle="color:#ec2f2f;"/>
             <form:select path="productType" items="${productTypes}" itemLabel="productType" itemValue="productType" cssClass="form-Control"/>

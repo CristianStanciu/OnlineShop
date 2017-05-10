@@ -32,7 +32,7 @@
             </thead>
             <c:forEach items="${productList}" var="product">
                 <tr>
-                    <td><img src="<c:url value="/resources/images/${product.productId}.png"/>" alt="Product Photo" style="width:300px"></td>
+                    <td><img src="<c:url value="/resources/images/${product.product}.png"/>" alt="Product Photo" style="width:300px"></td>
                     <td>${product.productType}</td>
                     <td>${product.productMaker}</td>
                     <td>${product.productName}</td>
@@ -42,21 +42,21 @@
                     <td>${product.productDscr}</td>
                     <td>
                         <div title="Product details">
-                        <a href="<c:url value="/product/viewProduct/${product.productId}"/>">
+                        <a href="<c:url value="/product/viewProduct/${product.product}"/>">
                             <span class="glyphicon glyphicon-zoom-in"></span>
                         </a>
                         </div>
                     </td>
                     <td>
                         <div title="Remove product">
-                        <a href="<c:url value="/admin/product/deleteProduct/${product.productId}" /> ">
+                        <a href="<c:url value="/admin/product/deleteProduct/${product.product}" /> ">
                         <span class="glyphicon glyphicon-remove-circle"></span>
                         </div>
                     </a>
                     </td>
                     <td>
                         <div title="Edit product">
-                        <a href="<c:url value="/admin/product/editProduct/${product.productId}" /> ">
+                        <a href="<c:url value="/admin/product/editProduct/${product.product}" /> ">
                             <span class="glyphicon glyphicon-pencil"></span>
                         </a>
                         </div>

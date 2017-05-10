@@ -31,6 +31,22 @@ public class Shipment implements Serializable{
     @Column(name = "DETAILS")
     private String shipmentDetails;
 
+    @OneToOne(cascade = CascadeType.ALL)
+    @Column(name = "BILLING_ADDRESS")
+    private BillingAddress billingAddress;
+
+    public Shipment() {
+    }
+
+    public Shipment(Order orderId, Invoice invoiceNumber, int shipmentTrackingNumber, Date shipmentDate, String shipmentDetails, BillingAddress billingAddress) {
+        OrderId = orderId;
+        this.invoiceNumber = invoiceNumber;
+        this.shipmentTrackingNumber = shipmentTrackingNumber;
+        this.shipmentDate = shipmentDate;
+        this.shipmentDetails = shipmentDetails;
+        this.billingAddress = billingAddress;
+    }
+
     public int getShipmentId() {
         return shipmentId;
     }
@@ -79,16 +95,12 @@ public class Shipment implements Serializable{
         this.shipmentDetails = shipmentDetails;
     }
 
-    public Shipment() {
+    public BillingAddress getBillingAddress() {
+        return billingAddress;
     }
 
-    public Shipment(int shipmentId, Order orderId, Invoice invoiceNumber, int shipmentTrackingNumber, Date shipmentDate, String shipmentDetails) {
-        this.shipmentId = shipmentId;
-        OrderId = orderId;
-        this.invoiceNumber = invoiceNumber;
-        this.shipmentTrackingNumber = shipmentTrackingNumber;
-        this.shipmentDate = shipmentDate;
-        this.shipmentDetails = shipmentDetails;
+    public void setBillingAddress(BillingAddress billingAddress) {
+        this.billingAddress = billingAddress;
     }
 
     @Override
@@ -100,6 +112,7 @@ public class Shipment implements Serializable{
                 ", shipmentTrackingNumber=" + shipmentTrackingNumber +
                 ", shipmentDate=" + shipmentDate +
                 ", shipmentDetails='" + shipmentDetails + '\'' +
+                ", billingAddress=" + billingAddress +
                 '}';
     }
 }

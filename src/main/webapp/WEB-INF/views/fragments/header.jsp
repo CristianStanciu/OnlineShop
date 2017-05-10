@@ -87,11 +87,24 @@
                     <ul class="list-unstyled list-inline header-links text-center">
                         <li><a href="<c:url value="/"/>">Home</a></li>
                         <li><a href="<c:url value="/product/productList"/>">Products</a></li>
-                        <li><a href="<c:url value="/admin"/>">Admin</a></li>
-                        <li><a href="#">Wish List(0)</a></li>
-                        <li><a href="#">My Account</a></li>
-                        <li><a href="#">Checkout</a></li>
-                        <li><a href="#">Login</a></li>
+                        <c:if test="${pageContext.request.userPrincipal.name!=null}">
+                            <li><a href="#">Welcome ${pageContext.request.userPrincipal.name}</a></li>
+                            <li><a href="<c:url value="/account" />">My Account</a></li>
+                            <li><a href="<c:url value="/checkout" />">Checkout</a></li>
+                            <li><a href="<c:url value="/j_spring_security_logout" />">Logout</a></li>
+                        </c:if>
+                        <c:if test="${pageContext.request.userPrincipal.name!='admin'}">
+                            <li><a href="<c:url value="customer/wishList"/>">Wish List</a></li>
+                        </c:if>
+                        <c:if test="${pageContext.request.userPrincipal.name =='admin'}">
+                            <li><a href="<c:url value="/admin"/>">Admin</a></li>
+                        </c:if>
+                        <c:if test="${pageContext.request.userPrincipal.name == null}">
+                            <li><a href="<c:url value="/login" />">Login</a></li>
+                            <li><a href="<c:url value="/register"/>">Register</a></li>
+                        </c:if>
+
+
                     </ul>
                 </div>
                 <!-- Header Links Ends -->
@@ -299,6 +312,7 @@
                             <li><a tabindex="-1" href="contact.html">Contact</a></li>
                             <li><a tabindex="-1" href="404.html">404</a></li>
                         </ul>
+
                     </li>
                 </ul>
 

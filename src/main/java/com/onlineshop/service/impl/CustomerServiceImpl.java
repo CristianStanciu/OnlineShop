@@ -16,25 +16,32 @@ import java.util.List;
 public class CustomerServiceImpl implements CustomerService {
 
     @Autowired
-    CustomerDao customerDao;
+    private CustomerDao customerDao;
 
-    public List<Customer> getCustomers() {
-        return null;
+    public void addCustomer(Customer customer) {
+        customerDao.addCustomer(customer);
+    }
+
+    public void editCustomer(Customer customer) {
+        customerDao.editCustomer(customer);
+    }
+
+    public void deleteCustomer(Customer customer) {
+        customerDao.deleteCustomer(customer);
+
     }
 
     public Customer getCustomerById(int customerId) {
-        return null;
-    }
-
-    public void addCustomer(Customer product) {
+        return  customerDao.getCustomerById(customerId);
 
     }
 
-    public void editCustomer(Customer product) {
-
+    public Customer getCustomerByUsername(String customerUsername) {
+        return  customerDao.getCustomerByUsername(customerUsername);
     }
 
-    public void deleteCustomer(Customer product) {
-
+    public List<Customer> getAllCustomers() {
+        return customerDao.getAllCustomers();
     }
+
 }

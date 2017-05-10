@@ -14,9 +14,6 @@ public class User implements Serializable{
     private static final long serialVersionUID = -8278042220802663951L;
 
 
-
-
-
     @Id
     @Column(name = "USER_NAME", nullable = false)
     private String userName;

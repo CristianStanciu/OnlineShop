@@ -27,7 +27,7 @@ public class CartItem implements Serializable{
 
     @ManyToOne
     @JoinColumn(name = "PRODUCT_ID")
-    private Product productId;
+    private Product product;
 
     private double totalPrice;
 
@@ -36,14 +36,14 @@ public class CartItem implements Serializable{
     public CartItem() {
     }
 
-    public CartItem(Product productId) {
-        this.productId = productId;
+    public CartItem(Product product) {
+        this.product = product;
 
     }
 
-    public CartItem(Cart cartId, Product productId, double totalPrice, int quantity) {
+    public CartItem(Cart cartId, Product product, double totalPrice, int quantity) {
         this.cartId = cartId;
-        this.productId = productId;
+        this.product = product;
         this.totalPrice = totalPrice;
         this.quantity = quantity;
     }
@@ -64,12 +64,12 @@ public class CartItem implements Serializable{
         this.cartId = cartId;
     }
 
-    public Product getProductId() {
-        return productId;
+    public Product getProduct() {
+        return product;
     }
 
-    public void setProductId(Product productId) {
-        this.productId = productId;
+    public void setProduct(Product product) {
+        this.product = product;
     }
 
     public double getTotalPrice() {
@@ -92,7 +92,7 @@ public class CartItem implements Serializable{
     public boolean equals(Object obj){
         if (obj == null) return false;
         if (!(obj instanceof CartItem))return false;
-        if (!((CartItem) obj).getProductId().equals(this.getProductId())) return false;
+        if (!((CartItem) obj).getProduct().equals(this.getProduct())) return false;
         if (((CartItem) obj).getTotalPrice() != this.getTotalPrice()) return false;
         if (((CartItem) obj).quantity != this.getQuantity()) return false;
         return true;

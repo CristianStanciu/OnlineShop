@@ -4,8 +4,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by smc on 5/8/2017.
@@ -22,9 +22,9 @@ public class Cart implements Serializable {
     private String cartId;
 
     @OneToMany(mappedBy = "cartId", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private Map<Integer, CartItem> cartItems;
+    private List<CartItem> cartItems;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "CUSTOMER_ID")
     @JsonIgnore
     private Customer customerId;
@@ -34,7 +34,7 @@ public class Cart implements Serializable {
 
     public Cart() {
         totalPrice = 0;
-        cartItems = new HashMap<Integer, CartItem>();
+        cartItems = new ArrayList<CartItem>();
     }
 
     public Cart(String cartId) {
@@ -50,11 +50,11 @@ public class Cart implements Serializable {
         this.cartId = cartId;
     }
 
-    public Map<Integer, CartItem> getCartItems() {
+    public List<CartItem> getCartItems() {
         return cartItems;
     }
 
-    public void setCartItems(Map<Integer, CartItem> cartItems) {
+    public void setCartItems(List<CartItem> cartItems) {
         this.cartItems = cartItems;
     }
 
@@ -75,7 +75,7 @@ public class Cart implements Serializable {
     }
 
     public void addItem(CartItem item){
-        int productId = item.getProductId().getProductId();
+        int productId = item.getProduct().getProductId();
         if (this.cartItems.containsKey(productId)){
             CartItem existingCartItem = this.cartItems.get(productId);
             existingCartItem.setQuantity(existingCartItem.getQuantity()+item.getQuantity());
@@ -88,7 +88,7 @@ public class Cart implements Serializable {
 
 
     public void deleteItem(CartItem item){
-        int productId = item.getProductId().getProductId();
+        int productId = item.getProduct().getProductId();
         this.cartItems.remove(productId);
         updateGrandTotal();
     }
