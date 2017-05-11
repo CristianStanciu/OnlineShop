@@ -2,6 +2,8 @@ package com.onlineshop.controller;
 
 import com.onlineshop.controller.dao.CartDao;
 import com.onlineshop.model.entity.Cart;
+import com.onlineshop.model.entity.Customer;
+import com.onlineshop.service.CartService;
 import com.onlineshop.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.web.bind.annotation.AuthenticationPrincipal;
@@ -22,13 +24,13 @@ public class CartController {
     CustomerService customerService;
 
     @Autowired
-    CartDao cartDao;
+    CartService cartService;
 
-    @RequestMapping("/")
+    @RequestMapping
     public String getCart(@AuthenticationPrincipal org.springframework.security.core.userdetails.User activeUser) {
-        customerService.getCustomerByUsername(activeUser.getUsername());
-        Cart cart = cartDao.create(new Cart()); // AICI TREBUIE REACUT CA NU E BINE!!!!
-        return "redirect:/customer/cart/" + cart.getCartId();
+        Customer customer = customerService.getCustomerByUsername(activeUser.getUsername());
+        int cartId = customer.getCartId().getCartId();
+        return "redirect:/customer/cart/" + cartId;
     }
 
     @RequestMapping("/{cartId}")

@@ -2,7 +2,6 @@ package com.onlineshop.controller;
 
 import com.onlineshop.model.entity.*;
 import com.onlineshop.service.CartService;
-import com.onlineshop.service.CustomerService;
 import com.onlineshop.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -32,7 +31,7 @@ public class OrderController {
         order.setCustomerId(customer);
 
         Invoice invoice = new Invoice();
-        invoice.setOrder_id(order);
+        invoice.setOrderId(order);
 
         BillingAddress billingAddress = customer.getBillingAddress();
 

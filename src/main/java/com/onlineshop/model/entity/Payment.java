@@ -18,11 +18,14 @@ public class Payment implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "PAYMENT_ID", nullable = false)
     private int payment_id;
+
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn (name = "INVOICE_NO")
     private Invoice invoice_number;
+
     @Column(name = "AMOUNT")
     private double paymentAmount;
+
     @Column(name = "DATE")
     private Date payment_date;
 

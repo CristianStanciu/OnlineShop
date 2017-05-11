@@ -1,8 +1,8 @@
 <%--
   Created by IntelliJ IDEA.
   User: smc
-  Date: 5/10/2017
-  Time: 10:44 AM
+  Date: 5/11/2017
+  Time: 10:30 AM
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -11,22 +11,21 @@
 
 <jsp:include page="fragments/header.jsp"/>
 
-<script src="<c:url value="/resources/js/controller.js" />"></script>
+
 
 <div id="cart-container" class="container">
     <section id="first-section">
         <div>
-            <h3>Customer registered successfully</h3>
-            <p> All the selected products</p>
+            <h3>Thank you for your purchase</h3>
+            <p>You can track your shipment with {this.shipmentNo} </p>
         </div>
     </section>
 
     <section class="container">
-
-
-
-            <a href="<spring:url value="product/productList" />" class="btn btn-default">Products </a>
+        <a href="<spring:url value="/" />" class="btn btn-default">oK </a>
     </section>
 </div>
+
+
 
 <jsp:include page="fragments/footer.jsp"/>

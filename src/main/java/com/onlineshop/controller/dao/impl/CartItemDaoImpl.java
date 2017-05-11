@@ -33,7 +33,7 @@ public class CartItemDaoImpl implements CartItemDao {
         Session session = sessionFactory.getCurrentSession();
         Query query = session.createQuery("from CartItem where productId = ?");
         query.setParameter(0, productId);
-        session.saveOrUpdate(cartItem);
+        session.saveOrUpdate(productId);
         session.flush();
         return (CartItem) query.uniqueResult();
     }

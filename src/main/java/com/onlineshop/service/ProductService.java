@@ -13,16 +13,15 @@ import java.util.List;
 
 public interface ProductService {
 
-
-    List<Product> getProductList();
-
-    Product getProductById(int productId);
-
     void addProduct(Product product);
 
     void editProduct(Product product);
 
     void deleteProduct(Product product);
+
+    Product getProductById(int productId);
+
+    List<Product> getProductList();
 
     List<ProductType> getAllProductTypes();
 

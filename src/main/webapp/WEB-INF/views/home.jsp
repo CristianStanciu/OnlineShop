@@ -9,7 +9,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <jsp:include page="fragments/header.jsp"/>
 
-
 <!-- Carousel
 ================================================== -->
 
@@ -813,9 +812,6 @@
     <!-- Top Brands Ends -->
 </div>
 <!-- Main Container Ends -->
-
-
-
 
 
 

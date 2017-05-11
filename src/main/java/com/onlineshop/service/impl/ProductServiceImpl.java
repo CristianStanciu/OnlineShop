@@ -19,15 +19,7 @@ import java.util.List;
 public class ProductServiceImpl implements ProductService {
 
     @Autowired
-    ProductDao productDao;
-
-    public List<Product> getProductList() {
-        return productDao.getProductList();
-    }
-
-    public Product getProductById(int productId) {
-        return productDao.getProductById(productId);
-    }
+    private ProductDao productDao;
 
     public void addProduct(Product product) {
         productDao.addProduct(product);
@@ -39,6 +31,14 @@ public class ProductServiceImpl implements ProductService {
 
     public void deleteProduct(Product product) {
         productDao.deleteProduct(product);
+    }
+
+    public Product getProductById(int productId) {
+        return productDao.getProductById(productId);
+    }
+
+    public List<Product> getProductList() {
+        return productDao.getProductList();
     }
 
     public List<ProductType> getAllProductTypes() {

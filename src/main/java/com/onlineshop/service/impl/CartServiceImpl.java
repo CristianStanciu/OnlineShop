@@ -17,11 +17,11 @@ public class CartServiceImpl implements CartService{
     CartDao cartDao;
 
     public Cart getCartById(int cartId) {
-        cartDao.get
-        return null;
+        return cartDao.getCartById(cartId);
+
     }
 
     public void updateCart(Cart cart) {
-
+        cartDao.update(cart);
     }
 }

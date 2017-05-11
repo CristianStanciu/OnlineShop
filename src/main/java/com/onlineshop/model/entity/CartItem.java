@@ -18,6 +18,7 @@ public class CartItem implements Serializable{
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "CART_ITEM_ID")
     private int cartItemId;
 
     @ManyToOne
@@ -27,23 +28,22 @@ public class CartItem implements Serializable{
 
     @ManyToOne
     @JoinColumn(name = "PRODUCT_ID")
-    private Product product;
+    private Product productId;
 
+    @Column(name = "QUANTITY")
+    private int quantity;
+
+    @Column(name = "TOTAL_PRICE")
     private double totalPrice;
 
-    private int quantity;
+
 
     public CartItem() {
     }
 
-    public CartItem(Product product) {
-        this.product = product;
-
-    }
-
-    public CartItem(Cart cartId, Product product, double totalPrice, int quantity) {
+    public CartItem(Cart cartId, Product productId, double totalPrice, int quantity) {
         this.cartId = cartId;
-        this.product = product;
+        this.productId = productId;
         this.totalPrice = totalPrice;
         this.quantity = quantity;
     }
@@ -64,12 +64,12 @@ public class CartItem implements Serializable{
         this.cartId = cartId;
     }
 
-    public Product getProduct() {
-        return product;
+    public Product getProductId() {
+        return productId;
     }
 
-    public void setProduct(Product product) {
-        this.product = product;
+    public void setProductId(Product productId) {
+        this.productId = productId;
     }
 
     public double getTotalPrice() {
@@ -89,12 +89,23 @@ public class CartItem implements Serializable{
     }
 
     @Override
-    public boolean equals(Object obj){
-        if (obj == null) return false;
-        if (!(obj instanceof CartItem))return false;
-        if (!((CartItem) obj).getProduct().equals(this.getProduct())) return false;
-        if (((CartItem) obj).getTotalPrice() != this.getTotalPrice()) return false;
-        if (((CartItem) obj).quantity != this.getQuantity()) return false;
-        return true;
+    public String toString() {
+        return "CartItem{" +
+                "cartItemId=" + cartItemId +
+                ", cartId=" + cartId +
+                ", productId=" + productId +
+                ", totalPrice=" + totalPrice +
+                ", quantity=" + quantity +
+                '}';
     }
+
+    //    @Override
+//    public boolean equals(Object obj){
+//        if (obj == null) return false;
+//        if (!(obj instanceof CartItem))return false;
+//        if (!((CartItem) obj).getProduct().equals(this.getProduct())) return false;
+//        if (((CartItem) obj).getTotalPrice() != this.getTotalPrice()) return false;
+//        if (((CartItem) obj).quantity != this.getQuantity()) return false;
+//        return true;
+//    }
 }

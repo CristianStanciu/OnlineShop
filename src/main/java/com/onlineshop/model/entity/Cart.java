@@ -19,7 +19,8 @@ public class Cart implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private String cartId;
+    @Column(name = "CART_ID")
+    private int cartId;
 
     @OneToMany(mappedBy = "cartId", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<CartItem> cartItems;
@@ -37,16 +38,16 @@ public class Cart implements Serializable {
         cartItems = new ArrayList<CartItem>();
     }
 
-    public Cart(String cartId) {
+    public Cart(int cartId) {
         this();
         this.cartId = cartId;
     }
 
-    public String getCartId() {
+    public int getCartId() {
         return cartId;
     }
 
-    public void setCartId(String cartId) {
+    public void setCartId(int cartId) {
         this.cartId = cartId;
     }
 
@@ -58,14 +59,6 @@ public class Cart implements Serializable {
         this.cartItems = cartItems;
     }
 
-    public double getTotalPrice() {
-        return totalPrice;
-    }
-
-    public void setTotalPrice(double totalPrice) {
-        this.totalPrice = totalPrice;
-    }
-
     public Customer getCustomerId() {
         return customerId;
     }
@@ -74,36 +67,18 @@ public class Cart implements Serializable {
         this.customerId = customerId;
     }
 
-    public void addItem(CartItem item){
-        int productId = item.getProduct().getProductId();
-        if (this.cartItems.containsKey(productId)){
-            CartItem existingCartItem = this.cartItems.get(productId);
-            existingCartItem.setQuantity(existingCartItem.getQuantity()+item.getQuantity());
-            this.cartItems.put(productId ,existingCartItem);
-        } else{
-            this.cartItems.put(productId, item);
-        }
-        updateGrandTotal();
+    public double getTotalPrice() {
+        return totalPrice;
     }
 
-
-    public void deleteItem(CartItem item){
-        int productId = item.getProduct().getProductId();
-        this.cartItems.remove(productId);
-        updateGrandTotal();
-    }
-
-    private void updateGrandTotal() {
-        this.totalPrice=0;
-        for (CartItem item : this.cartItems.values()){
-            this.totalPrice = totalPrice + item.getTotalPrice();
-        }
+    public void setTotalPrice(double totalPrice) {
+        this.totalPrice = totalPrice;
     }
 
     @Override
     public String toString() {
         return "Cart{" +
-                "cartId='" + cartId + '\'' +
+                "cartId=" + cartId +
                 ", cartItems=" + cartItems +
                 ", customerId=" + customerId +
                 ", totalPrice=" + totalPrice +

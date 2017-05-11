@@ -51,8 +51,6 @@
             <form:input path="productImage" id="image" type="file" class="btn btn-default"/>
         </div>
 
-
-
         <br><br><br><br>
 
         <input type="submit" value="Add" class="btn btn-default">

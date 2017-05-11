@@ -50,7 +50,13 @@
                 </c:forEach>
 
             </table>
+
+        </div>
+
+    </div>
+
+</div>
             
-            <jsp:include page="fragments/footer.jsp"/>
+<jsp:include page="fragments/footer.jsp"/>
 
 

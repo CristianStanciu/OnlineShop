@@ -58,7 +58,7 @@ public class CartResources {
 
         List<CartItem> cartItems = cart.getCartItems();
         for (int i = 0; i < cartItems.size(); i++) {
-            if (product.getProductId() == cartItems.get(i).getProduct().getProductId()) {
+            if (product.getProductId() == cartItems.get(i).getProductId().getProductId()) {
                 CartItem cartItem = cartItems.get(i);
                 cartItem.setQuantity(cartItem.getQuantity() + 1);
                 cartItem.setTotalPrice(product.getProductPrice() * cartItem.getQuantity());
@@ -66,7 +66,7 @@ public class CartResources {
             }
 
             CartItem cartItem = new CartItem();
-            cartItem.setProduct(product);
+            cartItem.setProductId(product);
             cartItem.setQuantity(1);
             cartItem.setTotalPrice(product.getProductPrice() * cartItem.getQuantity());
             cartItem.setCartId(cart);
@@ -97,7 +97,7 @@ public class CartResources {
 //    @RequestMapping(value = "/{cartId}", method = RequestMethod.PUT)
 //    @ResponseStatus(value = HttpStatus.NO_CONTENT)
 //    public void update(@PathVariable(value = "cartId") String cartId, @RequestBody Cart cart) {
-//        cartDao.updateCart(cartId, cart);
+//        cartDao.update(cartId, cart);
 //    }
 
 

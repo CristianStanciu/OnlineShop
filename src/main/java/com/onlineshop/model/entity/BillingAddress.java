@@ -18,17 +18,23 @@ public class BillingAddress implements Serializable{
     @Column(name = "BILLING_ADDRESS_ID")
     private int billingAddressId;
 
+    @Column(name = "STREET_NAME")
     private String streetName;
 
+    @Column(name = "HOUSE_NUMBER")
     private int houseNo;
 
+    @Column(name = "CITY")
     private String city;
 
+    @Column(name = "STATE")
     private String state;
 
+    @Column(name = "COUNTRY")
     private String country;
 
-    private String zipCode;
+    @Column(name = "ZIP_CODE")
+    private int zipCode;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "CUSTOMER_ID")
@@ -37,7 +43,7 @@ public class BillingAddress implements Serializable{
     public BillingAddress() {
     }
 
-    public BillingAddress(String streetName, int houseNo, String city, String state, String country, String zipCode, Customer customerId) {
+    public BillingAddress(String streetName, int houseNo, String city, String state, String country, int zipCode, Customer customerId) {
         this.streetName = streetName;
         this.houseNo = houseNo;
         this.city = city;
@@ -95,11 +101,11 @@ public class BillingAddress implements Serializable{
         this.country = country;
     }
 
-    public String getZipCode() {
+    public int getZipCode() {
         return zipCode;
     }
 
-    public void setZipCode(String zipCode) {
+    public void setZipCode(int zipCode) {
         this.zipCode = zipCode;
     }
 
@@ -120,7 +126,7 @@ public class BillingAddress implements Serializable{
                 ", city='" + city + '\'' +
                 ", state='" + state + '\'' +
                 ", country='" + country + '\'' +
-                ", zipCode='" + zipCode + '\'' +
+                ", zipCode=" + zipCode +
                 ", customerId=" + customerId +
                 '}';
     }

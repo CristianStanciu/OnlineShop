@@ -20,7 +20,7 @@
 
     <form:form action="${pageContext.request.contextPath}/register" method="post" modelAttribute="customer">
         <div class="form-group">
-            <label for="name"> Name: </label> <form:errors path="firstName" cssStyle="color:#ec2f2f;"/>
+            <label for="name"> First name: </label> <form:errors path="firstName" cssStyle="color:#ec2f2f;"/>
             <form:input path="firstName" id="name" class="form-Control"/>
         </div>
         <div class="form-group">
@@ -28,11 +28,11 @@
             <form:input path="lastName" id="lastName" class="form-Control"/>
         </div>
         <div class="form-group">
-            <label for="email"> Email: </label> <form:errors path="email" cssStyle="color:#ec2f2f;"/>
+            <label for="email"> Email: </label> <form:errors path="email" cssStyle="color:#ec2f2f;"/> <span style="color:#ec2f2f">${alreadyExistingEmail}</span>
             <form:input path="email" id="email" class="form-Control"/>
         </div>
         <div class="form-group">
-            <label for="username"> Username: </label> <form:errors path="username" cssStyle="color:#ec2f2f;"/>
+            <label for="username"> Username: </label> <form:errors path="username" cssStyle="color:#ec2f2f;"/> <span style="color:#ec2f2f">${alreadyExistinggetUsername}</span>
             <form:input path="username" id="username" class="form-Control"/>
         </div>
         <div class="form-group">
@@ -69,7 +69,7 @@
         <div class="form-group">
             <label for="billingAddress.state"> State: </label> <form:errors path="billingAddress.state"
                                                                             cssStyle="color:#ec2f2f;"/>
-            <form:password path="billingAddress.state" id="billingAddress.state" class="form-Control"/>
+            <form:input path="billingAddress.state" id="billingAddress.state" class="form-Control"/>
         </div>
         <div class="form-group">
             <label for="billingAddress.country"> country: </label> <form:errors path="billingAddress.country"
@@ -82,14 +82,15 @@
             <form:textarea path="billingAddress.zipCode" id="billingAddress.zipCode" class="form-Control"/>
         </div>
 
-
-        <br><br><br><br>
+        <br>
+        <br>
+        <br>
+        <br>
 
         <input type="submit" value="OK" class="btn btn-default">
         <a href="<c:url value="/"/> " class="btn btn-default">Cancel</a>
     </form:form>
 
 </div>
-
 
 <jsp:include page="fragments/footer.jsp"/>

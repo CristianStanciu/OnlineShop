@@ -47,7 +47,7 @@ public class CustomerDaoImpl implements CustomerDao {
         newUser.setCustomerId(customer);
         newUser.setUserName(customer.getUsername().getUserName());
         newUser.setPassword(customer.getPassword());
-        newUser.setEnabled(true);
+        newUser.setActive(true);
         session.saveOrUpdate(newUser);
         return newUser;
     }

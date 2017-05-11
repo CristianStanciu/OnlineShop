@@ -8,21 +8,25 @@ import java.io.Serializable;
  */
 
 @Entity
-@Table(name = "USERS")
+@Table(name = "USER")
 public class User implements Serializable{
 
     private static final long serialVersionUID = -8278042220802663951L;
 
 
     @Id
-    @Column(name = "USER_NAME", nullable = false)
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "USER_ID")
+    private int userId;
+
+    @Column(name = "USERNAME", nullable = false)
     private String userName;
 
     @Column(name = "PASSWORD", nullable = false)
     private String password;
 
-    @Column(name = "ENABLED", nullable = false)
-    private boolean enabled;
+    @Column(name = "ACTIVE", nullable = false)
+    private boolean active;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "CUSTOMER_ID")
@@ -31,11 +35,19 @@ public class User implements Serializable{
     public User() {
     }
 
-    public User(String userName, String password, boolean enabled, Customer customerId) {
+    public User(String userName, String password, boolean active, Customer customerId) {
         this.userName = userName;
         this.password = password;
-        this.enabled = enabled;
+        this.active = active;
         this.customerId = customerId;
+    }
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 
     public String getUserName() {
@@ -54,12 +66,12 @@ public class User implements Serializable{
         this.password = password;
     }
 
-    public boolean isEnabled() {
-        return enabled;
+    public boolean isActive() {
+        return active;
     }
 
-    public void setEnabled(boolean enabled) {
-        this.enabled = enabled;
+    public void setActive(boolean active) {
+        this.active = active;
     }
 
     public Customer getCustomerId() {
@@ -73,9 +85,10 @@ public class User implements Serializable{
     @Override
     public String toString() {
         return "User{" +
-                "userName='" + userName + '\'' +
+                "userId=" + userId +
+                ", userName='" + userName + '\'' +
                 ", password='" + password + '\'' +
-                ", enabled=" + enabled +
+                ", active=" + active +
                 ", customerId=" + customerId +
                 '}';
     }

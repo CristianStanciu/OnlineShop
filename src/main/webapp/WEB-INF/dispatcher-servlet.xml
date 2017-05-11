@@ -11,9 +11,6 @@
         </mvc:argument-resolvers>
     </mvc:annotation-driven>
 
-
-
-
     <context:component-scan base-package="com.onlineshop"/>
 
     <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">

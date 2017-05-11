@@ -17,17 +17,22 @@ public class OrderItem implements Serializable{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ITEM_ID", nullable = false)
     private int itemId;
+
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn (name = "PRODUCT_ID", nullable = false)
     private Product productId;
+
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn (name = "ORDER_ID", nullable = false)
     private Order order_id;
+
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn (name = "ORDER_ITEM_STATUS_CODE")
     private OrderItemStatusCode itemStatus;
+
     @Column(name = "QUANTITY")
     private int itemQuantity;
+
     @Column(name = "PRICE")
     private double itemPrice;
 

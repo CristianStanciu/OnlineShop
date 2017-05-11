@@ -17,13 +17,18 @@ public class CustomerPaymentMethod implements Serializable{
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name = "PAYMENT_ID", nullable = false)
     private int paymentId;
+
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "CUSTOMER_ID", nullable = false)
     private Customer customerId;
+
     @Column(name = "CREDIT_CARD_NO")
     private String creditCardNumber;
+
     @Column(name = "CASH_ON_DELIVERY")
     private boolean cashOnDelivery;
+
+
 
     public CustomerPaymentMethod() {
     }

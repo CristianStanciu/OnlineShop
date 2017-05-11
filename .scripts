@@ -13,17 +13,41 @@ Create the tables:
 CUSTOMER:
 
 
+CREATE TABLE CART(
+    CART_ID int PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    CUSTOMER_ID int,
+    TOTAL_PRICE double
+    );
+
+
+CREATE TABLE BILLING_ADDRESS(
+    BILLING_ADDRESS_ID int PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    STREET_NAME varchar(45),
+    HOUSE_NUMBER varchar(45),
+    CITY varchar(45),
+    STATE varchar(45),
+    COUNTRY varchar(45),
+    ZIP_CODE int
+    );
+
+
+
 CREATE TABLE CUSTOMER (
     CUSTOMER_ID int PRIMARY KEY NOT NULL AUTO_INCREMENT,
-    FIRST_NAME varchar(45),
-    LAST_NAME varchar(45),
-    USER_NAME varchar(45),
-    PASSWORD varchar(45),
-    EMAIL varchar(45),
-    ADDRESS varchar(45),
-    BILLING_ADDRESS varchar(45)
-    PHONE_NO int
+    FIRST_NAME varchar(45) NOT NULL,
+    LAST_NAME varchar(45) NOT NULL,
+    USERNAME varchar(45) NOT NULL,
+    PASSWORD varchar(45) NOT NULL,
+    EMAIL varchar(45) NOT NULL,
+    ADDRESS int NOT NULL,
+    BILLING_ADDRESS_ID int,
+    PHONE_NO int,
+    CART_ID int,
+    FOREIGN KEY (CART_ID) REFERENCES CART(CART_ID),
+    FOREIGN KEY (BILLING_ADDRESS_ID)REFERENCES BILLING_ADDRESS(BILLING_ADDRESS_ID)
     );
+
+
 
 CREATE TABLE CUST_PAYMENT_METHOD (
     PAYMENT_ID int PRIMARY KEY NOT NULL AUTO_INCREMENT,
@@ -40,14 +64,16 @@ CREATE TABLE ORDER_STATUS_CODE (
     );
 
 
-CREATE TABLE CUST_ORDER (
+CREATE TABLE CUSTOMER_ORDER (
      ORDER_ID int PRIMARY KEY NOT NULL AUTO_INCREMENT,
      CUSTOMER_ID int,
+     CART_ID int,
      ORDER_STATUS_CODE int,
      DETAILS varchar(45),
      DATE timestamp,
      FOREIGN KEY (ORDER_STATUS_CODE) REFERENCES ORDER_STATUS_CODE(ORDER_STATUS_CODE),
-     FOREIGN KEY (CUSTOMER_ID) REFERENCES CUSTOMER(CUSTOMER_ID)
+     FOREIGN KEY (CUSTOMER_ID) REFERENCES CUSTOMER(CUSTOMER_ID),
+     FOREIGN KEY (CART_ID) REFERENCES CART(CART_ID)
      );
 
 
@@ -64,7 +90,7 @@ CREATE TABLE CUST_ORDER (
     INVOICE_STATUS_CODE int,
     DATE timestamp,
     DETAILS varchar(45),
-    FOREIGN KEY (ORDER_ID) REFERENCES CUST_ORDER(ORDER_ID),
+    FOREIGN KEY (ORDER_ID) REFERENCES CUSTOMER_ORDER(ORDER_ID),
     FOREIGN KEY (INVOICE_STATUS_CODE) REFERENCES INVOICE_STATUS_CODE(INVOICE_STATUS_CODE)
     );
 
@@ -94,6 +120,18 @@ CREATE TABLE CUST_ORDER (
 
 
 
+CREATE TABLE CART_ITEM(
+    CART_ITEM_ID int PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    CART_ID int,
+    PRODUCT_ID int,
+    QUANTITY int,
+    TOTAL_PRICE double,
+    FOREIGN KEY (CART_ID) REFERENCES CART(CART_ID),
+    FOREIGN KEY (PRODUCT_ID) REFERENCES PRODUCT(PRODUCT_ID)
+    );
+
+
+
 
  CREATE TABLE ORDER_ITEM (
         ITEM_ID int PRIMARY KEY NOT NULL AUTO_INCREMENT,
@@ -103,7 +141,7 @@ CREATE TABLE CUST_ORDER (
         QUANTITY int,
         PRICE double,
         FOREIGN KEY (PRODUCT_ID) REFERENCES PRODUCT(PRODUCT_ID),
-        FOREIGN KEY (ORDER_ID) REFERENCES CUST_ORDER(ORDER_ID),
+        FOREIGN KEY (ORDER_ID) REFERENCES CUSTOMER_ORDER(ORDER_ID),
         FOREIGN KEY (ORDER_ITEM_STATUS_CODE) REFERENCES ORDER_ITEM_STATUS_CODE(ORDER_ITEM_STATUS_CODE)
         );
 
@@ -123,37 +161,44 @@ CREATE TABLE SHIPMENT (
 	ORDER_ID int,
     INVOICE_NO int,
     TRACKING_NO int,
-    BILLING_ADDRESS varchar(45),
+    BILLING_ADDRESS_ID int,
     SHIPMENT_DATE timestamp,
     DETAILS varchar(45),
-    FOREIGN KEY (ORDER_ID) REFERENCES CUST_ORDER(ORDER_ID),
+    FOREIGN KEY (ORDER_ID) REFERENCES CUSTOMER_ORDER(ORDER_ID),
     FOREIGN KEY (INVOICE_NO) REFERENCES INVOICE(INVOICE_NO),
-    FOREIGN KEY (BILLING_ADDRESS) REFERENCES BILLING_ADDRESS(BILLING_ADDRESS_ID)
+    FOREIGN KEY (BILLING_ADDRESS_ID) REFERENCES BILLING_ADDRESS(BILLING_ADDRESS_ID)
     );
 
 
-create table user(
-    username varchar(45) not null primary key,
-    password varchar(45) not null,
-    enabled boolean not null,
-    CUSTOMER_ID int);
+
+
+ create table USER(
+        USER_ID int PRIMARY KEY NOT NULL AUTO_INCREMENT,
+        USERNAME varchar(45) unique not null,
+        PASSWORD varchar(45) not null,
+        ACTIVE boolean not null,
+        CUSTOMER_ID int,
+        FOREIGN KEY (CUSTOMER_ID) REFERENCES CUSTOMER(CUSTOMER_ID)
+        );
+
+        aici cred ca trebuie pus foreign key username, password si active si customer_id ca sa mi le completeze automat din customer la inregistrare...
 
 
 
-create table authority (
-          AUTHORITY_ID int not null primary key auto_increment,
-          username varchar(45) not null,
-          authority varchar(45) not null,
-		  foreign key(username) references user(username));
-          create unique index ix_auth_username on authority (username,authority);
+create table AUTHORITY (
+          USERNAME varchar(45) PRIMARY KEY NOT NULL,
+          AUTHORITY varchar(45) not null,
+		  foreign key(USERNAME) references USER(USERNAME));
 
 
 
 
-TREBUIE SA MAI FAC TABEL PT BILLING ADDRESS!!! CART!!! CART_ITEM!!!
 
 
-INSERT INTO `onlineshop`.`users` (`username`, `password`, `enabled`) VALUES ('admin', 'password', '1');
+
+
+
+INSERT INTO `onlineshop`.`users` (`username`, `password`, `active`) VALUES ('admin', 'password', '1');
 
 
 INSERT INTO `onlineshop`.`authorities` (`username`, `authority`) VALUES ( 'admin', 'ROLE_USER');

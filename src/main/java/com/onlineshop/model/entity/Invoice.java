@@ -18,23 +18,28 @@ public class Invoice implements Serializable{
     @GeneratedValue(strategy =GenerationType.IDENTITY)
     @Column(name = "INVOICE_NO", nullable = false)
     private int invoiceNumber;
+
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn (name = "ORDER_ID")
-    private Order order_id;
+    private Order orderId;
+
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn (name = "INVOICE_STATUS_CODE")
     private InvoiceStatusCode invoiceStatusCode;
+
     @Column(name = "DATE")
     private Date invoiceDate;
+
     @Column(name = "DETAILS")
     private String invoiceDetails;
+
 
     public Invoice() {
     }
 
-    public Invoice(int invoiceNumber, Order order_id, InvoiceStatusCode invoiceStatusCode, Date invoiceDate, String invoiceDetails) {
+    public Invoice(int invoiceNumber, Order orderId, InvoiceStatusCode invoiceStatusCode, Date invoiceDate, String invoiceDetails) {
         this.invoiceNumber = invoiceNumber;
-        this.order_id = order_id;
+        this.orderId = orderId;
         this.invoiceStatusCode = invoiceStatusCode;
         this.invoiceDate = invoiceDate;
         this.invoiceDetails = invoiceDetails;
@@ -48,12 +53,12 @@ public class Invoice implements Serializable{
         this.invoiceNumber = invoiceNumber;
     }
 
-    public Order getOrder_id() {
-        return order_id;
+    public Order getOrderId() {
+        return orderId;
     }
 
-    public void setOrder_id(Order order_id) {
-        this.order_id = order_id;
+    public void setOrderId(Order orderId) {
+        this.orderId = orderId;
     }
 
     public InvoiceStatusCode getInvoiceStatusCode() {
@@ -84,7 +89,7 @@ public class Invoice implements Serializable{
     public String toString() {
         return "Invoice{" +
                 "invoiceNumber=" + invoiceNumber +
-                ", order_id=" + order_id +
+                ", orderId=" + orderId +
                 ", invoiceStatusCode='" + invoiceStatusCode + '\'' +
                 ", invoiceDate=" + invoiceDate +
                 ", invoiceDetails='" + invoiceDetails + '\'' +

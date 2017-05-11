@@ -16,9 +16,10 @@ public class OrderStatusCode implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ORDER_STATUS_CODE", nullable = false)
-    private int orderStatus; //
+    private int orderStatus;
+
     @Column(name = "DESCRIPTION")
-    private String orderDescription; // ( cancelled, completed )
+    private String orderDescription;
 
     public static final String CANCELLED = "cancelled";
     public static final String COMPLETED = "completed";

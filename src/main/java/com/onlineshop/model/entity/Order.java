@@ -9,7 +9,7 @@ import java.util.Date;
  */
 
 @Entity
-@Table(name = "CUST_ORDER")
+@Table(name = "CUSTOMER_ORDER")
 public class Order implements Serializable{
 
     private static final long serialVersionUID = 2719020807725727240L;
@@ -23,7 +23,7 @@ public class Order implements Serializable{
     @JoinColumn(name = "CART_ID")
     private Cart cartId;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "CUSTOMER_ID")
     private Customer customerId;
 

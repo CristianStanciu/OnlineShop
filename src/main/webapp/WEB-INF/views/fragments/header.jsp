@@ -19,6 +19,9 @@
     <%--angular--%>
     <script src="<c:url value="/resources/js/angular.min.js" />"></script>
 
+    <%--custom javascript--%>
+    <script src="<c:url value="/resources/js/controller.js" />"></script>
+
     <!-- Reset CSS -->
     <link rel="stylesheet" href="<c:url value="/resources/css/reset.css"/>" type="text/css">
 
@@ -91,10 +94,11 @@
                             <li><a href="#">Welcome ${pageContext.request.userPrincipal.name}</a></li>
                             <li><a href="<c:url value="/account" />">My Account</a></li>
                             <li><a href="<c:url value="/checkout" />">Checkout</a></li>
+                            <li><a href="<c:url value="customer/wishList"/>">Wish List</a></li>
                             <li><a href="<c:url value="/j_spring_security_logout" />">Logout</a></li>
                         </c:if>
                         <c:if test="${pageContext.request.userPrincipal.name!='admin'}">
-                            <li><a href="<c:url value="customer/wishList"/>">Wish List</a></li>
+
                         </c:if>
                         <c:if test="${pageContext.request.userPrincipal.name =='admin'}">
                             <li><a href="<c:url value="/admin"/>">Admin</a></li>

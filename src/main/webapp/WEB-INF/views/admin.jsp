@@ -32,6 +32,12 @@
                 <a href="<c:url value="/admin/productInventory"/>" class="btn btn-default">PRODUCT INVENTORY</a>
             </h3>
         </div>
+
+        <div>
+            <h3>
+                <a href="<c:url value="/admin/customer"/>" class="btn btn-default">CUSTOMER INVENTORY</a>
+            </h3>
+        </div>
     </div>
 </div>
 

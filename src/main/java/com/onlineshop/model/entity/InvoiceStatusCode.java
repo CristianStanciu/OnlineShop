@@ -17,6 +17,7 @@ public class InvoiceStatusCode implements Serializable{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "INVOICE_STATUS_CODE", nullable = false)
     private int invoiceStatus;
+
     @Column(name = "DESCRIPTION")
     private String invoiceDescription;  // ( Issued, Paid )
 

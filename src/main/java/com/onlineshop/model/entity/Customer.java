@@ -31,8 +31,13 @@ public class Customer implements Serializable{
     private String email;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "USERNAME_ID")
+    @JoinColumn(name = "USERNAME")
     private  User username;
+
+//    aici cred ca trebuie pus    @OneToOne(cascade = CascadeType.ALL)
+//    @JoinColumn(name = "PASSWORD")
+//    private  User password;  ca sa salveze si passwordu in user
+
 
     @Column(name = "PASSWORD")
     private  String password;
@@ -47,12 +52,19 @@ public class Customer implements Serializable{
     @JoinColumn(name = "BILLING_ADDRESS_ID")
     private BillingAddress billingAddress;
 
+    @OneToOne
+    @JoinColumn(name = "CART_ID")
+    private Cart cartId;
+
 
 
 
     /*@OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "CUSTOMER_ID", nullable = false)
     List<Order> orderList = new ArrayList<Order>();
+
+
+
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "CUSTOMER_ID" , nullable = false)
     List<CustomerPaymentMethod> paymentMethods = new ArrayList<CustomerPaymentMethod>();*/
@@ -61,7 +73,7 @@ public class Customer implements Serializable{
     public Customer() {
     }
 
-    public Customer(String firstName, String lastName, String email, User username, String password, String address, int phoneNo, BillingAddress billingAddress) {
+    public Customer(String firstName, String lastName, String email, User username, String password, String address, int phoneNo, BillingAddress billingAddress, Cart cartId) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
@@ -70,6 +82,7 @@ public class Customer implements Serializable{
         this.address = address;
         this.phoneNo = phoneNo;
         this.billingAddress = billingAddress;
+        this.cartId = cartId;
     }
 
     public int getCustomerId() {
@@ -144,6 +157,14 @@ public class Customer implements Serializable{
         this.billingAddress = billingAddress;
     }
 
+    public Cart getCartId() {
+        return cartId;
+    }
+
+    public void setCartId(Cart cartId) {
+        this.cartId = cartId;
+    }
+
     @Override
     public String toString() {
         return "Customer{" +
@@ -156,6 +177,7 @@ public class Customer implements Serializable{
                 ", address='" + address + '\'' +
                 ", phoneNo=" + phoneNo +
                 ", billingAddress=" + billingAddress +
+                ", cartId=" + cartId +
                 '}';
     }
 }

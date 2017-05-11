@@ -17,6 +17,7 @@ public class OrderItemStatusCode implements Serializable{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ITEM_STATUS_CODE", nullable = false)
     private int orderItemStatus;
+
     @Column(name = "DESCRIPTION")
     private String itemStatusDescription; // ( Delivered, out of stock )
 

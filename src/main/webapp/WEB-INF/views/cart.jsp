@@ -9,8 +9,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 
-
-
 <jsp:include page="fragments/header.jsp"/>
 
 <script src="<c:url value="/resources/js/controller.js" />"></script>
@@ -27,6 +25,7 @@
         <div ng-controller="cartCtrl" ng-init="initCartId('${cartId}')">
         <div>
             <a class="btn btn-default pull-left" ng-click="clearCart()">Clear cart</a>
+            <a href="<spring:url value="/order/${cartId}"/>" class="btn btn-default pull-right"><span class="glyphicon-shopping-cart glyphicon"></span>Checkout</a>
         </div>
         <table class="table table-hover">
             <tr>
@@ -58,7 +57,6 @@
         </div>
     </section>
 </div>
-
 
 
 

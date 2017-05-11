@@ -71,7 +71,7 @@ public class Application {
 
         Invoice invoice = new Invoice();
 
-        invoice.setOrder_id(order);
+        invoice.setOrderId(order);
         invoice.setInvoiceDate(new Date(System.currentTimeMillis()));
         invoice.setInvoiceStatusCode(invoiceStatusCode);
 

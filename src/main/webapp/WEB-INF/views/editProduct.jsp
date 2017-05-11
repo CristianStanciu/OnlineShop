@@ -53,12 +53,15 @@
         </div>
 
 
-
         <br><br><br><br>
 
         <input type="submit" value="Add" class="btn btn-default">
         <a href="<c:url value="/admin/productInventory"/> " class="btn btn-default">Cancel</a>
         </form:form>
+
+    </div>
+
+</div>
 
 
         <jsp:include page="fragments/footer.jsp"/>

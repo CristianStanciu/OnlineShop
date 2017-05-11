@@ -25,6 +25,7 @@ public class Authority implements Serializable{
     @Column(name = "AUTHORITY", nullable = false)
     private String authority;
 
+
     public Authority() {
     }
 

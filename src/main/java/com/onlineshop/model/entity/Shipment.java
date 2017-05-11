@@ -18,21 +18,26 @@ public class Shipment implements Serializable{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "SHIPMENT_ID", nullable = false)
     private int shipmentId;
+
     @OneToOne (cascade = CascadeType.ALL)
     @JoinColumn (name = "ORDER_ID")
     private Order OrderId;
+
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn (name = "INVOICE_NO")
     private Invoice invoiceNumber;
+
     @Column(name = "TRACKING_NO")
     private int shipmentTrackingNumber;
+
     @Column(name = "SHIPMENT_DATE")
     private Date shipmentDate;
+
     @Column(name = "DETAILS")
     private String shipmentDetails;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @Column(name = "BILLING_ADDRESS")
+    @JoinColumn(name = "BILLING_ADDRESS_ID")
     private BillingAddress billingAddress;
 
     public Shipment() {

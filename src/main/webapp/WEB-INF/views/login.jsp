@@ -18,7 +18,6 @@
     <div>${logout}</div>
     </c:if>
 
-
     <div class="bootstrap-iso">
         <div id="login-container" class="container-fluid">
                 <div id="colomns" class="col-md-6 col-sm-6 col-xs-12">
@@ -49,7 +48,6 @@
                 </div>
         </div>
     </div>
-
 
 
 <jsp:include page="fragments/footer.jsp"/>
