@@ -18,17 +18,19 @@ public class Cart implements Serializable {
     private static final long serialVersionUID = 2246077714946138329L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "CART_ID")
     private int cartId;
 
     @OneToMany(mappedBy = "cartId", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<CartItem> cartItems;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "CUSTOMER_ID")
+    @OneToOne(mappedBy ="cartId")
     @JsonIgnore
     private Customer customerId;
+
+    @OneToOne(mappedBy ="cartId")
+    private Order orderId;
 
     @Column(name = "TOTAL_PRICE")
     private double totalPrice;
@@ -67,6 +69,14 @@ public class Cart implements Serializable {
         this.customerId = customerId;
     }
 
+    public Order getOrderId() {
+        return orderId;
+    }
+
+    public void setOrderId(Order orderId) {
+        this.orderId = orderId;
+    }
+
     public double getTotalPrice() {
         return totalPrice;
     }
@@ -81,6 +91,7 @@ public class Cart implements Serializable {
                 "cartId=" + cartId +
                 ", cartItems=" + cartItems +
                 ", customerId=" + customerId +
+                ", orderId=" + orderId +
                 ", totalPrice=" + totalPrice +
                 '}';
     }

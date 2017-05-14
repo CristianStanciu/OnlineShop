@@ -46,7 +46,6 @@ public class CartDaoImpl implements CartDao {
         int cartId = cart.getCartId();
         double totalPrice = orderService.getOrderTotalPrice(cartId);
         cart.setTotalPrice(totalPrice);
-
         Session session = sessionFactory.getCurrentSession();
         session.saveOrUpdate(cart);
 

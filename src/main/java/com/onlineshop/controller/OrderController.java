@@ -33,11 +33,12 @@ public class OrderController {
         Invoice invoice = new Invoice();
         invoice.setOrderId(order);
 
-        BillingAddress billingAddress = customer.getBillingAddress();
+
+//        BillingAddress billingAddress = customer.getBillingAddressId();
 
         Shipment shipment = new Shipment();
 
-        shipment.setBillingAddress(billingAddress);
+//        shipment.setBillingAddress(billingAddress);
 
         return "redirect:/checkout?cartId="+cartId;
 

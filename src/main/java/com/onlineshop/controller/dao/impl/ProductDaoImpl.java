@@ -30,7 +30,9 @@ public class ProductDaoImpl implements ProductDao {
     }
 
     public void editProduct(Product product) {
-        addProduct(product);
+        Session session = sessionFactory.getCurrentSession();
+        session.saveOrUpdate(product);
+        session.flush();
     }
 
     public void deleteProduct(Product product) {
@@ -56,6 +58,14 @@ public class ProductDaoImpl implements ProductDao {
         Query query = session.createQuery("from ProductType");
         List<ProductType> productTypes = query.list();
         return productTypes;
+    }
+
+    public List<Product> getProductsByType(String productType) {
+        Session session = sessionFactory.getCurrentSession();
+        Query query = session.createQuery("from Product where productType = ?");
+        query.setParameter(0, productType);
+        List<Product> products = query.list();
+        return products;
     }
 
 }

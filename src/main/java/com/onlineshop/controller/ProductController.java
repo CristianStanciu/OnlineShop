@@ -23,9 +23,20 @@ public class ProductController {
     @RequestMapping("/productList")
     public String getProducts(Model model) {
         List<Product> products = productService.getProductList();
-        model.addAttribute("products", products);
+        model.addAttribute("productList", products);
         return "productList";
     }
+
+
+    @RequestMapping("/category/{productType}")
+    public String getProductsByType(@PathVariable(name = "productType") String productType, Model model ){
+        List<Product> products = productService.getProductsByType(productType.toUpperCase());
+        model.addAttribute("productsByType", products);
+        return "productByType";
+
+    }
+
+
 
     @RequestMapping("/viewProduct/{productId}")
     public String viewProduct(@PathVariable(name = "productId") int productId, Model model )throws IOException {

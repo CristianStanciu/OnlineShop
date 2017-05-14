@@ -10,11 +10,11 @@ import java.util.List;
 
 public interface CustomerService {
 
-    void addCustomer(Customer product);
+    void addCustomer(Customer customer);
 
-    void editCustomer(Customer product);
+    void editCustomer(Customer customer);
 
-    void deleteCustomer(Customer product);
+    void deleteCustomer(Customer customer);
 
     Customer getCustomerById(int customerId);
 

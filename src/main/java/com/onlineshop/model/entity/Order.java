@@ -20,10 +20,6 @@ public class Order implements Serializable{
     private int orderId;
 
     @OneToOne
-    @JoinColumn(name = "CART_ID")
-    private Cart cartId;
-
-    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "CUSTOMER_ID")
     private Customer customerId;
 
@@ -37,15 +33,24 @@ public class Order implements Serializable{
     @Column(name = "DATE")
     private Date orderDate;
 
+    @OneToOne
+    @JoinColumn(name = "CART_ID")
+    private Cart cartId;
+
+    @OneToOne
+    @JoinColumn(name = "BILLING_ADDRESS_ID")
+    private BillingAddress billingAddress;
+
     public Order() {
     }
 
-    public Order(Cart cartId, Customer customerId, OrderStatusCode orderStatusCode, String orderDetails, Date orderDate) {
-        this.cartId = cartId;
+    public Order(Customer customerId, OrderStatusCode orderStatusCode, String orderDetails, Date orderDate, Cart cartId, BillingAddress billingAddress) {
         this.customerId = customerId;
         this.orderStatusCode = orderStatusCode;
         this.orderDetails = orderDetails;
         this.orderDate = orderDate;
+        this.cartId = cartId;
+        this.billingAddress = billingAddress;
     }
 
     public int getOrderId() {
@@ -96,15 +101,24 @@ public class Order implements Serializable{
         this.cartId = cartId;
     }
 
+    public BillingAddress getBillingAddress() {
+        return billingAddress;
+    }
+
+    public void setBillingAddress(BillingAddress billingAddress) {
+        this.billingAddress = billingAddress;
+    }
+
     @Override
     public String toString() {
         return "Order{" +
                 "orderId=" + orderId +
-                ", cartId=" + cartId +
                 ", customerId=" + customerId +
                 ", orderStatusCode=" + orderStatusCode +
                 ", orderDetails='" + orderDetails + '\'' +
                 ", orderDate=" + orderDate +
+                ", cartId=" + cartId +
+                ", billingAddress=" + billingAddress +
                 '}';
     }
 }

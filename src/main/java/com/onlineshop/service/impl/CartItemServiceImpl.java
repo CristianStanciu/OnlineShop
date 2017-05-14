@@ -24,7 +24,7 @@ class CartItemServiceImpl implements CartItemService {
 
     }
 
-    public CartItem getCartItemByProductId(int productId){
+    public CartItem getCartItemByProductId(int productId) {
         return  cartItemDao.getCartItemByProductId(productId);
     }
 

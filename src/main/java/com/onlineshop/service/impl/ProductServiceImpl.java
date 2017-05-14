@@ -44,4 +44,8 @@ public class ProductServiceImpl implements ProductService {
     public List<ProductType> getAllProductTypes() {
         return productDao.getAllProductTypes();
     }
+
+    public List<Product> getProductsByType(String productType){
+        return productDao.getProductsByType(productType);
+    }
 }

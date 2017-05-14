@@ -8,6 +8,8 @@
 --%>
 
 <footer id="footer-area">
+    <br>
+    <br>
     <!-- Footer Links Starts -->
     <div class="footer-links">
         <!-- Container Starts -->
@@ -42,8 +44,6 @@
                     <h5>My Account</h5>
                     <ul>
                         <li><a href="#">My orders</a></li>
-                        <li><a href="#">My merchandise returns</a></li>
-                        <li><a href="#">My credit slips</a></li>
                         <li><a href="#">My addresses</a></li>
                         <li><a href="#">My personal info</a></li>
                     </ul>
@@ -55,8 +55,6 @@
                     <ul>
                         <li><a href="contact.html">Contact Us</a></li>
                         <li><a href="#">Returns</a></li>
-                        <li><a href="#">Site Map</a></li>
-                        <li><a href="#">Affiliates</a></li>
                         <li><a href="#">Specials</a></li>
                     </ul>
                 </div>
@@ -65,9 +63,8 @@
                 <div class="col-md-4 col-sm-4 col-xs-12 last">
                     <h5>Contact Us</h5>
                     <ul>
-                        <li>L-ectro</li>
                         <li>
-                            Strada Florilor Orasul Viselor Tara Basmelor no. 8
+                            Strada Florilor Orasul Viselor Tara Basmelor no. 888
                         </li>
                         <li>
                             Email: <a href="#">info@l-ectro.com</a>
@@ -112,9 +109,7 @@
         <!-- Container Ends -->
     </div>
     <!-- Copyright Area Ends -->
-
-
-
+    <br>
 </footer>
 <!-- Footer Section Ends -->
 
@@ -123,14 +118,13 @@
 <!-- Placed at the end of the document so the pages load faster -->
 <%--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>--%>
 <script>window.jQuery || document.write('<script src="WEB-INF/resources/js/jquery-3.2.1.min.js"><\/script>')</script>
-<%--<script src="resources/js/bootstrap.min.js"></script>--%>
-<script src="resources/js/owl.carousel.min.js"></script>
-<script src="resources/js/jquery-1.11.1.min.js"></script>
-<script src="resources/js/jquery-migrate-1.2.1.min.js"></script>
-<script src="resources/js/bootstrap-hover-dropdown.min.js"></script>
-<script src="resources/js/jquery.magnific-popup.min.js"></script>
-<script src="resources/js/custom.js"></script>
-
-
+<!-- JavaScript Files -->
+<script src="js/jquery-1.11.1.min.js"></script>
+<script src="js/jquery-migrate-1.2.1.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/bootstrap-hover-dropdown.min.js"></script>
+<script src="js/jquery.magnific-popup.min.js"></script>
+<script src="js/owl.carousel.min.js"></script>
+<script src="js/custom.js"></script>
 </body>
 </html>

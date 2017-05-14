@@ -140,18 +140,6 @@ hr {
     -moz-box-shadow: 8px 8px 3px #000000;
     -webkit-box-shadow: 8px 8px 3px #000000;
     box-shadow: 1.25px 1.25px 0.18px #999999;
-    /*-moz-border-radius-topleft: 0px;*/
-    /*-moz-border-radius-topright: 0px;*/
-    /*-moz-border-radius-bottomleft: 0px;*/
-    /*-moz-border-radius-bottomright: 62px;*/
-    /*-webkit-border-top-left-radius: 0px;*/
-    /*-webkit-border-top-right-radius: 0px;*/
-    /*-webkit-border-bottom-left-radius: 0px;*/
-    /*-webkit-border-bottom-right-radius: 62px;*/
-    /*border-top-left-radius: 0px;*/
-    /*border-top-right-radius: 0px;*/
-    /*border-bottom-left-radius: 0px;*/
-    /*border-bottom-right-radius: 62px;*/
 }
 
 /* Free shipping style */
@@ -192,7 +180,7 @@ hr {
 
 .header-top {
     position: relative;
-    height: 55px;
+    height: 80px;
     margin: auto;
     background-color: #222222;
     z-index: 15;
@@ -222,19 +210,28 @@ hr {
 
 /* Login form style */
 
-.login-form{
-    height: 400px;
-    margin: auto;
+.container-login-form{
     text-align: center;
+    margin: auto;
+    margin-bottom: 200px;
 }
 
 
+#login-container{
+    height: 300px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
 #colomns{
-    height: 150px;
-    width: 100%;
-    margin: auto;
-    margin-bottom: 200px;
-    padding: 150px;
+    margin-top: 50px;
+    width: 33%;
+}
+
+.login-form{
 }
 
 
@@ -247,7 +244,7 @@ hr {
 }
 
 .bootstrap-iso .form-control:active{
-   background-color:#ec2f2f ;
+    background-color:#ec2f2f ;
 }
 
 
@@ -255,53 +252,30 @@ hr {
 /* Admin page */
 
 #admin-page-title{
+    margin: auto;
     text-align: center;
-    margin: 0 auto;
 }
 
 #adminContainer{
-    position: relative;
-    height: 500px;
-    margin-top:10px;
-    background-color: #555555;
-
-    -moz-box-shadow: 8px 8px 3px 3px #000000;
-    -webkit-box-shadow: 8px 8px 3px 3px #000000;
-    box-shadow: 1.25px 1.25px 0.18px 0.18px #999999;
-    -moz-border-radius-topleft: 0px;
-    -moz-border-radius-topright: 0px;
-    -moz-border-radius-bottomleft: 62px;
-    -moz-border-radius-bottomright: 62px;
-    -webkit-border-top-left-radius: 0px;
-    -webkit-border-top-right-radius: 0px;
-    -webkit-border-bottom-left-radius: 62px;
-    -webkit-border-bottom-right-radius: 62px;
-    border-top-left-radius: 0px;
-    border-top-right-radius: 0px;
-    border-bottom-left-radius: 62px;
-    border-bottom-right-radius: 62px;
-}
-
-.page-header{
-    top: 300px;
-    height: 150px;
-    width: 100%;
-    margin:0 auto;
+    height: 300px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
     text-align: center;
 }
 
-#greeting-admin{
-    text-align: left;
+#admin-buttons{
 }
 
-#logout{
-    text-align: left;
-
+#left-button{
+    margin-right: 150px;
+    float: left;
 }
-#logout a h5{
-    color: #ec2f2f;
+#right-button{
+    float: right;
 }
-
 
 /* Header Links Styles Starts */
 
@@ -463,8 +437,6 @@ ul.header-links li a:focus {
 }
 
 
-
-
 /* Main Header Styles Starts */
 
 .main-header {
@@ -570,18 +542,7 @@ ul.header-links li a:focus {
     -moz-box-shadow: 8px 8px 3px #000000;
     -webkit-box-shadow: 8px 8px 3px #000000;
     box-shadow: 1.25px 1.25px 0.18px #999999;
-    /*-moz-border-radius-topleft: 0px;*/
-    /*-moz-border-radius-topright: 0px;*/
-    /*-moz-border-radius-bottomleft: 0px;*/
-    /*-moz-border-radius-bottomright: 62px;*/
-    /*-webkit-border-top-left-radius: 0px;*/
-    /*-webkit-border-top-right-radius: 0px;*/
-    /*-webkit-border-bottom-left-radius: 0px;*/
-    /*-webkit-border-bottom-right-radius: 62px;*/
-    /*border-top-left-radius: 0px;*/
-    /*border-top-right-radius: 0px;*/
-    /*border-bottom-left-radius: 0px;*/
-    /*border-bottom-right-radius: 62px;*/
+
 }
 
 #main-menu .navbar {
@@ -810,3 +771,125 @@ main-menu .navbar .container {
 .owl-product-carousel .owl-controls .owl-buttons .owl-next {
     right: 0;
 }
+
+
+/*product inventory page */
+
+#product-inventory {
+    height: 400px;
+    margin: auto;
+    margin-bottom: 100px;
+    background-color: #777777;
+}
+
+#prod-table {
+    height: 400px;
+    background-color: #444444;
+
+}
+
+/*product list page */
+
+#product-list-container {
+
+    margin-top: 60px;
+    margin-bottom: 50px;
+    background-color: #222222;
+}
+
+#table-row {
+    height: 100px;
+    background: #333333;
+}
+
+#product-image {
+    height: 150px;
+    width: 250px;
+}
+
+/* View product container */
+
+#view-product-container {
+
+    height: 500px;
+    margin-top: 60px;
+    margin-bottom: 80px;
+    background-color: #222222;
+
+}
+
+#product-details-image {
+    float: left;
+    width: 700px;
+    height: 500px;
+    background-color: white;
+}
+
+#product-description {
+    text-align: center;
+    margin: auto;
+    /*right: 50px;*/
+}
+
+#info-container{
+    right: 0;
+    text-align: center;
+    width: auto;
+    float: right;
+    padding: 80px;
+    padding-left: 100px;
+}
+
+
+
+/* admin customer management page */
+
+#customer-table {
+    margin: auto;
+    width: auto;
+    overflow: auto;
+    background-color: #333333;
+}
+
+#table-rows {
+    height: 50px;
+    background-color: #444444;
+}
+
+#1st-row{
+    width: 60px;
+}
+
+
+/* register succesfully page */
+
+#register-succes-container {
+    height: 300px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    background-color: #111111;
+    margin-bottom: 200px;
+}
+
+#container-content{
+    background-color: #111111;
+}
+
+/* register and edit page, add product , edit product, edit customer, container , page , form styles */
+
+#register-container{
+    margin-top: 60px;
+    margin-bottom: 80px;
+    background-color: #222222;
+    padding-bottom: 60px;
+}
+
+#register-form{
+    background-color: #333333;
+}
+
+
+

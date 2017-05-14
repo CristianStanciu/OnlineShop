@@ -13,9 +13,8 @@ public class User implements Serializable{
 
     private static final long serialVersionUID = -8278042220802663951L;
 
-
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "USER_ID")
     private int userId;
 
@@ -28,14 +27,13 @@ public class User implements Serializable{
     @Column(name = "ACTIVE", nullable = false)
     private boolean active;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "CUSTOMER_ID")
-    private Customer customerId;
+    @Column(name = "CUSTOMER_ID")
+    private int customerId;
 
     public User() {
     }
 
-    public User(String userName, String password, boolean active, Customer customerId) {
+    public User(String userName, String password, boolean active, int customerId) {
         this.userName = userName;
         this.password = password;
         this.active = active;
@@ -74,11 +72,11 @@ public class User implements Serializable{
         this.active = active;
     }
 
-    public Customer getCustomerId() {
+    public int getCustomerId() {
         return customerId;
     }
 
-    public void setCustomerId(Customer customerId) {
+    public void setCustomerId(int customerId) {
         this.customerId = customerId;
     }
 

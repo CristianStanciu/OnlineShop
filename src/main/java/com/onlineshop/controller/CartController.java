@@ -1,7 +1,5 @@
 package com.onlineshop.controller;
 
-import com.onlineshop.controller.dao.CartDao;
-import com.onlineshop.model.entity.Cart;
 import com.onlineshop.model.entity.Customer;
 import com.onlineshop.service.CartService;
 import com.onlineshop.service.CustomerService;
@@ -23,8 +21,6 @@ public class CartController {
     @Autowired
     CustomerService customerService;
 
-    @Autowired
-    CartService cartService;
 
     @RequestMapping
     public String getCart(@AuthenticationPrincipal org.springframework.security.core.userdetails.User activeUser) {
@@ -38,5 +34,9 @@ public class CartController {
         model.addAttribute("cartId", cartId);
         return "cart";
     }
+
+
+
+
 
 }

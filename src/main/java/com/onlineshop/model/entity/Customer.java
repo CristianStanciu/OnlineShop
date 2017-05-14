@@ -1,7 +1,11 @@
 package com.onlineshop.model.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.validator.constraints.NotEmpty;
 import javax.persistence.*;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
 
 /**
@@ -19,42 +23,51 @@ public class Customer implements Serializable{
     @Column(name = "CUSTOMER_ID", nullable = false)
     private int customerId;
 
-    @NotEmpty(message = "Please enter customer's first name")
+    @Pattern(regexp = "[a-zA-Z]{2,45}", message = "Please enter a valid name")
     @Column(name = "FIRST_NAME")
     private String firstName;
 
-    @NotEmpty(message = "Please enter customer's last name")
+    @Pattern(regexp = "[a-zA-Z]{2,45}", message = "Please enter a valid name")
     @Column(name = "LAST_NAME")
     private String lastName;
 
+    @Pattern(regexp = "[\\w-_\\.+]*[\\w-_\\.]\\@([\\w]+\\.)+[\\w]+[\\w]", message = "Please enter a valid email address")
     @Column(name = "EMAIL")
     private String email;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "USERNAME")
-    private  User username;
+    @Pattern(regexp = "^[A-Za-z_][A-Za-z0-9_]{7,29}", message = "Username should be at least 8 characters long, starting with a letter")
+    //^[A-Za-z_] ensures input starts with an alphabet or underscore and
+    // then [A-Za-z0-9_]{7,29}$ makes sure there are 7 to 29 of word characters in the end making total length 8 to 30.
+    @Column(name = "USERNAME")
+    private String username;
 
-//    aici cred ca trebuie pus    @OneToOne(cascade = CascadeType.ALL)
-//    @JoinColumn(name = "PASSWORD")
-//    private  User password;  ca sa salveze si passwordu in user
-
-
+    @Size(min = 8, max = 45, message = "Password should be at least 8 characters long ")
     @Column(name = "PASSWORD")
     private  String password;
 
+    @Pattern(regexp = "[a-zA-Z]{2,45}", message = "Please enter a valid street name(only letters are allowed)")
     @Column(name = "ADDRESS")
     private  String address;
 
+    @Size(min = 1, max = 45, message = " Not a valid house number ")
+    @Column(name = "HOUSE_NO")
+    private String houseNo;
+
+//    @(min = 10, max= 10, message = "Please enter a valid 10 digits cellphone number")  // trebuie facuta validarea ca lumea
     @Column(name = "PHONE_NO")
     private int phoneNo;
 
     @OneToOne
-    @JoinColumn(name = "BILLING_ADDRESS_ID")
-    private BillingAddress billingAddress;
+    @JoinColumn(name = "CART_ID")
+    @JsonIgnore
+    private Cart cartId;
 
     @OneToOne
-    @JoinColumn(name = "CART_ID")
-    private Cart cartId;
+    @JoinColumn(name = "BILLING_ADDRESS_ID")
+    private BillingAddress billingAddressId;
+
+    @Column(name = "ACTIVE")
+    private boolean active;
 
 
 
@@ -73,16 +86,17 @@ public class Customer implements Serializable{
     public Customer() {
     }
 
-    public Customer(String firstName, String lastName, String email, User username, String password, String address, int phoneNo, BillingAddress billingAddress, Cart cartId) {
+    public Customer(String firstName, String lastName, String email, String username, String password, String address, String houseNo, int phoneNo, Cart cartId, BillingAddress billingAddressId) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.username = username;
         this.password = password;
         this.address = address;
+        this.houseNo = houseNo;
         this.phoneNo = phoneNo;
-        this.billingAddress = billingAddress;
         this.cartId = cartId;
+        this.billingAddressId = billingAddressId;
     }
 
     public int getCustomerId() {
@@ -117,11 +131,11 @@ public class Customer implements Serializable{
         this.email = email;
     }
 
-    public User getUsername() {
+    public String getUsername() {
         return username;
     }
 
-    public void setUsername(User username) {
+    public void setUsername(String username) {
         this.username = username;
     }
 
@@ -141,20 +155,20 @@ public class Customer implements Serializable{
         this.address = address;
     }
 
+    public String getHouseNo() {
+        return houseNo;
+    }
+
+    public void setHouseNo(String houseNo) {
+        this.houseNo = houseNo;
+    }
+
     public int getPhoneNo() {
         return phoneNo;
     }
 
     public void setPhoneNo(int phoneNo) {
         this.phoneNo = phoneNo;
-    }
-
-    public BillingAddress getBillingAddress() {
-        return billingAddress;
-    }
-
-    public void setBillingAddress(BillingAddress billingAddress) {
-        this.billingAddress = billingAddress;
     }
 
     public Cart getCartId() {
@@ -165,6 +179,22 @@ public class Customer implements Serializable{
         this.cartId = cartId;
     }
 
+    public BillingAddress getBillingAddressId() {
+        return billingAddressId;
+    }
+
+    public void setBillingAddressId(BillingAddress billingAddressId) {
+        this.billingAddressId = billingAddressId;
+    }
+
+    public boolean isActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
+    }
+
     @Override
     public String toString() {
         return "Customer{" +
@@ -172,12 +202,13 @@ public class Customer implements Serializable{
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", email='" + email + '\'' +
-                ", username=" + username +
+                ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
                 ", address='" + address + '\'' +
+                ", houseNo='" + houseNo + '\'' +
                 ", phoneNo=" + phoneNo +
-                ", billingAddress=" + billingAddress +
                 ", cartId=" + cartId +
+                ", billingAddressId=" + billingAddressId +
                 '}';
     }
 }

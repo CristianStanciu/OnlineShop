@@ -14,7 +14,7 @@ public class BillingAddress implements Serializable{
     private static final long serialVersionUID = 3506892915365389862L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "BILLING_ADDRESS_ID")
     private int billingAddressId;
 
@@ -36,9 +36,9 @@ public class BillingAddress implements Serializable{
     @Column(name = "ZIP_CODE")
     private int zipCode;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "CUSTOMER_ID")
+    @OneToOne(mappedBy = "billingAddressId")
     private Customer customerId;
+
 
     public BillingAddress() {
     }

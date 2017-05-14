@@ -22,4 +22,6 @@ public interface ProductDao {
 
     List<ProductType> getAllProductTypes();
 
+    List<Product> getProductsByType(String productType);
+
 }

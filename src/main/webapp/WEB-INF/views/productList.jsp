@@ -10,52 +10,53 @@
 
 <jsp:include page="fragments/header.jsp"/>
 
-<div class="container wrapper">
-    <div class="container">
-        <div class="page-header">
-            <h1>All products</h1>
-            <p class="lead"> Checkout all the awesome products right now</p>
 
-            <table class="table table-striped table-hover">
-                <thead>
-                <tr class="bg-success">
-                    <th>Photo</th>
-                    <th>Type</th>
-                    <th>Maker</th>
-                    <th>Name</th>
-                    <th>Color</th>
-                    <th>Size</th>
-                    <th>Price</th>
-                    <th>Description</th>
-                    <th></th>
-                </tr>
-                </thead>
-                <c:forEach items="${products}" var="product">
-                    <tr>
-                        <td><img src="<c:url value="/resources/images/${product.product}.png"/>" alt="Product Photo" style="width:300px"></td>
-                        <td>${product.productType}</td>
-                        <td>${product.productMaker}</td>
-                        <td>${product.productName}</td>
-                        <td>${product.productColor}</td>
-                        <td>${product.productSize}</td>
-                        <td>${product.productPrice} lei</td>
-                        <td>${product.productDscr}</td>
-                        <td>
-                            <div title="Product details">
-                            <a href="<c:url value="/product/viewProduct/${product.product}"/>">
+<div id="product-list-container" class="container">
+    <br>
+    <h3 class="text-center">All products:</h3>
+    <h5 class="text-center">Click the zoom icon for product details or to add it to your cart</h5>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Photo</th>
+            <th>Type</th>
+            <th>Maker</th>
+            <th>Name</th>
+            <th>Color</th>
+            <th>Size</th>
+            <th>Weight</th>
+            <th>Price</th>
+            <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <c:forEach items="${productList}" var="product">
+            <tr id="table-row">
+                <td id="table-data"><img src="<c:url value="/resources/images/${product.productId}.png"/>" alt="Product Photo" id="product-image"></td>
+                <td>${product.productType}</td>
+                <td>${product.productMaker}</td>
+                <td>${product.productName}</td>
+                <td>${product.productColor}</td>
+                <td>${product.productSize} cm</td>
+                <td>${product.productWeight} g</td>
+                <td>${product.productPrice} $</td>
+                <td>${product.productDscr}</td>
+                <td>
+                    <div title="Product details">
+                        <a href="<c:url value="/product/viewProduct/${product.productId}"/>">
                             <span class="glyphicon glyphicon-zoom-in"></span></a>
-                            </div>
-                        </td>
-                    </tr>
-                </c:forEach>
-
-            </table>
-
-        </div>
-
-    </div>
-
+                    </div>
+                </td>
+            </tr>
+        </c:forEach>
+        </tbody>
+        <br>
+    </table>
+    <br>
+    <br>
 </div>
+
+
             
 <jsp:include page="fragments/footer.jsp"/>
 

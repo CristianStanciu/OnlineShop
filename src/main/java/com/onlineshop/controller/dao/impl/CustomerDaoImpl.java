@@ -1,7 +1,10 @@
 package com.onlineshop.controller.dao.impl;
 
 import com.onlineshop.controller.dao.CustomerDao;
-import com.onlineshop.model.entity.*;
+import com.onlineshop.model.entity.Authority;
+import com.onlineshop.model.entity.Cart;
+import com.onlineshop.model.entity.Customer;
+import com.onlineshop.model.entity.User;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
@@ -25,38 +28,40 @@ public class CustomerDaoImpl implements CustomerDao {
 
     public void addCustomer(Customer customer) {
         Session session = sessionFactory.getCurrentSession();
-        BillingAddress billingAddress = customer.getBillingAddress();
-        billingAddress.setCustomerId(customer);
+        customer.getBillingAddressId().setCustomerId(customer);
+        customer.setActive(true);
         session.saveOrUpdate(customer);
-        session.saveOrUpdate(billingAddress);
+        session.saveOrUpdate(customer.getBillingAddressId());
         User newUser = newUser(customer, session);
         newAuthority(session, newUser);
         newCart(customer, session);
         session.flush();
     }
 
-    private void newCart(Customer customer, Session session) {
-        Cart newCart = new Cart();
-        newCart.setCustomerId(customer);
-        session.saveOrUpdate(newCart);
-    }
-
-
     private User newUser(Customer customer, Session session) {
         User newUser = new User();
-        newUser.setCustomerId(customer);
-        newUser.setUserName(customer.getUsername().getUserName());
+        newUser.setUserName(customer.getUsername());
         newUser.setPassword(customer.getPassword());
         newUser.setActive(true);
+        newUser.setCustomerId(customer.getCustomerId());
         session.saveOrUpdate(newUser);
         return newUser;
+
     }
 
     private void newAuthority(Session session, User newUser) {
         Authority newAuthority = new Authority();
-        newAuthority.setUsername(newUser);
+        newAuthority.setUsername(newUser.getUserName());
         newAuthority.setAuthority("ROLE_USER");
         session.saveOrUpdate(newAuthority);
+    }
+
+    private void newCart(Customer customer, Session session) {
+        Cart newCart = new Cart();
+        newCart.setCustomerId(customer);
+        customer.setCartId(newCart);
+        session.saveOrUpdate(newCart);
+        session.saveOrUpdate(customer);
     }
 
     public void editCustomer(Customer customer) {
@@ -85,8 +90,8 @@ public class CustomerDaoImpl implements CustomerDao {
 
         Session session = sessionFactory.getCurrentSession();
         Query query = session.createQuery("from Customer");
-        List<Customer> customers = query.list();
-        return customers;
+        return query.list();
+
 
     }
 }

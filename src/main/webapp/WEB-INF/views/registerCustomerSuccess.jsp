@@ -11,22 +11,18 @@
 
 <jsp:include page="fragments/header.jsp"/>
 
-<script src="<c:url value="/resources/js/controller.js" />"></script>
+<%--<script src="<c:url value="/resources/js/controller.js" />"></script>--%>
 
-<div id="cart-container" class="container">
-    <section id="first-section">
-        <div>
-            <h3>Customer registered successfully</h3>
-            <p> All the selected products</p>
+<div id="register-succes-container" class="container">
+        <div id="container-content" class="text-center">
+            <br>
+            <h5>Account successfully registered</h5>
+            <br>
+            <br>
+            <br>
+            <br>
+            <a href="<spring:url value="/login" />" class="btn btn-default text-center">Login</a>
         </div>
-    </section>
-
-    <section class="container">
-
-
-
-            <a href="<spring:url value="product/productList" />" class="btn btn-default">Products </a>
-    </section>
 </div>
 
 <jsp:include page="fragments/footer.jsp"/>

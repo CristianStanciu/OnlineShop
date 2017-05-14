@@ -2,14 +2,13 @@ package com.onlineshop.controller.admin;
 import com.onlineshop.model.entity.Product;
 import com.onlineshop.model.entity.ProductType;
 import com.onlineshop.service.ProductService;
+import com.onlineshop.util.MyCustomNumberEditor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
@@ -33,7 +32,19 @@ public class AdminProduct {
 
     Path path;
 
-    @RequestMapping(value = "/product/addProduct", method = RequestMethod.GET)
+
+    @InitBinder
+    public void registerCustomerBinder(WebDataBinder binder) {
+        binder.registerCustomEditor(double.class, new MyCustomNumberEditor(Double.class));
+        binder.registerCustomEditor(float.class, new MyCustomNumberEditor(Float.class));
+        binder.registerCustomEditor(long.class, new MyCustomNumberEditor(Long.class));
+        binder.registerCustomEditor(int.class, new MyCustomNumberEditor(Integer.class));
+    }
+
+
+
+
+    @RequestMapping(value = "/productInventory/addProduct", method = RequestMethod.GET)
     public String addProduct(Model model){
 
         System.out.println("**************************invoking add product get method");
@@ -45,7 +56,7 @@ public class AdminProduct {
         return "addProduct";
     }
 
-    @RequestMapping(value = "/product/addProduct", method = RequestMethod.POST)
+    @RequestMapping(value = "/productInventory/addProduct", method = RequestMethod.POST)
     public String addProductPost(@Valid @ModelAttribute("product") Product product, BindingResult result, HttpServletRequest request, Model model){
 
         System.out.println("******************************invoking add product post method");
@@ -78,7 +89,7 @@ public class AdminProduct {
     }
 
 
-    @RequestMapping(value = "/product/editProduct", method = RequestMethod.POST)
+    @RequestMapping(value = "/productInventory/editProduct", method = RequestMethod.POST)
     public String editProductPost(@Valid @ModelAttribute("product") Product product, BindingResult result, HttpServletRequest request, Model model){
 
         System.out.println("**************************invoking editProduct post method");
@@ -91,6 +102,8 @@ public class AdminProduct {
             return "editProduct";
         }
 
+
+        System.out.println("**************************invoking editProduct post method dupa TEST!!!");
 
         MultipartFile productImage = product.getProductImage();
 
@@ -105,13 +118,13 @@ public class AdminProduct {
                 throw new RuntimeException("Saving image file error!");
             }
         }
-        productService.addProduct(product);
+        productService.editProduct(product);
 
         return "redirect:/admin/productInventory";
     }
 
 
-    @RequestMapping("/product/editProduct/{productId}")
+    @RequestMapping("/productInventory/editProduct/{productId}")
     public String editProduct(@PathVariable("productId") int productId, Model model) {
 
         System.out.println("**************************invoking editProduct get  method");
@@ -150,8 +163,5 @@ public class AdminProduct {
         }
         return "redirect:/admin/productInventory";
     }
-
-
-
 
 }

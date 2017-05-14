@@ -21,7 +21,7 @@ import java.util.List;
  * Created by smc on 5/10/2017.
  */
 
-@Controller
+@RestController
 @RequestMapping("/rest/cart")
 public class CartResources {
 
@@ -45,6 +45,7 @@ public class CartResources {
     }
 
 
+    @CrossOrigin
     @RequestMapping(value = "/add/{productId}", method = RequestMethod.PUT)
     @ResponseStatus(value = HttpStatus.NO_CONTENT)
     public void addItem(@PathVariable(value = "productId") int productId, @AuthenticationPrincipal User activeUser) {
@@ -76,29 +77,21 @@ public class CartResources {
         }
     }
 
-
+    @CrossOrigin
     @RequestMapping(value = "/remove/{productId}", method = RequestMethod.PUT)
     @ResponseStatus(value = HttpStatus.NO_CONTENT)
-    public void removeItem(@PathVariable(value = "productId") int productId) {
+    public void removeCartItem(@PathVariable(value = "productId") int productId) {
         CartItem cartItem = cartItemService.getCartItemByProductId(productId);
         cartItemService.removeCartItem(cartItem);
     }
 
-
+    @CrossOrigin
     @RequestMapping(value = "/{cartId}", method = RequestMethod.DELETE)
     @ResponseStatus(value = HttpStatus.NO_CONTENT)
     public void clearCart(@PathVariable(value = "cartId") int cartId){
         Cart cart = cartService.getCartById(cartId);
         cartItemService.removeAllCartItems(cart);
-
     }
-
-
-//    @RequestMapping(value = "/{cartId}", method = RequestMethod.PUT)
-//    @ResponseStatus(value = HttpStatus.NO_CONTENT)
-//    public void update(@PathVariable(value = "cartId") String cartId, @RequestBody Cart cart) {
-//        cartDao.update(cartId, cart);
-//    }
 
 
     @ExceptionHandler(IllegalArgumentException.class)

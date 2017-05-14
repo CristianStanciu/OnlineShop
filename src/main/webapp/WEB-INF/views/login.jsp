@@ -9,16 +9,15 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <jsp:include page="fragments/header.jsp"/>
 
-
-<div class="container login-form" >
-
+<div class="container-login-form" >
+    <br>
+    <br>
     <h6>Enter your username and password:</h6>
 
     <c:if test="${not empty logout}">
     <div>${logout}</div>
     </c:if>
 
-    <div class="bootstrap-iso">
         <div id="login-container" class="container-fluid">
                 <div id="colomns" class="col-md-6 col-sm-6 col-xs-12">
                     <form name="loginForm" id="loginForm" role="form" action="<c:url value="/j_spring_security_check"/>" method="post" >
@@ -47,7 +46,7 @@
                     </form>
                 </div>
         </div>
-    </div>
+</div>
 
 
 <jsp:include page="fragments/footer.jsp"/>

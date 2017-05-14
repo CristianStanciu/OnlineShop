@@ -43,13 +43,18 @@ public class Product implements Serializable{
 
     @Min(value = 1, message = "Please enter a valid size")// !!! MAI TREBUIE SA FAC VALIDARE PENTRU ALT TIP NUMERIC, DE EX DACA E DOUBLE ARUNCA EXCEPTIE ACUM
     @NumberFormat(style = NumberFormat.Style.DEFAULT)
-    @Column(name = "SIZE")
+    @Column(name = "SIZE", nullable = false)
     private int productSize;
+
+    @Min(value = 1 , message = "Please enter a valid weight")
+    @Column(name = "WEIGHT", nullable = false)
+    private int productWeight;
 
     @Min(value = 1 , message = "Please enter a valid price")
     @Column(name = "PRICE", nullable = false)
     private double productPrice;
 
+    @Size(max = 255, message = "Description can't have more than 255 characters")
     @Column(name = "DESCRIPTION")
     private String productDscr;
 
@@ -63,14 +68,17 @@ public class Product implements Serializable{
     public Product() {
     }
 
-    public Product(String productType, String productMaker, String productName, String productColor, int productSize, double productPrice, String productDscr) {
+    public Product(String productType, String productMaker, String productName, String productColor, int productSize, int productWeight, double productPrice, String productDscr, MultipartFile productImage, List<CartItem> cartItemList) {
         this.productType = productType;
         this.productMaker = productMaker;
         this.productName = productName;
         this.productColor = productColor;
         this.productSize = productSize;
+        this.productWeight = productWeight;
         this.productPrice = productPrice;
         this.productDscr = productDscr;
+        this.productImage = productImage;
+        this.cartItemList = cartItemList;
     }
 
     public int getProductId() {
@@ -121,6 +129,14 @@ public class Product implements Serializable{
         this.productSize = productSize;
     }
 
+    public int getProductWeight() {
+        return productWeight;
+    }
+
+    public void setProductWeight(int productWeight) {
+        this.productWeight = productWeight;
+    }
+
     public double getProductPrice() {
         return productPrice;
     }
@@ -162,17 +178,12 @@ public class Product implements Serializable{
                 ", productName='" + productName + '\'' +
                 ", productColor='" + productColor + '\'' +
                 ", productSize=" + productSize +
+                ", productWeight=" + productWeight +
                 ", productPrice=" + productPrice +
                 ", productDscr='" + productDscr + '\'' +
                 ", productImage=" + productImage +
+                ", cartItemList=" + cartItemList +
                 '}';
     }
 
-    @Override
-    public boolean equals(Object obj){
-        if (obj == null) return false;
-        if (!(obj instanceof Product))return false;
-        if (((Product) obj).getProductId() != this.getProductId()) return  false;
-        return true;
-    }
 }

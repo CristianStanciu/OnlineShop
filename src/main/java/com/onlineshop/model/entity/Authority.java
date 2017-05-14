@@ -8,28 +8,26 @@ import java.io.Serializable;
  */
 
 @Entity
-@Table(name = "AUTHORITIES")
+@Table(name = "AUTHORITY")
 public class Authority implements Serializable{
 
     private static final long serialVersionUID = 7543014505287483443L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "AUTHORITY_ID")
     private int authorityId;
 
-    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "USERNAME", nullable = false)
-    private User username;
+    private String username;
 
     @Column(name = "AUTHORITY", nullable = false)
     private String authority;
 
-
     public Authority() {
     }
 
-    public Authority(User username, String authority) {
+    public Authority(String username, String authority) {
         this.username = username;
         this.authority = authority;
     }
@@ -42,11 +40,11 @@ public class Authority implements Serializable{
         this.authorityId = authorityId;
     }
 
-    public User getUsername() {
+    public String getUsername() {
         return username;
     }
 
-    public void setUsername(User username) {
+    public void setUsername(String username) {
         this.username = username;
     }
 
@@ -56,14 +54,5 @@ public class Authority implements Serializable{
 
     public void setAuthority(String authority) {
         this.authority = authority;
-    }
-
-    @Override
-    public String toString() {
-        return "Authority{" +
-                "authorityId=" + authorityId +
-                ", username=" + username +
-                ", authority='" + authority + '\'' +
-                '}';
     }
 }

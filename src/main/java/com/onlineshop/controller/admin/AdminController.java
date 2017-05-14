@@ -29,8 +29,6 @@ public class AdminController {
     @Autowired
     private CustomerService customerService;
 
-    Path path;
-
 
     @InitBinder
     public void registerCustomerBinder(WebDataBinder binder) {
@@ -59,6 +57,5 @@ public class AdminController {
         model.addAttribute("customerList", customers);
         return "customerManagement";
     }
-
 
 }
