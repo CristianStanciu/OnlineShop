@@ -55,7 +55,7 @@
 </div>
 
 
-<script src="<c:url value="/resources/js/controller.js" />"></script>
+<script src="<spring:url value="/resources/js/controller.js"/>"></script>
 <jsp:include page="fragments/footer.jsp"/>
 
 

@@ -1,9 +1,5 @@
 package com.onlineshop.controller;
 
-import com.onlineshop.model.entity.Cart;
-import com.onlineshop.model.entity.CartItem;
-import com.onlineshop.model.entity.Customer;
-import com.onlineshop.model.entity.Product;
 import com.onlineshop.model.vo.CartItemVO;
 import com.onlineshop.model.vo.CartVO;
 import com.onlineshop.model.vo.CustomerVO;
@@ -67,6 +63,7 @@ public class CartResources {
             }
         }
             CartItemVO cartItem = new CartItemVO();
+            cartItem.setProductId(product);
             cartItem.setQuantity(1);
             cartItem.setTotalPrice(product.getProductPrice() * cartItem.getQuantity());
             cartItem.setCartId(cart);
@@ -113,6 +110,5 @@ public class CartResources {
     @ResponseStatus(value = HttpStatus.INTERNAL_SERVER_ERROR, reason = "Internal server error")
     public void handleServerErrors(Exception e) {
     }
-
 
 }

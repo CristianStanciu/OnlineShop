@@ -414,28 +414,6 @@ ul.header-links li a:focus {
     color: #ec2f2f;
 }
 
-/* Cart Page Styles */
-
-#cart-container{
-    background-color: #444444;
-    margin: auto;
-    margin-bottom: 100px;
-    height: 600px;
-    text-align: left;
-}
-
-#first-section{
-    height: 100px;
-    background-color: #333333;
-    color: whitesmoke;
-    margin-bottom: 50px;
-}
-
-#second-section{
-    height: 400px;
-    overflow: visible;
-}
-
 
 /* Main Header Styles Starts */
 
@@ -986,5 +964,37 @@ background-color: #333333;
     color: whitesmoke;
 }
 
+/* Cart Page Styles */
 
+#cart-container{
+    background-color: #444444;
+    margin: auto;
+    margin-bottom: 100px;
+    height: auto;
+    text-align: left;
+    overflow: auto;
+}
+
+#first-section{
+    height: 100px;
+    background-color: #333333;
+    color: whitesmoke;
+    margin-bottom: 50px;
+}
+
+#second-section{
+    width: 800px;
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+#cart-page-buttons-div{
+    margin: auto;
+    width: 50%;
+    display: inline-block;
+    /*margin-bottom: 50px;*/
+}
+
+#cart-items-table{
+}
 

@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%--
   Created by IntelliJ IDEA.
   User: smc
@@ -94,13 +95,13 @@
             <!-- Payment Gateway Links Starts -->
             <ul class="pull-right list-inline">
                 <li>
-                    <img src="<c:url value="/resources/images/card/paypal.png "/>" alt="Card Image" />
+                    <img src="<spring:url value="/resources/images/card/paypal.png"/>" alt="Card Image" />
                 </li>
                 <li>
-                    <img src="<c:url value="/resources/images/card/visa.png "/>" alt="Card Image" />
+                    <img src="<spring:url value="/resources/images/card/visa.png"/>" alt="Card Image" />
                 </li>
                 <li>
-                    <img src="<c:url value="/resources/images/card/mastercard.png "/>" alt="Card Image" />
+                    <img src="<spring:url value="/resources/images/card/mastercard.png"/>" alt="Card Image" />
                 </li>
             </ul>
             <!-- Payment Gateway Links Ends -->
@@ -119,12 +120,12 @@
 <%--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>--%>
 <script>window.jQuery || document.write('<script src="WEB-INF/resources/js/jquery-3.2.1.min.js"><\/script>')</script>
 <!-- JavaScript Files -->
-<script src="js/jquery-1.11.1.min.js"></script>
-<script src="js/jquery-migrate-1.2.1.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/bootstrap-hover-dropdown.min.js"></script>
-<script src="js/jquery.magnific-popup.min.js"></script>
-<script src="js/owl.carousel.min.js"></script>
-<script src="js/custom.js"></script>
+<script src="<spring:url value="/resources/js/jquery-1.11.1.min.js"/>"></script>
+<script src="<spring:url value="/resources/js/jquery-migrate-1.2.1.min.js"/>"></script>
+<script src="<spring:url value="/resources/js/bootstrap.min.js"/>"></script>
+<script src="<spring:url value="/resources/js/bootstrap-hover-dropdown.min.js"/>"></script>
+<script src="<spring:url value="/resources/js/jquery.magnific-popup.min.js"/>"></script>
+<script src="<spring:url value="/resources/js/owl.carousel.min.js"/>"></script>
+<script src="<spring:url value="/resources/js/custom.js"/>"></script>
 </body>
 </html>

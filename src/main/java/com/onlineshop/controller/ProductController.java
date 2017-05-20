@@ -1,5 +1,5 @@
 package com.onlineshop.controller;
-import com.onlineshop.model.entity.Product;
+
 import com.onlineshop.model.vo.ProductVO;
 import com.onlineshop.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+
 import java.io.IOException;
 import java.util.List;
 
@@ -40,8 +41,7 @@ public class ProductController {
 
 
     @RequestMapping("/viewProduct/{productId}")
-    public String viewProduct(@PathVariable(name = "productId") int productId, Model model )throws IOException {
-
+    public String viewProduct(@PathVariable(name = "productId") int productId, Model model ) {
         ProductVO product = productService.getProductById(productId);
         model.addAttribute("product", product);
         return "viewProduct";

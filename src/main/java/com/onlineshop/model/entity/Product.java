@@ -41,7 +41,7 @@ public class Product implements Serializable{
     @Column(name = "COLOR")
     private String productColor;
 
-    @Min(value = 1, message = "Please enter a valid size")// !!! MAI TREBUIE SA FAC VALIDARE PENTRU ALT TIP NUMERIC, DE EX DACA E DOUBLE ARUNCA EXCEPTIE ACUM
+    @Min(value = 1, message = "Please enter a valid size")
     @NumberFormat(style = NumberFormat.Style.DEFAULT)
     @Column(name = "SIZE", nullable = false)
     private int productSize;

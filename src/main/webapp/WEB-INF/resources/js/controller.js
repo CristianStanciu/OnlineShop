@@ -34,5 +34,4 @@ cartApp.controller("cartCtrl", function($scope, $http){
         }
         return totalPrice;
     };
-
 });

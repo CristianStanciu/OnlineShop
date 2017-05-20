@@ -1,6 +1,9 @@
 package com.onlineshop.model.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
+import javax.validation.Valid;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
@@ -42,7 +45,7 @@ public class Customer implements Serializable{
     @Column(name = "PASSWORD")
     private  String password;
 
-    @Pattern(regexp = "[a-zA-Z]{2,45}", message = "Please enter a valid street name(only letters are allowed)")
+    @Pattern(regexp = "[a-zA-Z\\s]{2,45}", message = "Please enter a valid street name(only letters are allowed)")
     @Column(name = "ADDRESS")
     private  String address;
 
@@ -50,17 +53,17 @@ public class Customer implements Serializable{
     @Column(name = "HOUSE_NO")
     private String houseNo;
 
-//    @(min = 10, max= 10, message = "Please enter a valid 10 digits cellphone number")  // trebuie facuta validarea ca lumea
     @Column(name = "PHONE_NO")
     private int phoneNo;
 
     @OneToOne
     @JoinColumn(name = "CART_ID")
-//    @JsonIgnore
+    @JsonIgnore
     private Cart cartId;
 
     @OneToOne
     @JoinColumn(name = "BILLING_ADDRESS_ID")
+    @Valid
     private BillingAddress billingAddressId;
 
     @Column(name = "ACTIVE")

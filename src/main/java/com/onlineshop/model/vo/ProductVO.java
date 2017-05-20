@@ -1,7 +1,11 @@
 package com.onlineshop.model.vo;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.validation.constraints.Min;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 import java.util.List;
 
 
@@ -11,22 +15,30 @@ public class ProductVO {
 
     private String productType;
 
+    @Size(min = 2, max = 45, message = "Please enter the maker of the product")
     private String productMaker;
 
+    @Size(min = 1, max = 45, message = "Please enter the name")
     private String productName;
 
+    @Pattern(regexp = "[a-zA-Z]{3,45}", message = "Please enter a valid color")
     private String productColor;
 
+    @Min(value = 1, message = "Please enter a valid size")// !!! MAI TREBUIE SA FAC VALIDARE PENTRU ALT TIP NUMERIC, DE EX DACA E DOUBLE ARUNCA EXCEPTIE ACUM
     private int productSize;
 
+    @Min(value = 1 , message = "Please enter a valid weight")
     private int productWeight;
 
+    @Min(value = 1 , message = "Please enter a valid price")
     private double productPrice;
 
+    @Size(max = 255, message = "Description can't have more than 255 characters")
     private String productDscr;
 
     private MultipartFile productImage;
 
+    @JsonIgnore
     private List<CartItemVO> cartItemList;
 
     public ProductVO() {

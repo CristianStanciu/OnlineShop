@@ -1,5 +1,7 @@
 package com.onlineshop.model.vo;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 /**
  * Created by smc on 5/8/2017.
  */
@@ -8,6 +10,7 @@ public class CartItemVO{
 
     private int cartItemId;
 
+    @JsonIgnore
     private CartVO cartId;
 
     private ProductVO productId;

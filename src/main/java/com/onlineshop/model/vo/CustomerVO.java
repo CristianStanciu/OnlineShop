@@ -1,30 +1,51 @@
 package com.onlineshop.model.vo;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import javax.validation.Valid;
+import javax.validation.constraints.Digits;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
+
 public class CustomerVO {
 
-        private int customerId;
+    private int customerId;
 
-        private String firstName;
+    @Pattern(regexp = "[a-zA-Z]{2,45}", message = "Please enter a valid name")
+    private String firstName;
 
-        private String lastName;
+    @Pattern(regexp = "[a-zA-Z]{2,45}", message = "Please enter a valid name")
+    private String lastName;
 
-        private String email;
+    @Pattern(regexp = "[\\w-_\\.+]*[\\w-_\\.]\\@([\\w]+\\.)+[\\w]+[\\w]", message = "Please enter a valid email address")
+    private String email;
 
-        private String username;
+    @Pattern(regexp = "^[A-Za-z_][A-Za-z0-9_]{7,29}", message = "Username should be at least 8 characters long, starting with a letter")
+    //^[A-Za-z_] ensures input starts with an alphabet or underscore and
+    // then [A-Za-z0-9_]{7,29}$ makes sure there are 7 to 29 of word characters in the end making total length 8 to 30.
+    private String username;
 
-        private  String password;
+    @Size(min = 8, max = 45, message = "Password should be at least 8 characters long ")
+    private  String password;
 
-        private  String address;
+    @Pattern(regexp = "[a-zA-Z\\s]{2,45}", message = "Please enter a valid street name, only letters")
+    private  String address;
 
-        private String houseNo;
+    @Size(min = 1, max = 45, message = " Not a valid house number ")
+    private String houseNo;
 
-        private int phoneNo;
+    @Digits(integer = 10, fraction = 0, message ="Enter a valid number please")
+    @Min(value=0, message = "Only positive digits" )
+    private int phoneNo;
 
-        private CartVO cartId;
+    @JsonIgnore
+    private CartVO cartId;
 
-        private BillingAddressVO billingAddressId;
+    @Valid
+    private BillingAddressVO billingAddressId;
 
-        private boolean active;
+    private boolean active;
 
         public CustomerVO() {
         }

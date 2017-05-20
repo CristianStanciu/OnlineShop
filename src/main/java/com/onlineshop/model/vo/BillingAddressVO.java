@@ -1,5 +1,7 @@
 package com.onlineshop.model.vo;
 
+import javax.validation.constraints.*;
+
 /**
  * Created by smc on 5/9/2017.
  */
@@ -9,16 +11,23 @@ public class BillingAddressVO{
 
     private int billingAddressId;
 
+    @Pattern(regexp = "[a-zA-Z\\s]{2,45}", message = "Please enter a valid name, only letters")
     private String streetName;
 
+    @Size(min = 1, max = 9, message = "Please enter house number")
     private String houseNo;
 
+    @Pattern(regexp = "[a-zA-Z]{2,45}", message = "Please enter a valid city, only letters")
     private String city;
 
+    @Pattern(regexp = "[a-zA-Z\\s]{2,45}", message = "Please enter a valid name, only letters")
     private String state;
 
+    @Pattern(regexp = "[a-zA-Z]{2,45}", message = "Please enter a valid name, only letters")
     private String country;
 
+    @Digits(integer = 10, fraction = 0, message ="Only integers are allowed")
+    @Min(value=0, message = "Only positive digits" )
     private int zipCode;
 
 

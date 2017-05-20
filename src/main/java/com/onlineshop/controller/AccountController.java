@@ -11,6 +11,8 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.validation.Valid;
+
 /**
  * Created by smc on 5/14/2017.
  */
@@ -31,7 +33,7 @@ public class AccountController {
     }
 
     @RequestMapping("/edit")
-    public String editCustomerInfo(@ModelAttribute(value = "customerVO") CustomerVO customerVO, BindingResult result){
+    public String editCustomerInfo(@Valid @ModelAttribute(value = "customerVO") CustomerVO customerVO, BindingResult result){
 
         if (result.hasErrors()){
             return "account";

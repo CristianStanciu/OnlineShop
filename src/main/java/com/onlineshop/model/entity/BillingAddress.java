@@ -1,6 +1,7 @@
 package com.onlineshop.model.entity;
 
 import javax.persistence.*;
+import javax.validation.constraints.*;
 import java.io.Serializable;
 
 /**
@@ -18,22 +19,29 @@ public class BillingAddress implements Serializable{
     @Column(name = "BILLING_ADDRESS_ID")
     private int billingAddressId;
 
+    @Pattern(regexp = "[a-zA-Z\\s]{2,45}", message = "Please enter a valid name, only letters")
     @Column(name = "STREET_NAME")
     private String streetName;
 
-    @Column(name = "HOUSE_NUMBER")
+    @Column(name = "HOUSE_NUMBER", nullable = false)
+    @Size(min = 1, max = 9, message = "Please enter house number")
     private String houseNo;
 
     @Column(name = "CITY")
+    @Pattern(regexp = "[a-zA-Z]{2,45}", message = "Please enter a valid city, only letters")
     private String city;
 
     @Column(name = "STATE")
+    @Pattern(regexp = "[a-zA-Z\\s]{2,45}", message = "Please enter a valid name, only letters")
     private String state;
 
     @Column(name = "COUNTRY")
+    @Pattern(regexp = "[a-zA-Z]{2,45}", message = "Please enter a valid name, only letters")
     private String country;
 
     @Column(name = "ZIP_CODE")
+    @Digits(integer = 10, fraction = 0, message ="Only integers are allowed")
+    @Min(value=0, message = "Only positive digits" )
     private int zipCode;
 
     public BillingAddress() {

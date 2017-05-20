@@ -7,6 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <html>
 <head>
     <meta charset="utf-8">
@@ -14,23 +15,23 @@
     <title>L-ectro.com</title>
 
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.1/angular.min.js"></script>
-    <script src="<c:url value="/resources/js/controller.js" />"></script>
+    <script src="<spring:url value="/resources/js/controller.js" />"></script>
 
     <!-- Reset CSS -->
-    <link rel="stylesheet" href="<c:url value="/resources/css/reset.css"/>" type="text/css">
+    <link rel="stylesheet" href="<spring:url value="/resources/css/reset.css"/>" type="text/css">
 
     <!-- Bootstrap core CSS -->
-    <link rel="stylesheet" href="<c:url value="/resources/css/bootstrap.min.css"/>" type="text/css">
+    <link rel="stylesheet" href="<spring:url value="/resources/css/bootstrap.min.css"/>" type="text/css">
 
     <!-- Main CSS -->
-    <link rel="stylesheet" href="<c:url value="/resources/css/main.css"/>" type="text/css">
+    <link rel="stylesheet" href="<spring:url value="/resources/css/main.css"/>" type="text/css">
 
     <!-- Carousel CSS -->
-    <link rel="stylesheet" href="<c:url value="/resources/css/carousel.css"/>" type="text/css">
+    <link rel="stylesheet" href="<spring:url value="/resources/css/carousel.css"/>" type="text/css">
 
     <!-- CSS Files -->
-    <link rel="stylesheet" href="<c:url value="/resources/css/owl.carousel.css"/>" type="text/css">
-    <link rel="stylesheet" href="<c:url value="/resources/css/responsive.css"/>" type="text/css">
+    <link rel="stylesheet" href="<spring:url value="/resources/css/owl.carousel.css"/>" type="text/css">
+    <link rel="stylesheet" href="<spring:url value="/resources/css/responsive.css"/>" type="text/css">
 
 
 </head>
@@ -38,11 +39,11 @@
 
 
 <!-- Top Bar Starts -->
-<div id="dropshadow" class="free-shiping">
+<div class="free-shiping">
     <!-- Nested Container Starts -->
     <div class="container">
         <!-- Free shipping image -->
-        <img src="<c:url value="/resources/images/freeShipping2.png"/>"/>
+        <img src="<spring:url value="/resources/images/freeShipping2.png"/>"/>
         <span>Free Shipping</span> on order over $100. This offer is valid on all our store items.
     </div>
     <!-- Nested Container Ends -->
@@ -92,9 +93,9 @@
                             <c:if test="${pageContext.request.userPrincipal.name =='admin'}">
                                 <li><a href="<c:url value="/admin"/>"><strong style="color: #ec2f2f;">Admin Panel</strong></a></li>
                             </c:if>
-                            <li><a href="<c:url value="/checkout" />">Checkout</a></li>
-                            <li><a href="<c:url value="customer/wishList"/>">Wish List</a></li>
-                            <li><a href="<c:url value="/j_spring_security_logout" />">Logout</a></li>
+                            <li><a href="<spring:url value="/checkout" />">Checkout</a></li>
+                            <li><a href="<spring:url value="customer/wishList"/>">Wish List</a></li>
+                            <li><a href="<spring:url value="/j_spring_security_logout" />">Logout</a></li>
                         </c:if>
 
 
@@ -111,10 +112,10 @@
 
                 <!-- Cart Starts -->
                 <div class="col-sm-3 col-xs-12">
-                    <div id="cart" class="btn-group btn-block ">
+                    <div id="cart" class="btn-group btn-block">
                         <button type="button" class="btn btn-link text-uppercase">
-                            <img src="<c:url value="/resources/images/shoppingCart0.png"/>"/>
-                            <a href="<c:url value="/customer/cart"/> "><strong>Shopping Cart</strong> </a>
+                            <img src="<spring:url value="/resources/images/shoppingCart0.png"/>"/>
+                            <a href="<spring:url value="/customer/cart"/>"><strong>Shopping Cart</strong></a>
                         </button>
                     </div>
                 </div>
@@ -136,7 +137,7 @@
         <%--<!-- Logo Start -->--%>
         <div class="col-xs-2">
             <div class="box">
-                <a href="<c:url value="/"/>"><img id="logo-img" src="<c:url value="/resources/images/l-ectro.png"/>"
+                <a href="<c:url value="/"/>"><img id="logo-img" src="<spring:url value="/resources/images/l-ectro.png"/>"
                                                   title="L-ectro" alt="L-ectro" class="img-responsive img-center"></a>
             </div>
         </div>
