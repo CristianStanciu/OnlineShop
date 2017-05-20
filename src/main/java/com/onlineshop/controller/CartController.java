@@ -1,6 +1,7 @@
 package com.onlineshop.controller;
 
 import com.onlineshop.model.entity.Customer;
+import com.onlineshop.model.vo.CustomerVO;
 import com.onlineshop.service.CartService;
 import com.onlineshop.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,10 +22,9 @@ public class CartController {
     @Autowired
     CustomerService customerService;
 
-
     @RequestMapping
     public String getCart(@AuthenticationPrincipal org.springframework.security.core.userdetails.User activeUser) {
-        Customer customer = customerService.getCustomerByUsername(activeUser.getUsername());
+        CustomerVO customer = customerService.getCustomerByUsername(activeUser.getUsername());
         int cartId = customer.getCartId().getCartId();
         return "redirect:/customer/cart/" + cartId;
     }
@@ -34,9 +34,5 @@ public class CartController {
         model.addAttribute("cartId", cartId);
         return "cart";
     }
-
-
-
-
 
 }

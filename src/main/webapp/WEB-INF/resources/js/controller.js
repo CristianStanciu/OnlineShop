@@ -1,13 +1,13 @@
 var cartApp = angular.module("cartApp", []);
 cartApp.controller("cartCtrl", function($scope, $http){
     $scope.refreshCart = function(){
-       $http.get('/OnlineShop/rest/cart/'+$scope.cartId).success(function(data){
+       $http.get('/onlineshop/rest/cart/'+$scope.cartId).success(function(data){
             $scope.cart=data;
        });
     };
 
     $scope.clearCart = function(){
-        $http.delete('/OnlineShop/rest/cart/'+$scope.cartId).success($scope.refreshCart());
+        $http.delete('/onlineshop/rest/cart/'+$scope.cartId).success($scope.refreshCart());
     };
 
     $scope.initCartId = function(cartId){
@@ -16,13 +16,13 @@ cartApp.controller("cartCtrl", function($scope, $http){
     };
 
     $scope.addToCart = function(productId){
-        $http.put('/OnlineShop/rest/cart/add/'+productId).success(function() {
+        $http.put('/onlineshop/rest/cart/add/'+productId).success(function() {
             alert("Product added to the cart");
         });
     };
     
-    $scope.removeFromCart = function(productId){
-        $http.put('/OnlineShop/rest/cart/remove/'+productId).success(function(data){
+    $scope.removeFromCart = function(cartItemId){
+        $http.put('/onlineshop/rest/cart/remove/'+cartItemId).success(function(data){
            $scope.refreshCart();
         });
     };

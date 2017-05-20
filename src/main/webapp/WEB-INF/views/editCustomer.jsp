@@ -18,11 +18,11 @@
         <h5 class="lead">Fill in the details:</h5>
     </div>
 
-    <form:form id="register-form" action="${pageContext.request.contextPath}/admin/customerManagement/editCustomer" method="post" modelAttribute="customer">
+    <form:form id="register-form" action="${pageContext.request.contextPath}/admin/customerManagement/editCustomer" method="post" modelAttribute="customerVO">
         <div class="form-group">
             <label for="name"> First name: </label> <form:errors path="firstName" cssStyle="color:#ec2f2f;"/>
             <form:input path="firstName" id="name" class="form-Control"/>
-            <form:hidden path="customerId" id="customerId" value="${customer.customerId}"/>
+            <form:hidden path="customerId" id="customerId" value="${customerVO.customerId}"/>
         </div>
         <div class="form-group">
             <label for="lastName"> Last name: </label> <form:errors path="lastName" cssStyle="color:#ec2f2f;"/>

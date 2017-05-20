@@ -17,51 +17,42 @@ public class Payment implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "PAYMENT_ID", nullable = false)
-    private int payment_id;
+    private int paymentId;
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn (name = "INVOICE_NO")
-    private Invoice invoice_number;
+    private Invoice invoiceNumber;
 
     @Column(name = "AMOUNT")
     private double paymentAmount;
 
     @Column(name = "DATE")
-    private Date payment_date;
+    private Date paymentDate;
 
 
     public Payment() {
     }
 
-    public Payment(int payment_id, Invoice invoice_number, Date payment_date, double paymentAmount) {
-        this.payment_id = payment_id;
-        this.invoice_number = invoice_number;
-        this.payment_date = payment_date;
+    public Payment(Invoice invoiceNumber, double paymentAmount, Date paymentDate) {
+        this.invoiceNumber = invoiceNumber;
         this.paymentAmount = paymentAmount;
+        this.paymentDate = paymentDate;
     }
 
-    public int getPayment_id() {
-        return payment_id;
+    public int getPaymentId() {
+        return paymentId;
     }
 
-    public void setPayment_id(int payment_id) {
-        this.payment_id = payment_id;
+    public void setPaymentId(int paymentId) {
+        this.paymentId = paymentId;
     }
 
-    public Invoice getInvoice_number() {
-        return invoice_number;
+    public Invoice getInvoiceNumber() {
+        return invoiceNumber;
     }
 
-    public void setInvoice_number(Invoice invoice_number) {
-        this.invoice_number = invoice_number;
-    }
-
-    public Date getPayment_date() {
-        return payment_date;
-    }
-
-    public void setPayment_date(Date payment_date) {
-        this.payment_date = payment_date;
+    public void setInvoiceNumber(Invoice invoiceNumber) {
+        this.invoiceNumber = invoiceNumber;
     }
 
     public double getPaymentAmount() {
@@ -72,13 +63,11 @@ public class Payment implements Serializable {
         this.paymentAmount = paymentAmount;
     }
 
-    @Override
-    public String toString() {
-        return "Payment{" +
-                "payment_id=" + payment_id +
-                ", invoice_number=" + invoice_number +
-                ", payment_date=" + payment_date +
-                ", paymentAmount=" + paymentAmount +
-                '}';
+    public Date getPaymentDate() {
+        return paymentDate;
+    }
+
+    public void setPaymentDate(Date paymentDate) {
+        this.paymentDate = paymentDate;
     }
 }

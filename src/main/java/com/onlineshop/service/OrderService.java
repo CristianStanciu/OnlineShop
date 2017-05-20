@@ -1,6 +1,6 @@
 package com.onlineshop.service;
 
-import com.onlineshop.model.entity.Order;
+import com.onlineshop.model.vo.OrderVO;
 
 /**
  * Created by smc on 5/10/2017.
@@ -8,10 +8,9 @@ import com.onlineshop.model.entity.Order;
 
 public interface OrderService {
 
-    void addOrder(Order order);
+    void addOrder(OrderVO order);
 
     double getOrderTotalPrice(int cartId);
-
 
 }
 

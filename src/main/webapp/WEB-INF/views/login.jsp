@@ -19,8 +19,11 @@
     </c:if>
 
         <div id="login-container" class="container-fluid">
+            <br>
                 <div id="colomns" class="col-md-6 col-sm-6 col-xs-12">
+                    <br>
                     <form name="loginForm" id="loginForm" role="form" action="<c:url value="/j_spring_security_check"/>" method="post" >
+                        <br>
                             <c:if test="${not empty error}">
                                 <div class="error" style="color:#ff0000;">${error}</div>
                             </c:if>

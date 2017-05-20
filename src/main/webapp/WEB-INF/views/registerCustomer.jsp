@@ -17,7 +17,7 @@
         <h4 class="text-center">Register a new account</h4>
         <h6 class="lead">Fill in the details:</h6>
     </div>
-    <form:form id="register-form" action="${pageContext.request.contextPath}/register" method="post" modelAttribute="customer">
+    <form:form id="register-form" action="${pageContext.request.contextPath}/register" method="post" modelAttribute="customerVO">
         <br>
         <br>
         <div class="form-group">

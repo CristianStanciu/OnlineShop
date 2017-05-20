@@ -1,6 +1,7 @@
 package com.onlineshop.service;
 
 import com.onlineshop.model.entity.Customer;
+import com.onlineshop.model.vo.CustomerVO;
 
 import java.util.List;
 
@@ -10,16 +11,16 @@ import java.util.List;
 
 public interface CustomerService {
 
-    void addCustomer(Customer customer);
+    void addCustomer(CustomerVO customerVO);
 
-    void editCustomer(Customer customer);
+    void editCustomer(CustomerVO customerVO);
 
-    void deleteCustomer(Customer customer);
+    void deleteCustomer(CustomerVO customerVO);
 
-    Customer getCustomerById(int customerId);
+    CustomerVO getCustomerById(int customerId);
 
-    Customer getCustomerByUsername(String customerUsername);
+    CustomerVO getCustomerByUsername(String username);
 
-    List<Customer> getAllCustomers();
+    List<CustomerVO> getAllCustomers();
 
 }

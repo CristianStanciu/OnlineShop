@@ -1,6 +1,7 @@
 package com.onlineshop.controller.admin;
-import com.onlineshop.model.entity.Product;
-import com.onlineshop.model.entity.ProductType;
+
+import com.onlineshop.model.vo.ProductTypeVO;
+import com.onlineshop.model.vo.ProductVO;
 import com.onlineshop.service.ProductService;
 import com.onlineshop.util.MyCustomNumberEditor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,29 +47,22 @@ public class AdminProduct {
 
     @RequestMapping(value = "/productInventory/addProduct", method = RequestMethod.GET)
     public String addProduct(Model model){
-
-        System.out.println("**************************invoking add product get method");
-
-        Product product = new Product();
-        List<ProductType> allProductTypes = productService.getAllProductTypes();
+        ProductVO product = new ProductVO();
+        List<ProductTypeVO> allProductTypes = productService.getAllProductTypes();
         model.addAttribute("productTypes", allProductTypes);
-        model.addAttribute(product);
+        model.addAttribute("product", product);
         return "addProduct";
     }
 
     @RequestMapping(value = "/productInventory/addProduct", method = RequestMethod.POST)
-    public String addProductPost(@Valid @ModelAttribute("product") Product product, BindingResult result, HttpServletRequest request, Model model){
-
-        System.out.println("******************************invoking add product post method");
-
+    public String addProductPost(@Valid @ModelAttribute("product") ProductVO product, BindingResult result, HttpServletRequest request, Model model){
         if (result.hasErrors()){
 
-            List<ProductType> allProductTypes = productService.getAllProductTypes();
+            List<ProductTypeVO> allProductTypes = productService.getAllProductTypes();
             model.addAttribute("productTypes", allProductTypes);
 
             return "addProduct";
         }
-
 
         productService.addProduct(product);
 
@@ -76,7 +70,7 @@ public class AdminProduct {
 
         MultipartFile productImage = product.getProductImage();
 
-        path = Paths.get(rootDir + "\\WEB-INF\\resources\\images\\" +product.getProductId()+ ".png");
+        path = Paths.get(rootDir + "\\WEB-INF\\resources\\images\\" + productService.getLastProduct().getProductId() + ".png");
 
         if (productImage != null && !productImage.isEmpty()){
             try {
@@ -90,20 +84,14 @@ public class AdminProduct {
 
 
     @RequestMapping(value = "/productInventory/editProduct", method = RequestMethod.POST)
-    public String editProductPost(@Valid @ModelAttribute("product") Product product, BindingResult result, HttpServletRequest request, Model model){
-
-        System.out.println("**************************invoking editProduct post method");
+    public String editProductPost(@ModelAttribute("product") ProductVO product, BindingResult result, HttpServletRequest request, Model model){
 
         if (result.hasErrors()){
 
-            List<ProductType> allProductTypes = productService.getAllProductTypes();
+            List<ProductTypeVO> allProductTypes = productService.getAllProductTypes();
             model.addAttribute("productTypes", allProductTypes);
-
             return "editProduct";
         }
-
-
-        System.out.println("**************************invoking editProduct post method dupa TEST!!!");
 
         MultipartFile productImage = product.getProductImage();
 
@@ -127,14 +115,11 @@ public class AdminProduct {
     @RequestMapping("/productInventory/editProduct/{productId}")
     public String editProduct(@PathVariable("productId") int productId, Model model) {
 
-        System.out.println("**************************invoking editProduct get  method");
-
-
-        List<ProductType> allProductTypes = productService.getAllProductTypes();
+        List<ProductTypeVO> allProductTypes = productService.getAllProductTypes();
         model.addAttribute("productTypes", allProductTypes);
 
-        Product product = productService.getProductById(productId);
-        model.addAttribute(product);
+        ProductVO productVO = productService.getProductById(productId);
+        model.addAttribute("productVO", productVO);
         return "editProduct";
     }
 
@@ -144,15 +129,13 @@ public class AdminProduct {
     @RequestMapping("/productInventory/deleteProduct/{productId}")
     public String deleteProduct(@PathVariable("productId") int productId, Model model, HttpServletRequest request) {
 
-        System.out.println("**************************invoking del product method");
-
-        Product product = productService.getProductById(productId);
+        ProductVO product = productService.getProductById(productId);
 
         productService.deleteProduct(product);
 
         String rootDir = request.getSession().getServletContext().getRealPath("/");
 
-        path = Paths.get(rootDir + "\\WEB-INF\\resources\\images\\" +productId+ ".png");
+        path = Paths.get(rootDir + "\\WEB-INF\\resources\\images\\" + product.getProductId() + ".png");
 
         if (Files.exists(path)){
             try {

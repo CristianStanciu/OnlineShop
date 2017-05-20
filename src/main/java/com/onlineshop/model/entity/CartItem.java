@@ -94,18 +94,8 @@ public class CartItem implements Serializable{
                 "cartItemId=" + cartItemId +
                 ", cartId=" + cartId +
                 ", productId=" + productId +
-                ", totalPrice=" + totalPrice +
                 ", quantity=" + quantity +
+                ", totalPrice=" + totalPrice +
                 '}';
     }
-
-    //    @Override
-//    public boolean equals(Object obj){
-//        if (obj == null) return false;
-//        if (!(obj instanceof CartItem))return false;
-//        if (!((CartItem) obj).getProduct().equals(this.getProduct())) return false;
-//        if (((CartItem) obj).getTotalPrice() != this.getTotalPrice()) return false;
-//        if (((CartItem) obj).quantity != this.getQuantity()) return false;
-//        return true;
-//    }
 }

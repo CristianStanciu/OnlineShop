@@ -1,9 +1,7 @@
 package com.onlineshop.service;
 
-import com.onlineshop.model.entity.Product;
-import com.onlineshop.model.entity.ProductType;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
+import com.onlineshop.model.vo.ProductTypeVO;
+import com.onlineshop.model.vo.ProductVO;
 
 import java.util.List;
 
@@ -13,18 +11,22 @@ import java.util.List;
 
 public interface ProductService {
 
-    void addProduct(Product product);
+    void addProduct(ProductVO productVO);
 
-    void editProduct(Product product);
+    void editProduct(ProductVO productVO);
 
-    void deleteProduct(Product product);
+    void deleteProduct(ProductVO productVO);
 
-    Product getProductById(int productId);
+    ProductVO getProductById(int productId);
 
-    List<Product> getProductList();
+    List<ProductVO> getProductList();
 
-    List<ProductType> getAllProductTypes();
+    List<ProductTypeVO> getAllProductTypes();
 
-    List<Product> getProductsByType(String productType);
+    List<ProductVO> getProductsByType(String productType);
+
+    List<ProductVO> getLatestProducts();
+
+    ProductVO getLastProduct();
 
 }

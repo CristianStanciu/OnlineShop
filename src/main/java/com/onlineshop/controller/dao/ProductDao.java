@@ -8,6 +8,7 @@ import java.util.List;
 /**
  * Created by smc on 5/1/2017.
  */
+
 public interface ProductDao {
 
     void addProduct(Product product);
@@ -23,5 +24,9 @@ public interface ProductDao {
     List<ProductType> getAllProductTypes();
 
     List<Product> getProductsByType(String productType);
+
+    List<Product> getLatestProducts();
+
+    Product getLastProduct();
 
 }

@@ -28,7 +28,7 @@ public class CustomerDaoImpl implements CustomerDao {
 
     public void addCustomer(Customer customer) {
         Session session = sessionFactory.getCurrentSession();
-        customer.getBillingAddressId().setCustomerId(customer);
+//        customer.getBillingAddressId().set;
         customer.setActive(true);
         session.saveOrUpdate(customer);
         session.saveOrUpdate(customer.getBillingAddressId());
@@ -58,7 +58,7 @@ public class CustomerDaoImpl implements CustomerDao {
 
     private void newCart(Customer customer, Session session) {
         Cart newCart = new Cart();
-        newCart.setCustomerId(customer);
+//        newCart.setCustomerId(customer);
         customer.setCartId(newCart);
         session.saveOrUpdate(newCart);
         session.saveOrUpdate(customer);

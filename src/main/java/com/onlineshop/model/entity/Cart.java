@@ -26,10 +26,6 @@ public class Cart implements Serializable {
     private List<CartItem> cartItems;
 
     @OneToOne(mappedBy ="cartId")
-    @JsonIgnore
-    private Customer customerId;
-
-    @OneToOne(mappedBy ="cartId")
     private Order orderId;
 
     @Column(name = "TOTAL_PRICE")
@@ -61,14 +57,6 @@ public class Cart implements Serializable {
         this.cartItems = cartItems;
     }
 
-    public Customer getCustomerId() {
-        return customerId;
-    }
-
-    public void setCustomerId(Customer customerId) {
-        this.customerId = customerId;
-    }
-
     public Order getOrderId() {
         return orderId;
     }
@@ -85,15 +73,5 @@ public class Cart implements Serializable {
         this.totalPrice = totalPrice;
     }
 
-    @Override
-    public String toString() {
-        return "Cart{" +
-                "cartId=" + cartId +
-                ", cartItems=" + cartItems +
-                ", customerId=" + customerId +
-                ", orderId=" + orderId +
-                ", totalPrice=" + totalPrice +
-                '}';
-    }
 }
 

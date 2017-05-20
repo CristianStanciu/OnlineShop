@@ -17,10 +17,9 @@
             <h5 class="lead">Fill the details to update product:</h5>
         </div>
 
-        <form:form id="register-form" action="${pageContext.request.contextPath}/admin/productInventory/editProduct"
-                   method="post"
-                   modelAttribute="product" enctype="multipart/form-data">
-            <form:hidden path="productId" id="productId" value="${product.productId}"/>
+        <form:form id="register-form" action="${pageContext.request.contextPath}/admin/productInventory/editProduct" method="post"
+                   modelAttribute="productVO" enctype="multipart/form-data">
+            <form:hidden path="productId" id="productId" value="${productVO.productId}"/>
             <div class="form-group">
                 <label for="name"> Product type: </label> <form:errors path="productType" cssStyle="color:#ec2f2f;"/>
                 <form:select path="productType" items="${productTypes}" itemLabel="productType" itemValue="productType"

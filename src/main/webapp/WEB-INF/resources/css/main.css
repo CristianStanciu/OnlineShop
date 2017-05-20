@@ -426,7 +426,7 @@ ul.header-links li a:focus {
 
 #first-section{
     height: 100px;
-    background-color: #555555;
+    background-color: #333333;
     color: whitesmoke;
     margin-bottom: 50px;
 }
@@ -679,11 +679,11 @@ main-menu .navbar .container {
 #main-container {
     padding-top: 30px;
     padding-bottom: 30px;
-    background-color: #555555;
+    background-color: #444444;
 }
 
 #categorybanner {
-    background-color: #555555;
+    background-color: #444444;
 }
 
 /* Product Carousel Styles Starts */
@@ -718,12 +718,12 @@ main-menu .navbar .container {
 }
 
 #top-brands {
-    background-color: #999999;
+    background-color: #333333;
 
 }
 
-.product-carousel .product-head {
-
+.product-head {
+background-color: #333333;
 }
 
 .product-carousel .row {
@@ -828,7 +828,7 @@ main-menu .navbar .container {
 #product-description {
     text-align: center;
     margin: auto;
-    /*right: 50px;*/
+    padding-left: 100px;
 }
 
 #info-container{
@@ -837,7 +837,7 @@ main-menu .navbar .container {
     width: auto;
     float: right;
     padding: 80px;
-    padding-left: 100px;
+    /*padding-left: 100px;*/
 }
 
 
@@ -889,6 +889,101 @@ main-menu .navbar .container {
 
 #register-form{
     background-color: #333333;
+}
+
+
+
+
+/* last products home page grid styles */
+
+#latest-6-products{
+    position: relative;
+    width: 95%;
+    margin: auto;
+    background-color: #333333;
+    color: whitesmoke;
+}
+
+.glyphicon { margin-right:5px; }
+.thumbnail
+{
+    margin-bottom: 20px;
+    padding: 0px;
+
+}
+
+.item.list-group-item
+{
+    float: none;
+    width: 100%;
+    background-color: #333333;
+    margin-bottom: 10px;
+}
+.item.list-group-item:nth-of-type(odd):hover,.item.list-group-item:hover
+{
+    background: #428bca;
+}
+
+.item.list-group-item .list-group-image
+{
+    margin-right: 10px;
+}
+.item.list-group-item .thumbnail
+{
+    margin-bottom: 0px;
+}
+
+
+.item.list-group-item .caption
+{
+    background-color: #333333;
+    padding: 9px 9px 0px 9px;
+}
+.item.list-group-item:nth-of-type(odd)
+{
+    background-color: #333333;
+}
+
+.item.list-group-item img
+{
+    background-color: #333333;
+    float: left;
+}
+.item.list-group-item:after
+{
+    background-color: #333333;
+    clear: both;
+}
+.list-group-item-text
+{
+    background-color: #333333;
+    margin: 0 0 11px;
+}
+
+.list-group-image{
+    background-color: #333333;
+    width: 200px;
+    height: 150px;
+}
+
+.col-xs-12.col-md-6{
+    background-color: #333333;
+    color: whitesmoke;
+}
+
+.group.inner.list-group-item-heading{
+    background-color: #333333;
+    color: whitesmoke;
+}
+
+.item.col-xs-4.col-lg-4{
+    background-color: #333333;
+    color: whitesmoke;
+}
+
+#products{
+    background-color: #333333;
+    color: whitesmoke;
 }
 
 

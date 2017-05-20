@@ -57,9 +57,6 @@ CREATE TABLE CUSTOMER (
 
 
 
-
-
-
 CREATE TABLE CUST_PAYMENT_METHOD (
     PAYMENT_ID int PRIMARY KEY NOT NULL AUTO_INCREMENT,
     CUSTOMER_ID int,
@@ -204,3 +201,27 @@ INSERT INTO `onlineshop`.`product_type` (`PRODUCT_TYPE`) VALUES ('AUDIO');
 INSERT INTO `onlineshop`.`user` (`USERNAME`, `PASSWORD`, `ACTIVE`) VALUES ('admin', 'password', '1');
 
 INSERT INTO `onlineshop`.`authority` (`USERNAME`, `AUTHORITY`) VALUES ('admin', 'ROLE_ADMIN');
+
+
+
+in directoriul aplicatiei se ruleaza:
+
+mvn clean
+
+mvn install
+
+mvn clean tomcat:deploy
+
+
+la adresa unde se afla tomcatul, in directoriul bin, adica ..\tomcat\bin  se ruleaza comanda catalina.bat run
+
+apoi se deschide browserul la adresa http://localhost:8080/ sau adresa specificata in configuratie
+
+se introduce userul si parola alese
+
+la sectiunea deploy, war file to deploy se da click pe browse si se alege arhiva aplicatiei si se apasa pe deploy
+
+
+
+rezulta un jar care se poate urca pe server pt a rula aplicatia
+

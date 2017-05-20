@@ -1,45 +1,33 @@
-package com.onlineshop.model.entity;
-
-import javax.persistence.*;
-import java.io.Serializable;
+package com.onlineshop.model.vo;
 
 /**
  * Created by smc on 5/9/2017.
  */
 
-@Entity
-@Table(name = "BILLING_ADDRESS")
-public class BillingAddress implements Serializable{
+public class BillingAddressVO{
 
-    private static final long serialVersionUID = 3506892915365389862L;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "BILLING_ADDRESS_ID")
     private int billingAddressId;
 
-    @Column(name = "STREET_NAME")
     private String streetName;
 
-    @Column(name = "HOUSE_NUMBER")
     private String houseNo;
 
-    @Column(name = "CITY")
     private String city;
 
-    @Column(name = "STATE")
     private String state;
 
-    @Column(name = "COUNTRY")
     private String country;
 
-    @Column(name = "ZIP_CODE")
     private int zipCode;
 
-    public BillingAddress() {
+
+
+    public BillingAddressVO() {
     }
 
-    public BillingAddress(String streetName, String houseNo, String city, String state, String country, int zipCode) {
+    public BillingAddressVO(int billingAddressId, String streetName, String houseNo, String city, String state, String country, int zipCode) {
+        this.billingAddressId = billingAddressId;
         this.streetName = streetName;
         this.houseNo = houseNo;
         this.city = city;
@@ -103,6 +91,4 @@ public class BillingAddress implements Serializable{
     public void setZipCode(int zipCode) {
         this.zipCode = zipCode;
     }
-
-
 }

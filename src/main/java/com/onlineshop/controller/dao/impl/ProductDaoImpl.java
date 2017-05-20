@@ -1,4 +1,5 @@
 package com.onlineshop.controller.dao.impl;
+
 import com.onlineshop.controller.dao.ProductDao;
 import com.onlineshop.model.entity.Product;
 import com.onlineshop.model.entity.ProductType;
@@ -24,9 +25,9 @@ public class ProductDaoImpl implements ProductDao {
 
 
     public void addProduct(Product product) {
-    Session session = sessionFactory.getCurrentSession();
-    session.saveOrUpdate(product);
-    session.flush();
+        Session session = sessionFactory.getCurrentSession();
+        session.saveOrUpdate(product);
+        session.flush();
     }
 
     public void editProduct(Product product) {
@@ -68,4 +69,19 @@ public class ProductDaoImpl implements ProductDao {
         return products;
     }
 
+
+    public List<Product> getLatestProducts() {
+        Session session = sessionFactory.getCurrentSession();
+        Query query = session.createQuery("from Product");
+        List<Product> lastFourAddedProducts = query.setFirstResult(query.list().size() - 6).list();
+        return lastFourAddedProducts;
+
+    }
+
+    public Product getLastProduct(){
+        Session session = sessionFactory.getCurrentSession();
+        Query<Product> query = session.createQuery("from Product order by productId DESC");
+        query.setMaxResults(1);
+        return query.uniqueResult();
+    }
 }

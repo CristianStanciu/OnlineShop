@@ -28,7 +28,7 @@ public class CartDaoImpl implements CartDao {
 
     public Cart getCartById(int cartId) {
         Session session = sessionFactory.getCurrentSession();
-        return session.get(Cart.class, cartId);
+        return (Cart) session.get(Cart.class, cartId);
     }
 
     public Cart validate(int cartId) throws IOException {

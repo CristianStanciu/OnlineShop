@@ -4,15 +4,18 @@ import com.onlineshop.model.entity.Cart;
 import com.onlineshop.model.entity.CartItem;
 import com.onlineshop.model.entity.Customer;
 import com.onlineshop.model.entity.Product;
+import com.onlineshop.model.vo.CartItemVO;
+import com.onlineshop.model.vo.CartVO;
+import com.onlineshop.model.vo.CustomerVO;
+import com.onlineshop.model.vo.ProductVO;
+import com.onlineshop.service.CartItemService;
 import com.onlineshop.service.CartService;
 import com.onlineshop.service.CustomerService;
 import com.onlineshop.service.ProductService;
-import com.onlineshop.service.CartItemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.web.bind.annotation.AuthenticationPrincipal;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -40,56 +43,63 @@ public class CartResources {
 
     @RequestMapping(value = "/{cartId}", method = RequestMethod.GET)
     public @ResponseBody
-    Cart getCartById(@PathVariable(value = "cartId") int cartId) {
+    CartVO getCartById(@PathVariable(value = "cartId") int cartId) {
         return cartService.getCartById(cartId);
     }
 
 
-    @CrossOrigin
     @RequestMapping(value = "/add/{productId}", method = RequestMethod.PUT)
     @ResponseStatus(value = HttpStatus.NO_CONTENT)
     public void addItem(@PathVariable(value = "productId") int productId, @AuthenticationPrincipal User activeUser) {
-
-        Customer customer = customerService.getCustomerByUsername(activeUser.getUsername());
-
-        Product product = productService.getProductById(productId);
-
-        Cart cart = new Cart();
-        cart.setCustomerId(customer);
-
-        List<CartItem> cartItems = cart.getCartItems();
-        for (int i = 0; i < cartItems.size(); i++) {
-            if (product.getProductId() == cartItems.get(i).getProductId().getProductId()) {
-                CartItem cartItem = cartItems.get(i);
-                cartItem.setQuantity(cartItem.getQuantity() + 1);
-                cartItem.setTotalPrice(product.getProductPrice() * cartItem.getQuantity());
-                cartItemService.addCartItem(cartItem);
+        CustomerVO customer = customerService.getCustomerByUsername(activeUser.getUsername());
+        ProductVO product = productService.getProductById(productId);
+        CartVO cart = customer.getCartId();
+        List<CartItemVO> cartItems = cart.getCartItems();
+        if (cartItems.size()!=0) {
+            for (int i = 0; i < cartItems.size(); i++) {
+                if (product.getProductId() == cartItems.get(i).getProductId().getProductId()) {
+                    CartItemVO cartItem = cartItems.get(i);
+                    cartItem.setQuantity(cartItem.getQuantity() + 1);
+                    cartItem.setTotalPrice(product.getProductPrice() * cartItem.getQuantity());
+                    cartItemService.addCartItem(cartItem);
+                    return;
+                }
             }
-
-            CartItem cartItem = new CartItem();
-            cartItem.setProductId(product);
+        }
+            CartItemVO cartItem = new CartItemVO();
             cartItem.setQuantity(1);
             cartItem.setTotalPrice(product.getProductPrice() * cartItem.getQuantity());
             cartItem.setCartId(cart);
             cartItemService.addCartItem(cartItem);
+    }
 
-            return;
+
+    @RequestMapping(value = "/remove/{productId}", method = RequestMethod.PUT)
+    @ResponseStatus(value = HttpStatus.NO_CONTENT)
+    public void removeCartItem(@PathVariable(value = "productId") int productId, @AuthenticationPrincipal User activeUser) {
+        CustomerVO customer = customerService.getCustomerByUsername(activeUser.getUsername());
+        List<CartItemVO> cartItems = customer.getCartId().getCartItems();
+        for (CartItemVO cartItem : cartItems){
+            if (cartItem.getProductId().getProductId() == productId){
+                cartItemService.removeCartItem(cartItem);
+            }
         }
     }
 
-    @CrossOrigin
-    @RequestMapping(value = "/remove/{productId}", method = RequestMethod.PUT)
-    @ResponseStatus(value = HttpStatus.NO_CONTENT)
-    public void removeCartItem(@PathVariable(value = "productId") int productId) {
-        CartItem cartItem = cartItemService.getCartItemByProductId(productId);
-        cartItemService.removeCartItem(cartItem);
-    }
 
-    @CrossOrigin
+// THE ORIGINAL VERSION BUT IT DOSEN'T WORK CUZ OF HIBERNATE 5 BUG!!!!
+//    @RequestMapping(value = "/remove/{productId}", method = RequestMethod.PUT)
+//    @ResponseStatus(value = HttpStatus.NO_CONTENT)
+//    public void removeCartItem(@PathVariable(value = "productId") int productId) {
+//        CartItem cartItem = cartItemService.getCartItemByProductId(productId);
+//        cartItemService.removeCartItem(cartItem);
+//
+//    }
+
     @RequestMapping(value = "/{cartId}", method = RequestMethod.DELETE)
     @ResponseStatus(value = HttpStatus.NO_CONTENT)
     public void clearCart(@PathVariable(value = "cartId") int cartId){
-        Cart cart = cartService.getCartById(cartId);
+        CartVO cart = cartService.getCartById(cartId);
         cartItemService.removeAllCartItems(cart);
     }
 

@@ -1,9 +1,6 @@
 package com.onlineshop.model.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import org.hibernate.validator.constraints.NotEmpty;
 import javax.persistence.*;
-import javax.validation.constraints.Min;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
@@ -59,7 +56,7 @@ public class Customer implements Serializable{
 
     @OneToOne
     @JoinColumn(name = "CART_ID")
-    @JsonIgnore
+//    @JsonIgnore
     private Cart cartId;
 
     @OneToOne
@@ -69,24 +66,10 @@ public class Customer implements Serializable{
     @Column(name = "ACTIVE")
     private boolean active;
 
-
-
-
-    /*@OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "CUSTOMER_ID", nullable = false)
-    List<Order> orderList = new ArrayList<Order>();
-
-
-
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "CUSTOMER_ID" , nullable = false)
-    List<CustomerPaymentMethod> paymentMethods = new ArrayList<CustomerPaymentMethod>();*/
-
-
     public Customer() {
     }
 
-    public Customer(String firstName, String lastName, String email, String username, String password, String address, String houseNo, int phoneNo, Cart cartId, BillingAddress billingAddressId) {
+    public Customer(String firstName, String lastName, String email, String username, String password, String address, String houseNo, int phoneNo, Cart cartId, BillingAddress billingAddressId, boolean active) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
@@ -97,6 +80,7 @@ public class Customer implements Serializable{
         this.phoneNo = phoneNo;
         this.cartId = cartId;
         this.billingAddressId = billingAddressId;
+        this.active = active;
     }
 
     public int getCustomerId() {
@@ -195,20 +179,4 @@ public class Customer implements Serializable{
         this.active = active;
     }
 
-    @Override
-    public String toString() {
-        return "Customer{" +
-                "customerId=" + customerId +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", email='" + email + '\'' +
-                ", username='" + username + '\'' +
-                ", password='" + password + '\'' +
-                ", address='" + address + '\'' +
-                ", houseNo='" + houseNo + '\'' +
-                ", phoneNo=" + phoneNo +
-                ", cartId=" + cartId +
-                ", billingAddressId=" + billingAddressId +
-                '}';
-    }
 }

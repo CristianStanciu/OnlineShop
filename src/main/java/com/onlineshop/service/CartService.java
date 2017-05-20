@@ -1,6 +1,6 @@
 package com.onlineshop.service;
 
-import com.onlineshop.model.entity.Cart;
+import com.onlineshop.model.vo.CartVO;
 
 /**
  * Created by smc on 5/10/2017.
@@ -8,7 +8,7 @@ import com.onlineshop.model.entity.Cart;
 
 public interface CartService {
 
-    Cart getCartById(int cartId);
+    CartVO getCartById(int cartId);
 
-    void updateCart(Cart cart);
+    void updateCart(CartVO cartVO);
 }

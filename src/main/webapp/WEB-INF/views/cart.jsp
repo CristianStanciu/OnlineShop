@@ -30,7 +30,7 @@
         </div>
             <br>
             <br>
-        <table class="table table-hover">
+        <table class="table">
             <tr>
                 <th>Product</th>
                 <th>Unit price</th>
@@ -39,11 +39,11 @@
                 <th>Action</th>
             </tr>
             <tr ng-repeat = "item in cart.cartItems">
-                <td>{{item.product.productName}}</td>
-                <td>{{item.product.productPrice}}</td>
+                <td>{{item.productId.productMaker}} {{item.productId.productName}}</td>
+                <td>{{item.productId.productPrice}}</td>
                 <td>{{item.quantity}}</td>
                 <td>{{item.totalPrice}}</td>
-                <td><a href="#" class="btn btn-default" ng-click="removeFromCart(item.product.productId)">
+                <td><a href="#" class="btn btn-default" ng-click="removeFromCart(item.productId.productId)">
                     <span class="glyphicon glyphicon-remove"></span>remove</a></td>
             </tr>
             <tr>

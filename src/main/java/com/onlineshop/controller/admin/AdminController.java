@@ -2,6 +2,8 @@ package com.onlineshop.controller.admin;
 
 import com.onlineshop.model.entity.Customer;
 import com.onlineshop.model.entity.Product;
+import com.onlineshop.model.vo.CustomerVO;
+import com.onlineshop.model.vo.ProductVO;
 import com.onlineshop.service.CustomerService;
 import com.onlineshop.service.ProductService;
 import com.onlineshop.util.MyCustomNumberEditor;
@@ -46,14 +48,14 @@ public class AdminController {
 
     @RequestMapping("/productInventory")
     public String productInventory(Model model) {
-        List<Product> products = productService.getProductList();
+        List<ProductVO> products = productService.getProductList();
         model.addAttribute("productList", products);
         return "productInventory";
     }
 
     @RequestMapping("/customerManagement")
     public String customerManagement(Model model) {
-        List<Customer> customers = customerService.getAllCustomers();
+        List<CustomerVO> customers = customerService.getAllCustomers();
         model.addAttribute("customerList", customers);
         return "customerManagement";
     }
