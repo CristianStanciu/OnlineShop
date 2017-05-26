@@ -1,5 +1,6 @@
 package com.onlineshop.model.vo;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -7,14 +8,15 @@ import java.util.List;
  * Created by smc on 5/8/2017.
  */
 
-public class CartVO {
+public class CartVO implements Serializable{
 
+    private static final long serialVersionUID = 2075391099015550394L;
 
     private int cartId;
 
     private List<CartItemVO> cartItems;
 
-    private OrderVO orderId;
+//    private OrderVO orderId;
 
     private double totalPrice;
 
@@ -44,13 +46,13 @@ public class CartVO {
         this.cartItems = cartItems;
     }
 
-    public OrderVO getOrderId() {
-        return orderId;
-    }
+//    public OrderVO getOrderId() {
+//        return orderId;
+//    }
 
-    public void setOrderId(OrderVO orderId) {
-        this.orderId = orderId;
-    }
+//    public void setOrderId(OrderVO orderId) {
+//        this.orderId = orderId;
+//    }
 
     public double getTotalPrice() {
         return totalPrice;
@@ -60,14 +62,5 @@ public class CartVO {
         this.totalPrice = totalPrice;
     }
 
-    @Override
-    public String toString() {
-        return "CartVO{" +
-                "cartId=" + cartId +
-                ", cartItems=" + cartItems +
-                ", orderId=" + orderId +
-                ", totalPrice=" + totalPrice +
-                '}';
-    }
 }
 

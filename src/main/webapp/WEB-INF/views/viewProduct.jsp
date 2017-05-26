@@ -26,7 +26,8 @@
                     <div id="info-container">
                         <h3 class="product-title">Product details:</h3>
                         <p>
-                        <h3><strong>Name</strong> : ${product.productName}</h3>
+                        <h4><strong>Maker</strong> : ${product.productMaker}</h4>
+                        <h4><strong>Name</strong> : ${product.productName}</h4>
                         <p><strong>Type</strong> : ${product.productType}</p>
                         <p><strong>Color</strong> : ${product.productColor}</p>
                         <p><strong>Price</strong> : ${product.productPrice} $</p>

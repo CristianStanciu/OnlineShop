@@ -1,12 +1,15 @@
 package com.onlineshop.model.vo;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
  * Created by smc on 4/29/2017.
  */
 
-public class OrderVO {
+public class OrderVO implements Serializable{
+
+    private static final long serialVersionUID = 4928940496450898774L;
 
     private int orderId;
 
@@ -22,7 +25,21 @@ public class OrderVO {
 
     private BillingAddressVO billingAddress;
 
+    private ShipmentVO shipmentAddress;
+
+
     public OrderVO() {
+    }
+
+    public OrderVO(int orderId, CustomerVO customerId, OrderStatusCodeVO orderStatusCode, String orderDetails, Date orderDate, CartVO cartId, BillingAddressVO billingAddress, ShipmentVO shipmentAddress) {
+        this.orderId = orderId;
+        this.customerId = customerId;
+        this.orderStatusCode = orderStatusCode;
+        this.orderDetails = orderDetails;
+        this.orderDate = orderDate;
+        this.cartId = cartId;
+        this.billingAddress = billingAddress;
+        this.shipmentAddress = shipmentAddress;
     }
 
     public int getOrderId() {
@@ -81,14 +98,11 @@ public class OrderVO {
         this.billingAddress = billingAddress;
     }
 
-    public OrderVO(int orderId, CustomerVO customerId, OrderStatusCodeVO orderStatusCode, String orderDetails, Date orderDate, CartVO cartId, BillingAddressVO billingAddress) {
+    public ShipmentVO getShipmentAddress() {
+        return shipmentAddress;
+    }
 
-        this.orderId = orderId;
-        this.customerId = customerId;
-        this.orderStatusCode = orderStatusCode;
-        this.orderDetails = orderDetails;
-        this.orderDate = orderDate;
-        this.cartId = cartId;
-        this.billingAddress = billingAddress;
+    public void setShipmentAddress(ShipmentVO shipmentAddress) {
+        this.shipmentAddress = shipmentAddress;
     }
 }

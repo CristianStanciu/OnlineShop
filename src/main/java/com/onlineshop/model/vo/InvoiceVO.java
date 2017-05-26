@@ -1,12 +1,15 @@
 package com.onlineshop.model.vo;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
  * Created by smc on 4/29/2017.
  */
 
-public class InvoiceVO {
+public class InvoiceVO implements Serializable {
+
+    private static final long serialVersionUID = -5259529821647334605L;
 
     private int invoiceNumber;
 

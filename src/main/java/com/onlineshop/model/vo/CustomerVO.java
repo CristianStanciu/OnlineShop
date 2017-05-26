@@ -7,8 +7,11 @@ import javax.validation.constraints.Digits;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
+import java.io.Serializable;
 
-public class CustomerVO {
+public class CustomerVO implements Serializable {
+
+    private static final long serialVersionUID = 6712250037410069192L;
 
     private int customerId;
 

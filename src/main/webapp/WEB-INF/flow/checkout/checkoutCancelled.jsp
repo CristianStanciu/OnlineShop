@@ -8,8 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
-
-<jsp:include page="fragments/header.jsp"/>
+<jsp:include page="../../views/fragments/header.jsp"/>
 
 
 <div id="cart-container" class="container">
@@ -29,4 +28,4 @@
 
 
 
-<jsp:include page="fragments/footer.jsp"/>
+<jsp:include page="../../views/fragments/footer.jsp"/>

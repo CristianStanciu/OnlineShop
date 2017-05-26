@@ -41,20 +41,20 @@
                     <td>{{item.quantity}}</td>
                     <td>{{item.totalPrice}}</td>
                     <td><a href="#" ng-click="removeFromCart(item.productId.productId)">
-                        <span class="glyphicon glyphicon-remove"></span>remove</a></td>
+                        <span class="glyphicon glyphicon-remove"></span> remove</a></td>
                 </tr>
                 <tr>
                     <th></th>
                     <th></th>
                     <th>Grand Total</th>
                     <th>{{calculateTotalPrice()}}</th>
-                    <th><a class="glyphicon glyphicon-remove" ng-click="clearCart()">Remove all</a></th>
+                    <th><a class="glyphicon glyphicon-remove" ng-click="clearCart()"> Remove all</a></th>
                 </tr>
 
             </table>
             <div id="cart-page-buttons-div">
             <a href="<spring:url value="/product/productList" />" class="btn btn-default">Continue shopping</a>
-            <a href="<spring:url value="/order/${cartId}"/>" class="btn btn-default"><span
+            <a href="<spring:url value="/customer/order/${cartId}"/>" class="btn btn-default"><span
                     class="glyphicon-shopping-cart glyphicon"></span>Checkout</a>
             </div>
         </div>

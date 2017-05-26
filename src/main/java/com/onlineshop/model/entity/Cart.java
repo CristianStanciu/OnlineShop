@@ -1,7 +1,5 @@
 package com.onlineshop.model.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -24,9 +22,6 @@ public class Cart implements Serializable {
 
     @OneToMany(mappedBy = "cartId", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<CartItem> cartItems;
-
-    @OneToOne(mappedBy ="cartId")
-    private Order orderId;
 
     @Column(name = "TOTAL_PRICE")
     private double totalPrice;
@@ -57,13 +52,6 @@ public class Cart implements Serializable {
         this.cartItems = cartItems;
     }
 
-    public Order getOrderId() {
-        return orderId;
-    }
-
-    public void setOrderId(Order orderId) {
-        this.orderId = orderId;
-    }
 
     public double getTotalPrice() {
         return totalPrice;

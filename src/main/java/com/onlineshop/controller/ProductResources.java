@@ -16,6 +16,7 @@ import java.util.List;
 @RequestMapping("/rest/product")
 public class ProductResources {
 
+
     @Autowired
     ProductService productService;
 
@@ -26,14 +27,12 @@ public class ProductResources {
         return productService.getProductById(productId);
     }
 
-
     @RequestMapping()
     @ResponseStatus(value = HttpStatus.NO_CONTENT)
     public @ResponseBody
     List<ProductVO> getProductList() {
         return productService.getProductList();
     }
-
 
     @RequestMapping(value = "/{productId}", method = RequestMethod.DELETE)
     @ResponseStatus(value = HttpStatus.NO_CONTENT)

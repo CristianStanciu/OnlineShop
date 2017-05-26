@@ -3,30 +3,29 @@
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:schemaLocation="http://www.springframework.org/schema/webflow http://www.springframework.org/schema/webflow/spring-webflow-2.4.xsd">
 
-    <var name="order" class="com.onlineshop.model.entity.Order"/>
-
+    <var name="orderVO" class="com.onlineshop.model.vo.OrderVO"/>
     <action-state id="addCartToOrder">
-        <evaluate expression="cartDaoImp.validate(requestParameters.cartId)" result="order.cart"/>
+        <evaluate expression="cartServiceImpl.validate(requestParameters.cartId)" result="order.cartId"/>
         <transition to="InvalidCartWarning" on-exception="java.io.IOException"/>
         <transition to="collectCustomerInfo"/>
     </action-state>
     
-    <view-state id="collectCustomerInfo" view="collectCustomerInfo.jsp" model="order">
+    <view-state id="collectCustomerInfo" view="collectCustomerInfo.jsp" model="orderVO">
         <transition on="customerInfoCollected" to="collectShipmentDetail"/>
     </view-state>
-    <view-state id="collectShipmentDetail" view="collectShipmentDetail.jsp" model="order">
+    <view-state id="collectShipmentDetail" view="collectShipmentDetail.jsp" model="orderVO">
         <transition on="ShipmentDetailCollected" to="orderConfirmation"/>
         <transition on="backToCollectCustomerInfo" to="collectCustomerInfo"/>
     </view-state>
-    <view-state id="orderConfirmation" view="collectShipmentDetail.jsp" model="order">
+    <view-state id="orderConfirmation" view="orderConfirmation.jsp" model="orderVO">
         <transition on="orderConfirmed" to="processOrder"/>
         <transition on="backToCollectShipmentDetail" to="collectShipmentDetail"/>
     </view-state>
     <action-state id="processOrder">
-        <evaluate expression="cartItemDaoImpl.removeAllCartItems(order.cart)"/>
+        <evaluate expression="cartItemServiceImpl.removeAllCartItems(orderVO.cartId)"/>
         <transition to="thankCustomer"/>
     </action-state>
-    <view-state id="thankCustomer" model="order">
+    <view-state id="thankCustomer" view="thankCustomer.jsp" model="orderVO">
         <transition to="endState"/>
     </view-state>
     <end-state id="endState"/>

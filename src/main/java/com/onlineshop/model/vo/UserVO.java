@@ -2,12 +2,15 @@ package com.onlineshop.model.vo;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;
+import java.io.Serializable;
 
 /**
  * Created by smc on 5/9/2017.
  */
 
-public class UserVO {
+public class UserVO implements Serializable {
+
+    private static final long serialVersionUID = 6351227651929551660L;
 
     private int userId;
 

@@ -2,11 +2,15 @@ package com.onlineshop.model.vo;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import java.io.Serializable;
+
 /**
  * Created by smc on 5/8/2017.
  */
 
-public class CartItemVO{
+public class CartItemVO implements Serializable{
+
+    private static final long serialVersionUID = -874589976175483935L;
 
     private int cartItemId;
 

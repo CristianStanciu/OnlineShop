@@ -10,8 +10,8 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<jsp:include page="fragments/header.jsp"/>
-<jsp:useBean id="now" class="java.util.date" />
+<jsp:include page="../../views/fragments/header.jsp"/>
+<jsp:useBean id="now" class="java.util.Date" />
 
 
 <div class="container">
@@ -19,11 +19,9 @@
         <h3>Order:</h3>
     </div>
 
-
     <p>Order confirmation:</p>
 
     <div>
-
 
         <div class="well col-xs-10 col-sm-10 col-md-6 col-xs-offset-1 col-sm-offset-1 col-md-offset-3">
 
@@ -35,13 +33,13 @@
                     <address>
                         <strong>Shipping address:</strong>
                         <br>
-                        ${order.cart.customer.shippingAddress.streetName}
+                        ${orderVO.shipmentAddress.streetName}
                         <br>
-                        ${order.cart.customer.shippingAddress.houseNo}
+                        ${orderVO.shipmentAddress.houseNo}
                         <br>
-                        ${order.cart.customer.shippingAddress.city}, ${order.cart.customer.shippingAddress.state}
+                        ${orderVO.shipmentAddress.city}, ${orderVO.shipmentAddress.state}
                         <br>
-                        ${order.cart.customer.shippingAddress.country}, ${order.cart.customer.shippingAddress.zipCode}
+                        ${orderVO.shipmentAddress.country}, ${orderVO.shipmentAddress.zipCode}
                         <br>
                     </address>
                 </div>
@@ -55,13 +53,13 @@
                 <address>
                     <strong>Billing address:</strong>
                     <br>
-                    ${order.cart.customer.billingAddress.streetName}
+                    ${orderVO.billingAddress.streetName}
                     <br>
-                    ${order.cart.customer.billingAddress.houseNo}
+                    ${orderVO.billingAddress.houseNo}
                     <br>
-                    ${order.cart.customer.billingAddress.city}, ${order.cart.customer.billingAddress.state}
+                    ${orderVO.billingAddress.city}, ${orderVO.billingAddress.state}
                     <br>
-                    ${order.cart.customer.billingAddress.country}, ${order.cart.customer.billingAddress.zipCode}
+                    ${orderVO.billingAddress.country}, ${orderVO.billingAddress.zipCode}
                     <br>
                 </address>
             </div>
@@ -78,11 +76,11 @@
                 </tr>
                 </thead>
                 <tbody>
-                <c:forEach var="cartItem" items="${order.cart.cartItem}">
+                <c:forEach var="cartItem" items="${orderVO.cartId.cartItems}">
                     <tr>
-                        <td class="col-md-9"><em>${cartItem.product.productName}</em></td>
+                        <td class="col-md-9"><em>${cartItem.productId.productName}</em></td>
                         <td class="col-md-1" style="text-align: center">${cartItem.quantity}</td>
-                        <td class="col-md-9"><em>${cartItem.product.productPrice}</em></td>
+                        <td class="col-md-9"><em>${cartItem.productId.productPrice}</em></td>
                         <td class="col-md-9"><em>${cartItem.totalPrice}</em></td>
                     </tr>
                 </c:forEach>
@@ -93,7 +91,7 @@
                         <h4><strong>Total Price:</strong></h4>
                     </td>
                     <td class="text-center text-danger"></td>
-                    <h4><strong>$ ${order.cart.totalPrice} </strong></h4>
+                    <h4><strong>$ ${orderVO.cartId.totalPrice} </strong></h4>
                 </tr>
 
                 </tbody>
@@ -101,9 +99,13 @@
 
         </div>
 
+        <%--<input type="hidden" name="_flowExecutionKey"/>--%>
+
         <br><br><br><br>
         <button class="btn btn-default" name="_eventId_backToCollectShipmentDetail">Back</button>
         <input type="submit" value="Submit order" class="btn btn-default" name="_eventId_orderConfirmed">
         <button class="btn btn-default" name="_eventId_cancel">Cancel</button>
     </div>
 </div>
+
+<jsp:include page="../../views/fragments/footer.jsp"/>

@@ -1,13 +1,15 @@
 package com.onlineshop.model.vo;
 
 import javax.validation.constraints.*;
+import java.io.Serializable;
 
 /**
  * Created by smc on 5/9/2017.
  */
 
-public class BillingAddressVO{
+public class BillingAddressVO implements Serializable{
 
+    private static final long serialVersionUID = -1957346784082919134L;
 
     private int billingAddressId;
 

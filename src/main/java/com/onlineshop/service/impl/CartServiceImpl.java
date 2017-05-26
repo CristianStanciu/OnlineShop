@@ -8,6 +8,8 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.io.IOException;
+
 /**
  * Created by smc on 5/10/2017.
  */
@@ -28,5 +30,16 @@ public class CartServiceImpl implements CartService{
         ModelMapper mapperFromCart = new ModelMapper();
         Cart cart = mapperFromCart.map(cartVO, Cart.class);
         cartDao.update(cart);
+    }
+
+    public CartVO validate(int cartId) throws IOException {
+        CartVO cart = this.getCartById(cartId);
+        if (cart == null || cart.getCartItems().size() == 0) {
+            throw new IOException("Something's wrong with the cart" + cartId);
+        } else {
+            this.updateCart(cart);
+            return cart;
+        }
+
     }
 }

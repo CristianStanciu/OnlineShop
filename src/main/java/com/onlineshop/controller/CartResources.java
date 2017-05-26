@@ -36,13 +36,11 @@ public class CartResources {
     @Autowired
     CartItemService cartItemService;
 
-
     @RequestMapping(value = "/{cartId}", method = RequestMethod.GET)
     public @ResponseBody
     CartVO getCartById(@PathVariable(value = "cartId") int cartId) {
         return cartService.getCartById(cartId);
     }
-
 
     @RequestMapping(value = "/add/{productId}", method = RequestMethod.PUT)
     @ResponseStatus(value = HttpStatus.NO_CONTENT)
@@ -70,7 +68,6 @@ public class CartResources {
             cartItemService.addCartItem(cartItem);
     }
 
-
     @RequestMapping(value = "/remove/{productId}", method = RequestMethod.PUT)
     @ResponseStatus(value = HttpStatus.NO_CONTENT)
     public void removeCartItem(@PathVariable(value = "productId") int productId, @AuthenticationPrincipal User activeUser) {
@@ -83,23 +80,13 @@ public class CartResources {
         }
     }
 
-
-// THE ORIGINAL VERSION BUT IT DOSEN'T WORK CUZ OF HIBERNATE 5 BUG!!!!
-//    @RequestMapping(value = "/remove/{productId}", method = RequestMethod.PUT)
-//    @ResponseStatus(value = HttpStatus.NO_CONTENT)
-//    public void removeCartItem(@PathVariable(value = "productId") int productId) {
-//        CartItem cartItem = cartItemService.getCartItemByProductId(productId);
-//        cartItemService.removeCartItem(cartItem);
-//
-//    }
-
-    @RequestMapping(value = "/{cartId}", method = RequestMethod.DELETE)
+    @RequestMapping(method = RequestMethod.DELETE)
     @ResponseStatus(value = HttpStatus.NO_CONTENT)
-    public void clearCart(@PathVariable(value = "cartId") int cartId){
-        CartVO cart = cartService.getCartById(cartId);
+    public void clearCart(@AuthenticationPrincipal User activeUser){
+        CustomerVO customer = customerService.getCustomerByUsername(activeUser.getUsername());
+        CartVO cart = customer.getCartId();
         cartItemService.removeAllCartItems(cart);
     }
-
 
     @ExceptionHandler(IllegalArgumentException.class)
     @ResponseStatus(value = HttpStatus.BAD_REQUEST, reason = "Illegal request, problem with payload")

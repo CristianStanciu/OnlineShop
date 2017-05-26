@@ -185,7 +185,7 @@
                 <ul class="nav navbar-nav">
 
                     <li><a href="<c:url value="/product/category/audio" />">Audio</a></li>
-                    <li><a href="<c:url value="/product/category/laptop" />">Laptop</a></li>
+                    <li><a href="<c:url value="/product/category/laptop" />">Laptops</a></li>
                     <li><a href="<c:url value="/product/category/photo camera"/>">Photo Cameras</a></li>
                     <li><a href="<c:url value="/product/category/smart phone"/>">Smart Phones</a></li>
                     <li><a href="<c:url value="/product/category/tv" />">TVs</a></li>

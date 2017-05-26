@@ -34,7 +34,7 @@ public class CartDaoImpl implements CartDao {
     public Cart validate(int cartId) throws IOException {
         Cart cart = this.getCartById(cartId);
         if (cart == null || cart.getCartItems().size() == 0) {
-            throw new IOException("" + cartId);
+            throw new IOException("Something's wrong with the cart" + cartId);
         } else {
             update(cart);
             return cart;

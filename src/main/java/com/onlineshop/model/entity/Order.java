@@ -41,16 +41,22 @@ public class Order implements Serializable{
     @JoinColumn(name = "BILLING_ADDRESS_ID")
     private BillingAddress billingAddress;
 
+    @OneToOne
+    @JoinColumn(name = "SHIPMENT_ID")
+    private Shipment shipmentAddress;
+
+
     public Order() {
     }
 
-    public Order(Customer customerId, OrderStatusCode orderStatusCode, String orderDetails, Date orderDate, Cart cartId, BillingAddress billingAddress) {
+    public Order(Customer customerId, OrderStatusCode orderStatusCode, String orderDetails, Date orderDate, Cart cartId, BillingAddress billingAddress, Shipment shipmentAddress) {
         this.customerId = customerId;
         this.orderStatusCode = orderStatusCode;
         this.orderDetails = orderDetails;
         this.orderDate = orderDate;
         this.cartId = cartId;
         this.billingAddress = billingAddress;
+        this.shipmentAddress = shipmentAddress;
     }
 
     public int getOrderId() {
@@ -109,16 +115,11 @@ public class Order implements Serializable{
         this.billingAddress = billingAddress;
     }
 
-    @Override
-    public String toString() {
-        return "Order{" +
-                "orderId=" + orderId +
-                ", customerId=" + customerId +
-                ", orderStatusCode=" + orderStatusCode +
-                ", orderDetails='" + orderDetails + '\'' +
-                ", orderDate=" + orderDate +
-                ", cartId=" + cartId +
-                ", billingAddress=" + billingAddress +
-                '}';
+    public Shipment getShipmentAddress() {
+        return shipmentAddress;
+    }
+
+    public void setShipmentAddress(Shipment shipmentAddress) {
+        this.shipmentAddress = shipmentAddress;
     }
 }

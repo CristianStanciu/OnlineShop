@@ -1,6 +1,5 @@
 package com.onlineshop.service;
 
-import com.onlineshop.model.entity.Customer;
 import com.onlineshop.model.vo.CustomerVO;
 
 import java.util.List;
